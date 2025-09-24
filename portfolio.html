@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matin Gathani | AI Engineer Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">MG</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-up">
+            <h1>Matin Gathani</h1>
+            <h2>AI Engineer & Computer Science Student</h2>
+            <p>Developing intelligent solutions with AI/ML expertise</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="cta-primary">Contact Me</a>
+                <a href="#projects" class="cta-secondary">View Projects</a>
+            </div>
+        </div>
+        <div class="hero-image" data-aos="fade-left">
+            <!-- We'll add an SVG or animated graphic here -->
+            <div class="ai-brain-graphic"></div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="section-header" data-aos="fade-right">
+            <h2>About Me</h2>
+        </div>
+        <div class="about-content" data-aos="fade-up">
+            <div class="about-text">
+                <p>Computer Science student with a Data Science minor (GPA 3.6). Experienced in Python, C++, and Java with hands-on exposure to AI/ML model training, API integration, and system testing.</p>
+                <p>Completed internship developing HRMS machine learning models with NLP and tokenization, and actively tutoring students in programming and software engineering.</p>
+                <p>Strong communicator with attention to detail, seeking to apply AI development and testing skills as an AI Engineer.</p>
+            </div>
+            <div class="about-stats">
+                <div class="stat">
+                    <div class="stat-number">3.6</div>
+                    <div class="stat-label">GPA</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">180+</div>
+                    <div class="stat-label">Students Tutored</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Major Projects</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="section-header" data-aos="fade-right">
+            <h2>Technical Skills</h2>
+        </div>
+        <div class="skills-content">
+            <div class="skills-category" data-aos="fade-up">
+                <h3>Programming & AI/ML</h3>
+                <div class="skills-chart-container">
+                    <canvas id="programmingChart"></canvas>
+                </div>
+            </div>
+            <div class="skills-category" data-aos="fade-up" data-aos-delay="100">
+                <h3>APIs & Testing</h3>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <span class="skill-name">REST APIs</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Postman</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">API Integration</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Software Testing</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="skills-category" data-aos="fade-up" data-aos-delay="200">
+                <h3>Web Development</h3>
+                <div class="skills-icons">
+                    <div class="skill-icon">
+                        <i class="fab fa-html5"></i>
+                        <span>HTML</span>
+                    </div>
+                    <div class="skill-icon">
+                        <i class="fab fa-css3-alt"></i>
+                        <span>CSS</span>
+                    </div>
+                    <div class="skill-icon">
+                        <i class="fab fa-js"></i>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="skill-icon">
+                        <i class="fab fa-react"></i>
+                        <span>React.js</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skills-category" data-aos="fade-up" data-aos-delay="300">
+                <h3>Data & Systems</h3>
+                <div class="skills-tags">
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Git/GitHub</span>
+                    <span class="skill-tag">Linux/Unix</span>
+                    <span class="skill-tag">Windows</span>
+                    <span class="skill-tag">MacOS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience">
+        <div class="section-header" data-aos="fade-right">
+            <h2>Professional Experience</h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item" data-aos="fade-up">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Project Intern – Musikaar</h3>
+                    <span class="timeline-date">May 2024 – Aug 2024</span>
+                    <ul>
+                        <li>Developed and fine-tuned machine learning models using Python, NLP, and tokenization, improving HR data processing efficiency.</li>
+                        <li>Validated model performance with custom datasets, applying testing principles to improve accuracy and reduce errors.</li>
+                        <li>Built web pages in HTML/CSS to connect AI models to end-user applications, ensuring smooth API integration.</li>
+                        <li>Collaborated with cross-functional teams to debug data pipeline issues and document testing procedures.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item" data-aos="fade-up">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Engineering Tutor / Learning Assistant – ASU</h3>
+                    <span class="timeline-date">Jan 2024 – Present</span>
+                    <ul>
+                        <li>Tutored 180+ students in programming and software engineering (Java, Assembly, C++), emphasizing problem-solving and debugging.</li>
+                        <li>Assisted students in understanding software testing methodologies through projects and assignments.</li>
+                        <li>Strengthened communication and documentation skills by breaking down technical concepts for diverse learners.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="section-header" data-aos="fade-right">
+            <h2>Projects</h2>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card" data-aos="fade-up">
+                <div class="project-image">
+                    <img src="images/medical-record-system.svg" alt="Medical Record System">
+                </div>
+                <div class="project-content">
+                    <h3>Medical Record System</h3>
+                    <p>Designed a full-stack system using JavaScript, SQL, and Docker; enabled structured storage, retrieval, and visualization of patient data.</p>
+                    <div class="project-tags">
+                        <span>JavaScript</span>
+                        <span>SQL</span>
+                        <span>Docker</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn-project">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="project-image">
+                    <img src="images/maze-solving-car.svg" alt="Maze-Solving Car">
+                </div>
+                <div class="project-content">
+                    <h3>Maze-Solving Car</h3>
+                    <p>Collaborated on an automation project using block coding and data-driven decision logic to navigate maze environments.</p>
+                    <div class="project-tags">
+                        <span>Automation</span>
+                        <span>Block Coding</span>
+                        <span>Decision Logic</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn-project">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="project-image">
+                    <img src="images/digital-design-circuit.svg" alt="Digital Design Key Fob Circuit">
+                </div>
+                <div class="project-content">
+                    <h3>Digital Design Key Fob Circuit</h3>
+                    <p>Implemented logic gate circuit using K-map/state diagrams; applied data modeling principles to optimize outputs.</p>
+                    <div class="project-tags">
+                        <span>Logic Gates</span>
+                        <span>K-map</span>
+                        <span>Data Modeling</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn-project">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="education">
+        <div class="section-header" data-aos="fade-right">
+            <h2>Education</h2>
+        </div>
+        <div class="education-card" data-aos="fade-up">
+            <div class="education-logo">
+                <img src="images/asu-logo.svg" alt="Arizona State University">
+            </div>
+            <div class="education-content">
+                <h3>B.S. Computer Science</h3>
+                <p>Arizona State University, Tempe, AZ</p>
+                <p>Expected May 2026</p>
+                <p class="education-gpa">GPA: 3.60</p>
+                <p>Minor: Data Science</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="section-header" data-aos="fade-right">
+            <h2>Contact Me</h2>
+        </div>
+        <div class="contact-content">
+            <div class="contact-info" data-aos="fade-up">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:mgathan1@asu.edu">mgathan1@asu.edu</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:4805722372">480.572.2372</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="https://www.linkedin.com/in/matin-gathani-185a7a192" target="_blank">LinkedIn Profile</a>
+                </div>
+            </div>
+            <form class="contact-form" data-aos="fade-up">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Matin Gathani. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/matin-gathani-185a7a192" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
