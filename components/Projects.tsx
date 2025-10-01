@@ -174,20 +174,20 @@ const Projects = () => {
   const projectsData = [
     {
       title: "Medical Record System",
-      description: "Designed a full-stack system using JavaScript, SQL, and Docker; enabled structured storage, retrieval, and visualization of patient data.",
-      tags: ["JavaScript", "SQL", "Docker"],
+      description: "Designed and implemented a full-stack system using JavaScript, SQL, and Docker to enable structured storage, retrieval, and visualization of patient data. Built database schemas and front-end interfaces to support efficient data management and user interaction.",
+      tags: ["JavaScript", "SQL", "Docker", "Full-Stack"],
       image: "/images/medical-record-system.svg"
     },
     {
       title: "Maze-Solving Car",
-      description: "Collaborated on an automation project using block coding and data-driven decision logic to navigate maze environments.",
-      tags: ["Automation", "Block Coding", "Decision Logic"],
+      description: "Collaborated on an automation system that used block coding and data-driven decision logic to navigate dynamic maze environments. Integrated sensor data and algorithmic decision-making to improve navigation accuracy and path optimization.",
+      tags: ["Automation", "Block Coding", "Decision Logic", "Sensors"],
       image: "/images/maze-solving-car.svg"
     },
     {
       title: "Digital Design Key Fob Circuit",
-      description: "Implemented logic gate circuit using K-map/state diagrams; applied data modeling principles to optimize outputs.",
-      tags: ["Logic Gates", "K-map", "Data Modeling"],
+      description: "Implemented a logic gate circuit using K-map and state diagrams to optimize outputs and system performance. Applied digital design and data modeling principles to ensure reliable and efficient circuit functionality.",
+      tags: ["Logic Gates", "K-map", "State Diagrams", "Digital Design"],
       image: "/images/digital-design-circuit.svg"
     }
   ];

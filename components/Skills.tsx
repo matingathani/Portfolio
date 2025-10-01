@@ -150,18 +150,18 @@ const FloatingSkills = () => {
       <ambientLight intensity={0.3} />
       <pointLight position={[10, 10, 10]} intensity={2} />
       
-      {['Python', 'ML', 'AI', 'C++', 'Java'].map((skill, i) => (
-        <Float key={i} speed={(i + 1) * 0.5} rotationIntensity={0.5} floatIntensity={1}>
+      {['Java', 'Python', 'ML', 'AI', 'C++', 'JS'].map((skill, i) => (
+        <Float key={i} speed={(i + 1) * 0.3} rotationIntensity={0.3} floatIntensity={0.8}>
           <mesh position={[
-            (i - 2) * 1.5,
-            Math.sin(i) * 0.5,
-            0
+            (i - 2.5) * 1.2,
+            Math.sin(i) * 0.8,
+            Math.cos(i) * 0.3
           ]}>
-            <boxGeometry args={[0.8, 0.8, 0.8]} />
+            <boxGeometry args={[0.6, 0.6, 0.6]} />
             <meshStandardMaterial 
-              color={i % 2 === 0 ? "#6e57e0" : "#00c2ff"} 
-              emissive={i % 2 === 0 ? "#6e57e0" : "#00c2ff"}
-              emissiveIntensity={0.3}
+              color={i % 3 === 0 ? "#6e57e0" : i % 3 === 1 ? "#00c2ff" : "#ffa500"} 
+              emissive={i % 3 === 0 ? "#6e57e0" : i % 3 === 1 ? "#00c2ff" : "#ffa500"}
+              emissiveIntensity={0.4}
               wireframe={true}
             />
           </mesh>
@@ -188,7 +188,7 @@ const Skills = () => {
   };
   
   const chartData = {
-    labels: ['Python', 'C++', 'Java', 'JavaScript', 'Machine Learning', 'NLP'],
+    labels: ['Java', 'Python', 'C/C++', 'JavaScript', 'Machine Learning', 'Software Testing'],
     datasets: [
       {
         label: 'Skill Level',
@@ -266,7 +266,9 @@ const Skills = () => {
               { name: 'REST APIs', percentage: '85%' },
               { name: 'Postman', percentage: '80%' },
               { name: 'API Integration', percentage: '75%' },
-              { name: 'Software Testing', percentage: '80%' }
+              { name: 'Software Testing', percentage: '80%' },
+              { name: 'Docker', percentage: '75%' },
+              { name: 'Git/GitHub', percentage: '90%' }
             ].map((skill, index) => (
               <SkillItem key={index}>
                 <SkillName>
@@ -294,12 +296,14 @@ const Skills = () => {
           <CategoryTitle>Web Development</CategoryTitle>
           <SkillIcons>
             {[
-              { icon: 'fab fa-html5', name: 'HTML' },
-              { icon: 'fab fa-css3-alt', name: 'CSS' },
+              { icon: 'fab fa-java', name: 'Java' },
+              { icon: 'fab fa-python', name: 'Python' },
+              { icon: 'fas fa-code', name: 'C/C++' },
               { icon: 'fab fa-js', name: 'JavaScript' },
               { icon: 'fab fa-react', name: 'React.js' },
               { icon: 'fab fa-node-js', name: 'Node.js' },
-              { icon: 'fab fa-npm', name: 'NPM' }
+              { icon: 'fab fa-html5', name: 'HTML' },
+              { icon: 'fab fa-css3-alt', name: 'CSS' }
             ].map((skill, index) => (
               <SkillIcon 
                 key={index}
@@ -323,7 +327,7 @@ const Skills = () => {
           <SkillTags>
             {[
               'SQL', 'Docker', 'Git/GitHub', 'Linux/Unix', 'Windows', 'MacOS', 
-              'TensorFlow', 'PyTorch', 'NumPy', 'Pandas', 'Scikit-learn', 'Jupyter'
+              'Postman', 'Express.js', 'Bootstrap', 'Bash', 'C#', 'Assembly'
             ].map((tag, index) => (
               <SkillTag 
                 key={index}

@@ -220,7 +220,7 @@ const Contact = () => {
           </ContactItem>
           <ContactItem>
             <i className="fas fa-phone"></i>
-            <a href="tel:4805722372">480.572.2372</a>
+            <a href="tel:4805722372">480-572-2372</a>
           </ContactItem>
           <ContactItem>
             <i className="fab fa-linkedin"></i>

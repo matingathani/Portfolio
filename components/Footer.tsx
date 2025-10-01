@@ -83,16 +83,16 @@ const Footer: React.FC = () => {
       <FooterContent>
         <FooterSection>
           <h3>Matin Gathani</h3>
-          <p>AI Engineer & Computer Science Student passionate about creating innovative solutions through machine learning and software development.</p>
+          <p>Computer Science Student & AI Engineer passionate about creating innovative solutions through machine learning, software development, and collaborative problem-solving.</p>
           <SocialLinks>
-            <SocialIcon href="https://github.com/yourgithub" target="_blank" rel="noopener noreferrer">
+            <SocialIcon href="https://github.com/matingathani" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-github"></i>
             </SocialIcon>
-            <SocialIcon href="https://linkedin.com/in/yourlinkedin" target="_blank" rel="noopener noreferrer">
+            <SocialIcon href="https://www.linkedin.com/in/matin-gathani-185a7a192" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-linkedin"></i>
             </SocialIcon>
-            <SocialIcon href="https://twitter.com/yourtwitter" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-twitter"></i>
+            <SocialIcon href="mailto:mgathan1@asu.edu" target="_blank" rel="noopener noreferrer">
+              <i className="fas fa-envelope"></i>
             </SocialIcon>
           </SocialLinks>
         </FooterSection>
@@ -108,10 +108,13 @@ const Footer: React.FC = () => {
         </FooterSection>
         
         <FooterSection>
-          <h3>Contact</h3>
-          <FooterLink href="mailto:your.email@example.com">your.email@example.com</FooterLink>
-          <FooterLink href="tel:+1234567890">+1 (234) 567-890</FooterLink>
+          <h3>Contact & Activities</h3>
+          <FooterLink href="mailto:mgathan1@asu.edu">mgathan1@asu.edu</FooterLink>
+          <FooterLink href="tel:4805722372">480-572-2372</FooterLink>
           <p>Arizona State University<br/>Tempe, AZ</p>
+          <p><strong>Activities:</strong><br/>
+          Software Developers Association<br/>
+          HackerDevils (Coding Competitions)</p>
         </FooterSection>
       </FooterContent>
       

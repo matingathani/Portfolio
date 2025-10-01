@@ -146,8 +146,8 @@ const Education = () => {
           <h3>B.S. Computer Science</h3>
           <p>Arizona State University, Tempe, AZ</p>
           <p>Expected May 2026</p>
-          <p className="education-gpa">GPA: 3.60</p>
-          <p>Minor: Data Science</p>
+          <p className="education-gpa">GPA: 3.67</p>
+          <p><strong>Relevant Coursework:</strong> Data Structures and Algorithms, Object-Oriented Programming & Design, Software Analysis and Design, Software QA and Testing, Operating Systems, Applied Linear Algebra, Human-Computer Interaction</p>
         </EducationContent>
       </EducationCard>
     </EducationSection>

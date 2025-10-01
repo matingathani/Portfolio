@@ -16,9 +16,6 @@ const theme = {
   }
 };
 
-// Debug
-// eslint-disable-next-line no-console
-console.log('DEBUG theme build keys:', Object.keys(theme), 'colors keys', Object.keys(theme.colors || {}));
 
 export { theme };
 export default theme;

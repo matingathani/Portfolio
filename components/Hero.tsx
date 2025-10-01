@@ -150,34 +150,34 @@ const AnimatedBrain = () => {
       </Float>
       
       {/* Orbiting particles representing neural connections */}
-      {Array.from({ length: 20 }).map((_, i) => (
+      {Array.from({ length: 30 }).map((_, i) => (
         <mesh key={i} position={[
-          Math.sin(i / 3) * 3,
-          Math.cos(i / 4) * 3,
-          Math.sin(i / 5) * 3
+          Math.sin(i / 3) * (3 + Math.sin(i) * 0.5),
+          Math.cos(i / 4) * (3 + Math.cos(i) * 0.5),
+          Math.sin(i / 5) * (3 + Math.sin(i * 2) * 0.5)
         ]}>
-          <sphereGeometry args={[0.1, 16, 16]} />
+          <sphereGeometry args={[0.08 + Math.sin(i) * 0.02, 12, 12]} />
           <meshStandardMaterial 
-            color="#00c2ff" 
-            emissive="#00c2ff"
-            emissiveIntensity={0.5}
+            color={i % 3 === 0 ? "#6e57e0" : i % 3 === 1 ? "#00c2ff" : "#ffa500"} 
+            emissive={i % 3 === 0 ? "#6e57e0" : i % 3 === 1 ? "#00c2ff" : "#ffa500"}
+            emissiveIntensity={0.6}
             toneMapped={false}
           />
         </mesh>
       ))}
       
       {/* Neural connections */}
-      {Array.from({ length: 15 }).map((_, i) => {
+      {Array.from({ length: 25 }).map((_, i) => {
         const startPos = new THREE.Vector3(
-          Math.sin(i / 3) * 3,
-          Math.cos(i / 4) * 3,
-          Math.sin(i / 5) * 3
+          Math.sin(i / 3) * (3 + Math.sin(i) * 0.5),
+          Math.cos(i / 4) * (3 + Math.cos(i) * 0.5),
+          Math.sin(i / 5) * (3 + Math.sin(i * 2) * 0.5)
         );
         
         const endPos = new THREE.Vector3(
-          Math.cos(i / 5) * 3,
-          Math.sin(i / 3) * 3,
-          Math.cos(i / 4) * 3
+          Math.cos(i / 5) * (3 + Math.cos(i) * 0.5),
+          Math.sin(i / 3) * (3 + Math.sin(i) * 0.5),
+          Math.cos(i / 4) * (3 + Math.cos(i * 2) * 0.5)
         );
         
         const points = [startPos, endPos];
@@ -194,9 +194,9 @@ const AnimatedBrain = () => {
               />
             </bufferGeometry>
             <lineBasicMaterial 
-              color="#6e57e0"
+              color={i % 3 === 0 ? "#6e57e0" : i % 3 === 1 ? "#00c2ff" : "#ffa500"}
               linewidth={1}
-              opacity={0.6}
+              opacity={0.7}
               transparent
             />
           </line>
@@ -215,8 +215,8 @@ const Hero: React.FC = () => {
         transition={{ duration: 0.8 }}
       >
         <h1>Matin Gathani</h1>
-        <h2>AI Engineer & Computer Science Student</h2>
-        <p>Developing intelligent solutions with AI/ML expertise</p>
+        <h2>Computer Science Student & AI Engineer</h2>
+        <p>Building intelligent solutions with ML models, API integration, and full-stack development. Passionate about software engineering and data-driven innovation.</p>
         <CTAButtons>
           <PrimaryButton 
             href="#contact"

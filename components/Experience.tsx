@@ -197,10 +197,10 @@ const Experience = () => {
             <h3>Project Intern – Musikaar</h3>
             <span className="timeline-date">May 2024 – Aug 2024</span>
             <ul>
-              <li>Developed and fine-tuned machine learning models using Python, NLP, and tokenization, improving HR data processing efficiency.</li>
-              <li>Validated model performance with custom datasets, applying testing principles to improve accuracy and reduce errors.</li>
-              <li>Built web pages in HTML/CSS to connect AI models to end-user applications, ensuring smooth API integration.</li>
-              <li>Collaborated with cross-functional teams to debug data pipeline issues and document testing procedures.</li>
+              <li>Built and optimized ML models using Python, NLP, and tokenization to improve HR data processing workflows.</li>
+              <li>Validated model performance with custom datasets and applied testing principles to reduce system errors.</li>
+              <li>Developed front-end pages and integrated APIs to deliver seamless AI-driven user experiences.</li>
+              <li>Partnered with cross-functional teams to debug pipelines, document processes, and support deployment.</li>
             </ul>
           </TimelineContent>
         </TimelineItem>
@@ -210,9 +210,9 @@ const Experience = () => {
             <h3>Engineering Tutor / Learning Assistant – ASU</h3>
             <span className="timeline-date">Jan 2024 – Present</span>
             <ul>
-              <li>Tutored 180+ students in programming and software engineering (Java, Assembly, C++), emphasizing problem-solving and debugging.</li>
-              <li>Assisted students in understanding software testing methodologies through projects and assignments.</li>
-              <li>Strengthened communication and documentation skills by breaking down technical concepts for diverse learners.</li>
+              <li>Mentored 180+ students in programming (Java, Assembly, C++), emphasizing debugging, testing, and problem-solving.</li>
+              <li>Guided learners on software lifecycle concepts through hands-on projects and assignments.</li>
+              <li>Enhanced communication by translating complex technical topics into clear, accessible explanations.</li>
             </ul>
           </TimelineContent>
         </TimelineItem>

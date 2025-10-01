@@ -147,24 +147,24 @@ const About = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <p>
-            <strong>Computer Science student</strong> with a Data Science minor (GPA 3.6). 
-            I have extensive experience in Python, C++, and Java with hands-on exposure to 
-            AI/ML model training, API integration, and system testing.
+            <strong>Computer Science junior</strong> at Arizona State University with a strong foundation in software development, 
+            data analysis, and system design. Currently maintaining a <strong>3.67 GPA</strong> with coursework in Data Structures, 
+            Object-Oriented Programming, Software Analysis & Design, and Software QA & Testing.
           </p>
           <p>
-            I recently completed an internship developing HRMS machine learning models 
-            with NLP and tokenization at Musikaar. I'm passionate about applying AI to solve 
-            real-world problems and currently tutor students in programming and software engineering.
+            Recently completed a <strong>Project Internship at Musikaar</strong> where I built and optimized ML models using Python, 
+            NLP, and tokenization to improve HR data processing workflows. I validated model performance with custom datasets 
+            and developed front-end pages with API integration for seamless AI-driven user experiences.
           </p>
           <p>
-            As a strong communicator with attention to detail, I'm seeking to apply AI development 
-            and testing skills as an AI Engineer, working at the intersection of machine learning, 
-            software development, and creative problem-solving.
+            As an <strong>Engineering Tutor at ASU</strong>, I've mentored 180+ students in programming (Java, Assembly, C++), 
+            emphasizing debugging, testing, and problem-solving. I'm passionate about applying AI development and testing skills 
+            to solve real-world problems at the intersection of machine learning, software development, and creative problem-solving.
           </p>
           
           <AboutStats>
             {[
-              { number: '3.6', label: 'GPA' },
+              { number: '3.67', label: 'GPA' },
               { number: '180+', label: 'Students Tutored' },
               { number: '3', label: 'Major Projects' }
             ].map((stat, i) => (
