@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import ThemeToggle from './ThemeToggle';
 
 const NavbarContainer = styled.header`
   position: fixed;
@@ -59,7 +60,7 @@ const NavLinks = styled.nav<{ isOpen: boolean }>`
   }
 `;
 
-const NavLink = styled.a`
+const NavLink = styled.a<{ $active?: boolean }>`
   color: ${props => props.theme.colors.text};
   margin: 0 1rem;
   font-size: 1rem;
@@ -71,6 +72,12 @@ const NavLink = styled.a`
   &:hover {
     color: ${props => props.theme.colors.primary};
   }
+
+  ${props => props.$active ? `
+    color: ${props.theme.colors.primary};
+    border-bottom: 2px solid ${props.theme.colors.primary};
+    padding-bottom: 2px;
+  ` : ''}
 
   @media (max-width: ${props => props.theme.breakpoints.md}) {
     margin: 1rem 0;
@@ -93,6 +100,7 @@ const MobileMenuButton = styled.button`
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState<string>('');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -101,6 +109,21 @@ const Navbar: React.FC = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const ids = ['about','skills','experience','projects','education','contact'];
+    const observers: IntersectionObserver[] = [];
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) setActive(id); });
+      }, { root: null, threshold: 0.3 });
+      obs.observe(el);
+      observers.push(obs);
+    });
+    return () => observers.forEach(o => o.disconnect());
   }, []);
 
   return (
@@ -117,12 +140,18 @@ const Navbar: React.FC = () => {
         </MobileMenuButton>
 
         <NavLinks isOpen={isOpen}>
-          <NavLink href="#about">About</NavLink>
-          <NavLink href="#skills">Skills</NavLink>
-          <NavLink href="#experience">Experience</NavLink>
-          <NavLink href="#projects">Projects</NavLink>
-          <NavLink href="#education">Education</NavLink>
-          <NavLink href="#contact">Contact</NavLink>
+          <NavLink href="#about" $active={active==='about'}>About</NavLink>
+          <NavLink href="#skills" $active={active==='skills'}>Skills</NavLink>
+          <NavLink href="#experience" $active={active==='experience'}>Experience</NavLink>
+          <NavLink href="#projects" $active={active==='projects'}>Projects</NavLink>
+          <NavLink href="#education" $active={active==='education'}>Education</NavLink>
+          <NavLink href="#contact" $active={active==='contact'}>Contact</NavLink>
+          <Link href="/blog" passHref legacyBehavior>
+            <NavLink $active={false}>Blog</NavLink>
+          </Link>
+          <div style={{ marginLeft: '1rem' }}>
+            <ThemeToggle />
+          </div>
         </NavLinks>
       </NavContent>
     </NavbarContainer>
