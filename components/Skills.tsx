@@ -135,6 +135,9 @@ const SkillTag = styled(motion.span)`
   font-size: 0.9rem;
   color: ${props => props.theme.colors.text};
   border: 1px solid rgba(110, 87, 224, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 `;
 
 const ChartWrapper = styled.div`
@@ -326,18 +329,42 @@ const Skills = () => {
           <CategoryTitle>Data & Systems</CategoryTitle>
           <SkillTags>
             {[
-              'SQL', 'Docker', 'Git/GitHub', 'Linux/Unix', 'Windows', 'MacOS', 
-              'Postman', 'Express.js', 'Bootstrap', 'Bash', 'C#', 'Assembly'
+              { name: 'SQL', icon: 'fas fa-database' },
+              { name: 'Docker', icon: 'fab fa-docker' },
+              { name: 'Git/GitHub', icon: 'fab fa-git-alt' },
+              { name: 'Linux/Unix', icon: 'fab fa-linux' },
+              { name: 'Windows', icon: 'fab fa-windows' },
+              { name: 'MacOS', icon: 'fab fa-apple' },
+              { name: 'Postman', icon: 'fas fa-flask' },
+              { name: 'Express.js', icon: 'fab fa-node-js' },
+              { name: 'Bootstrap', icon: 'fab fa-bootstrap' },
+              { name: 'Bash', icon: 'fas fa-terminal' },
+              { name: 'C#', icon: 'fas fa-code' },
+              { name: 'Assembly', icon: 'fas fa-microchip' },
             ].map((tag, index) => (
               <SkillTag 
                 key={index}
                 whileHover={{ scale: 1.1, backgroundColor: 'rgba(110, 87, 224, 0.3)' }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                {tag}
+                <i className={tag.icon} />
+                {tag.name}
               </SkillTag>
             ))}
           </SkillTags>
+
+          <div style={{ marginTop: '1.5rem' }}>
+            <h4 style={{ margin: '0 0 .75rem 0' }}>GitHub Contributions</h4>
+            <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '1rem' }}>
+              <a href="https://github.com/matingathani" target="_blank" rel="noopener noreferrer" style={{ display: 'block', textAlign: 'center' }}>
+                <img
+                  src={`https://ghchart.rshah.org/6e57e0/matingathani`}
+                  alt="GitHub Contributions"
+                  style={{ width: '100%', height: 'auto' }}
+                />
+              </a>
+            </div>
+          </div>
         </SkillCategory>
       </SkillsGrid>
     </SkillsSection>
