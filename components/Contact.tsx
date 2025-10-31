@@ -179,23 +179,37 @@ const Contact = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [toast, setToast] = useState<string | null>(null);
+  const [honeypot, setHoneypot] = useState('');
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (honeypot) { return; }
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
-      setFormData({ name: '', email: '', message: '' });
+    try {
+      const endpoint = 'https://formspree.io/f/mjkpavwo';
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      if (res.ok) {
+        setFormData({ name: '', email: '', message: '' });
+        setToast('Message sent successfully!');
+      } else {
+        setToast('Something went wrong. Please try again later.');
+      }
+    } catch (err) {
+      setToast('Network error. Please try again.');
+    } finally {
       setIsSubmitting(false);
-      alert('Thank you for your message! I will get back to you soon.');
-    }, 1500);
+      setTimeout(() => setToast(null), 2500);
+    }
   };
   
   return (
@@ -240,6 +254,16 @@ const Contact = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <Form onSubmit={handleSubmit}>
+            {/* honeypot */}
+            <input 
+              type="text" 
+              name="_gotcha" 
+              value={honeypot}
+              onChange={(e) => setHoneypot(e.target.value)}
+              style={{ display: 'none' }}
+              aria-hidden="true"
+              tabIndex={-1}
+            />
             <FormGroup>
               <Label htmlFor="name">Name</Label>
               <Input 
@@ -281,6 +305,9 @@ const Contact = () => {
             >
               {isSubmitting ? 'Sending...' : 'Send Message'}
             </SubmitButton>
+            {toast && (
+              <div style={{ marginTop: '1rem', color: '#00c2ff' }}>{toast}</div>
+            )}
           </Form>
         </ContactFormContainer>
       </ContactContainer>

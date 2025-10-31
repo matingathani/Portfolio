@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { motion, useInView } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
@@ -43,6 +43,24 @@ const TimelineContainer = styled.div`
       left: 30px;
     }
   }
+`;
+
+const FilterBar = styled.div`
+  display: flex;
+  gap: .5rem;
+  margin: 0 auto 1rem;
+  max-width: 1200px;
+  justify-content: center;
+`;
+
+const FilterButton = styled.button<{ $active?: boolean }>`
+  background: ${p => p.$active ? 'rgba(110,87,224,0.25)' : 'rgba(255,255,255,0.05)'};
+  border: 1px solid rgba(255,255,255,0.15);
+  color: ${p => p.theme.colors.text};
+  padding: .5rem .9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
 `;
 
 const TimelineItem = styled(motion.div)`
@@ -176,6 +194,38 @@ const Experience = () => {
     }
   };
   
+  const items = useMemo(() => ([
+    { key: 'ugta-2023', cat: 'Teaching', title: 'UGTA – Arizona State University', date: 'Spring 2023', points: [
+      'Undergraduate Teaching Assistant for FSE 100 and CSE 220.',
+      'Led weekly labs and office hours (30+ students/session) covering C/Java, data structures, and engineering design workflow.',
+      'Designed practice sets and walkthroughs for arrays, pointers, stacks/queues, and recursion; emphasized stepwise tracing.',
+      'Introduced a structured "Reproduce → Isolate → Verify" debugging loop that improved issue resolution time.',
+      'Built small reference projects and test harnesses to help students validate solutions with edge cases.',
+      'Graded programming assignments; provided rubric‑based, actionable feedback focused on correctness and code clarity.'
+    ] },
+    { key: 'intern-musikaar', cat: 'Work', title: 'Project Intern – Musikaar', date: 'May 2024 – Aug 2024', points: [
+      'Built and optimized ML models using Python, NLP, and tokenization to improve HR data processing workflows.',
+      'Validated model performance with custom datasets and applied testing principles to reduce system errors.',
+      'Developed front-end pages and integrated APIs to deliver seamless AI-driven user experiences.',
+      'Partnered with cross-functional teams to debug pipelines, document processes, and support deployment.'
+    ] },
+    { key: 'la-asu', cat: 'Teaching', title: 'Engineering Tutor / Learning Assistant – ASU', date: 'Jan 2024 – Present', points: [
+      'Mentored 180+ students in programming (Java, Assembly, C++), emphasizing debugging, testing, and problem-solving.',
+      'Guided learners on software lifecycle concepts through hands-on projects and assignments.',
+      'Enhanced communication by translating complex technical topics into clear, accessible explanations.'
+    ] },
+    { key: 'ugta-460-2025', cat: 'Teaching', title: 'UGTA – CSE 460 (Software Engineering)', date: 'Fall 2025', points: [
+      'Undergraduate Teaching Assistant focusing on modern software engineering practices and testing.',
+      'Guided capstone teams on requirements, architecture, and iterative delivery with issue tracking and milestones.',
+      'Ran lightweight code reviews highlighting readability, testability, and defect prevention.',
+      'Introduced CI basics (linting, type checks, unit tests) and deployment checklists for team projects.',
+      'Mentored students on writing maintainable tests (unit/integration) and selecting assertions/fixtures effectively.'
+    ] },
+  ]), []);
+
+  const [filter, setFilter] = useState<'All' | 'Teaching' | 'Work' | 'Projects'>('All');
+  const filtered = items.filter(i => filter === 'All' ? true : i.cat === filter);
+
   return (
     <ExperienceSection id="experience" ref={ref}>
       <SectionTitle
@@ -185,6 +235,11 @@ const Experience = () => {
       >
         Professional Experience
       </SectionTitle>
+      <FilterBar>
+        {['All','Teaching','Work','Projects'].map(name => (
+          <FilterButton key={name} onClick={() => setFilter(name as any)} $active={filter===name as any}>{name}</FilterButton>
+        ))}
+      </FilterBar>
       
       <TimelineContainer
         as={motion.div}
@@ -192,59 +247,17 @@ const Experience = () => {
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
       >
-        <TimelineItem variants={itemVariants}>
-          <TimelineContent>
-            <h3>UGTA – Arizona State University</h3>
-            <span className="timeline-date">Spring 2023</span>
-            <ul>
-              <li>Undergraduate Teaching Assistant for <strong>FSE 100</strong> and <strong>CSE 220</strong>.</li>
-              <li>Led weekly labs and office hours (30+ students/session) covering C/Java, data structures, and engineering design workflow.</li>
-              <li>Designed practice sets and walkthroughs for arrays, pointers, stacks/queues, and recursion; emphasized stepwise tracing.</li>
-              <li>Introduced a structured "Reproduce → Isolate → Verify" debugging loop that improved issue resolution time.</li>
-              <li>Built small reference projects and test harnesses to help students validate solutions with edge cases.</li>
-              <li>Graded programming assignments; provided rubric‑based, actionable feedback focused on correctness and code clarity.</li>
-            </ul>
-          </TimelineContent>
-        </TimelineItem>
-
-        <TimelineItem variants={itemVariants}>
-          <TimelineContent>
-            <h3>Project Intern – Musikaar</h3>
-            <span className="timeline-date">May 2024 – Aug 2024</span>
-            <ul>
-              <li>Built and optimized ML models using Python, NLP, and tokenization to improve HR data processing workflows.</li>
-              <li>Validated model performance with custom datasets and applied testing principles to reduce system errors.</li>
-              <li>Developed front-end pages and integrated APIs to deliver seamless AI-driven user experiences.</li>
-              <li>Partnered with cross-functional teams to debug pipelines, document processes, and support deployment.</li>
-            </ul>
-          </TimelineContent>
-        </TimelineItem>
-        
-        <TimelineItem variants={itemVariants}>
-          <TimelineContent>
-            <h3>Engineering Tutor / Learning Assistant – ASU</h3>
-            <span className="timeline-date">Jan 2024 – Present</span>
-            <ul>
-              <li>Mentored 180+ students in programming (Java, Assembly, C++), emphasizing debugging, testing, and problem-solving.</li>
-              <li>Guided learners on software lifecycle concepts through hands-on projects and assignments.</li>
-              <li>Enhanced communication by translating complex technical topics into clear, accessible explanations.</li>
-            </ul>
-          </TimelineContent>
-        </TimelineItem>
-
-        <TimelineItem variants={itemVariants}>
-          <TimelineContent>
-            <h3>UGTA – CSE 460 (Software Engineering)</h3>
-            <span className="timeline-date">Fall 2025</span>
-            <ul>
-              <li>Undergraduate Teaching Assistant focusing on modern software engineering practices and testing.</li>
-              <li>Guided capstone teams on requirements, architecture, and iterative delivery with issue tracking and milestones.</li>
-              <li>Ran lightweight code reviews highlighting readability, testability, and defect prevention.</li>
-              <li>Introduced CI basics (linting, type checks, unit tests) and deployment checklists for team projects.</li>
-              <li>Mentored students on writing maintainable tests (unit/integration) and selecting assertions/fixtures effectively.</li>
-            </ul>
-          </TimelineContent>
-        </TimelineItem>
+        {filtered.map((it, idx) => (
+          <TimelineItem key={it.key} variants={itemVariants}>
+            <TimelineContent>
+              <h3>{it.title}</h3>
+              <span className="timeline-date">{it.date}</span>
+              <ul>
+                {it.points.map((p, i) => (<li key={i}>{p}</li>))}
+              </ul>
+            </TimelineContent>
+          </TimelineItem>
+        ))}
       </TimelineContainer>
       
       {/* 3D Text for visual enhancement */}

@@ -1,4 +1,4 @@
-import React, { Suspense, useRef } from 'react';
+import React, { Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
@@ -118,6 +118,40 @@ const HeroCanvas = styled.div`
   }
 `;
 
+const ParallaxLayer = styled.div`
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(1200px 600px at 20% 10%, rgba(110,87,224,0.12), transparent),
+              radial-gradient(900px 500px at 80% 20%, rgba(0,194,255,0.10), transparent);
+  transform: translateZ(0);
+`;
+
+const ParticleOverlay = styled.canvas`
+  position: absolute;
+  inset: 0;
+  opacity: 0.65;
+`;
+
+const ToggleBar = styled.div`
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+`;
+
+const SmallToggle = styled.button`
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fff;
+  border-radius: 16px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 12px;
+`;
+
 const AnimatedBrain = () => {
   const brainGroup = useRef<THREE.Group>(null);
   
@@ -207,8 +241,60 @@ const AnimatedBrain = () => {
 };
 
 const Hero: React.FC = () => {
+  const [enable3D, setEnable3D] = useState(true);
+  const [enableParticles, setEnableParticles] = useState(true);
+
+  useEffect(() => {
+    try {
+      const m = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (m.matches) setEnable3D(false);
+    } catch {}
+  }, []);
+
+  const particleRef = useRef<HTMLCanvasElement | null>(null);
+  useEffect(() => {
+    if (!enableParticles) return;
+    const canvas = particleRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    let raf = 0;
+    const DPR = Math.min(2, window.devicePixelRatio || 1);
+    const particles = Array.from({ length: 80 }).map((_, i) => ({
+      x: Math.random(), y: Math.random(), z: Math.random(), s: 0.5 + Math.random()*1.5, p: i
+    }));
+    const resize = () => {
+      canvas.width = canvas.clientWidth * DPR;
+      canvas.height = canvas.clientHeight * DPR;
+    };
+    const draw = (t: number) => {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const pt of particles) {
+        const x = (pt.x + Math.sin(t*0.0002 + pt.p)*0.003) * canvas.width;
+        const y = (pt.y + Math.cos(t*0.00025 + pt.p)*0.003) * canvas.height;
+        ctx.beginPath();
+        ctx.arc(x, y, pt.s * DPR, 0, Math.PI*2);
+        ctx.fillStyle = pt.p % 3 === 0 ? 'rgba(110,87,224,0.7)' : pt.p % 3 === 1 ? 'rgba(0,194,255,0.7)' : 'rgba(255,165,0,0.7)';
+        ctx.fill();
+      }
+      raf = requestAnimationFrame(draw);
+    };
+    resize();
+    const ro = new ResizeObserver(resize);
+    ro.observe(canvas);
+    raf = requestAnimationFrame(draw);
+    return () => { cancelAnimationFrame(raf); ro.disconnect(); };
+  }, [enableParticles]);
+
   return (
     <HeroSection id="hero">
+      <ParallaxLayer />
+      <ParticleOverlay ref={particleRef} style={{ display: enableParticles ? 'block' : 'none' }} />
+      <ToggleBar>
+        <SmallToggle onClick={() => setEnable3D(v => !v)}>{enable3D ? 'Disable 3D' : 'Enable 3D'}</SmallToggle>
+        <SmallToggle onClick={() => setEnableParticles(v => !v)}>{enableParticles ? 'Hide Particles' : 'Show Particles'}</SmallToggle>
+      </ToggleBar>
       <HeroContent
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
@@ -236,15 +322,17 @@ const Hero: React.FC = () => {
       </HeroContent>
       
       <HeroCanvas>
-        <Canvas camera={{ position: [0, 0, 8], fov: 60 }}>
-          <ambientLight intensity={0.2} />
-          <pointLight position={[10, 10, 10]} intensity={1} />
-          <pointLight position={[-10, -10, -10]} color="#00c2ff" intensity={0.5} />
-          <Suspense fallback={null}>
-            <AnimatedBrain />
-          </Suspense>
-          <OrbitControls enableZoom={false} enablePan={false} autoRotate />
-        </Canvas>
+        {enable3D && (
+          <Canvas camera={{ position: [0, 0, 8], fov: 60 }}>
+            <ambientLight intensity={0.2} />
+            <pointLight position={[10, 10, 10]} intensity={1} />
+            <pointLight position={[-10, -10, -10]} color="#00c2ff" intensity={0.5} />
+            <Suspense fallback={null}>
+              <AnimatedBrain />
+            </Suspense>
+            <OrbitControls enableZoom={false} enablePan={false} autoRotate />
+          </Canvas>
+        )}
       </HeroCanvas>
     </HeroSection>
   );
