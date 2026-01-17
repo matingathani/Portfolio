@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import { resume } from "../data/resume";
 import { Card, Container, PageSection, SectionHeader } from "../components/ui";
 import styled from "styled-components";
+import dynamic from "next/dynamic";
 
 const SkillsGrid = styled.div`
   display: grid;
@@ -33,6 +34,49 @@ const SkillCard = styled(Card)`
   }
 `;
 
+const LogoGrid = styled.div`
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  margin-bottom: 2.5rem;
+`;
+
+const LogoCard = styled(Card)`
+  display: grid;
+  place-items: center;
+  gap: 0.5rem;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  transition: transform 0.2s ease;
+
+  i {
+    font-size: 2rem;
+    color: ${props => props.theme.colors.primary};
+  }
+
+  span {
+    color: ${props => props.theme.colors.textSecondary};
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+`;
+
+const OrbWrapper = styled(Card)`
+  height: 280px;
+  margin-bottom: 2.5rem;
+  padding: 0;
+  overflow: hidden;
+`;
+
+const DynamicOrb = dynamic(() => import("../components/TechStackOrb"), {
+  ssr: false,
+  loading: () => null,
+});
+
 const Skills = () => (
   <Layout>
     <PageSection>
@@ -41,6 +85,28 @@ const Skills = () => (
           <h1>Skills</h1>
           <p>ATS-friendly skill groups with context on how I’ve applied them.</p>
         </SectionHeader>
+        <OrbWrapper>
+          <DynamicOrb />
+        </OrbWrapper>
+
+        <LogoGrid>
+          {[
+            { icon: "fab fa-python", label: "Python" },
+            { icon: "fab fa-java", label: "Java" },
+            { icon: "fas fa-database", label: "SQL" },
+            { icon: "fab fa-js", label: "JavaScript" },
+            { icon: "fab fa-react", label: "React" },
+            { icon: "fab fa-git-alt", label: "Git" },
+            { icon: "fab fa-docker", label: "Docker" },
+            { icon: "fas fa-robot", label: "ML / NLP" },
+          ].map((skill) => (
+            <LogoCard key={skill.label}>
+              <i className={skill.icon} />
+              <span>{skill.label}</span>
+            </LogoCard>
+          ))}
+        </LogoGrid>
+
         <SkillsGrid>
           <SkillCard>
             <h3>Programming & AI</h3>

@@ -1,21 +1,12 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import React from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../styles/GlobalStyle';
-import { darkTheme, lightTheme } from '../styles/theme';
+import { darkTheme } from '../styles/theme';
 import 'aos/dist/aos.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [isDark, setIsDark] = useState(true);
-
-  useEffect(() => {
-    const stored = window.localStorage.getItem('mg_theme');
-    if (stored === 'light') setIsDark(false);
-  }, []);
-
-  const theme = useMemo(() => (isDark ? darkTheme : lightTheme), [isDark]);
-
   return (
     <>
       <Head>
@@ -24,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           name="description"
           content="Matin Gathani — AI / Software Engineering student with production ML, backend, and full-stack delivery experience."
         />
-        <meta name="theme-color" content={isDark ? '#0a0a0f' : '#ffffff'} />
+        <meta name="theme-color" content="#0a0a0f" />
         <meta property="og:title" content="Matin Gathani | AI / Software Engineering Portfolio" />
         <meta
           property="og:description"
@@ -42,15 +33,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>Matin Gathani | Portfolio</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={darkTheme}>
         <GlobalStyle />
         <Component {...pageProps} />
-        {/* Theme toggle portal via global handler */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.__toggleTheme = function(){try{const cur=localStorage.getItem('mg_theme');localStorage.setItem('mg_theme',cur==='light'?'dark':'light');location.reload()}catch(e){}};`,
-          }}
-        />
       </ThemeProvider>
     </>
   );

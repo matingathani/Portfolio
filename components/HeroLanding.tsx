@@ -55,6 +55,28 @@ const CTAGroup = styled.div`
   gap: 1rem;
 `;
 
+const ToggleRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+
+  button {
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(139, 92, 246, 0.45);
+    background: rgba(139, 92, 246, 0.15);
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  span {
+    color: ${props => props.theme.colors.textSecondary};
+    font-size: 0.9rem;
+  }
+`;
+
 const HeroVisual = styled.div<{ $tilt: { x: number; y: number } }>`
   height: 360px;
   border-radius: ${props => props.theme.shapes.borderRadius};
@@ -96,10 +118,7 @@ const HeroLanding: React.FC = () => {
 
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const isMobile = window.innerWidth < 900;
-    const memory = (navigator as any).deviceMemory || 8;
-    const cores = navigator.hardwareConcurrency || 8;
-    setEnable3D(!reduced && !isMobile && memory >= 4 && cores >= 4);
+    setEnable3D(!reduced);
   }, []);
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -136,6 +155,12 @@ const HeroLanding: React.FC = () => {
                 <ButtonSecondary>Contact Me</ButtonSecondary>
               </Link>
             </CTAGroup>
+            <ToggleRow>
+              <button type="button" onClick={() => setEnable3D((prev) => !prev)}>
+                {enable3D ? "Disable 3D" : "Enable 3D"}
+              </button>
+              <span>Lightweight 3D preview in the hero panel.</span>
+            </ToggleRow>
           </HeroContent>
 
           <HeroVisual

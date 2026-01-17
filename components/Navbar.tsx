@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import ThemeToggle from './ThemeToggle';
 
 const NavbarContainer = styled.header`
   position: fixed;
@@ -154,9 +153,6 @@ const Navbar: React.FC = () => {
               Blog
             </NavLink>
           </Link>
-          <div style={{ marginLeft: '1rem' }}>
-            <ThemeToggle />
-          </div>
         </NavLinks>
       </NavContent>
     </NavbarContainer>

@@ -13,7 +13,7 @@ const Document = dynamic(() => import("react-pdf").then((mod) => mod.Document), 
 const Page = dynamic(() => import("react-pdf").then((mod) => mod.Page), { ssr: false });
 
 if (typeof window !== "undefined") {
-  pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+  pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
 }
 
 const ViewerWrapper = styled(Card)`
@@ -42,12 +42,16 @@ const InlineButtons = styled.div`
 const Resume = () => {
   const [numPages, setNumPages] = useState<number>(1);
   const [isMobile, setIsMobile] = useState(false);
+  const [loadError, setLoadError] = useState<string | null>(null);
 
   useEffect(() => {
     setIsMobile(window.innerWidth < 768);
   }, []);
 
-  const onLoadSuccess = ({ numPages: total }: { numPages: number }) => setNumPages(total);
+  const onLoadSuccess = ({ numPages: total }: { numPages: number }) => {
+    setLoadError(null);
+    setNumPages(total);
+  };
 
   return (
     <Layout>
@@ -75,15 +79,21 @@ const Resume = () => {
                 PDF preview is optimized for desktop. Please use the download button above on mobile.
               </p>
             ) : (
-              <Document
-                file="/MatinGathaniResume2026.pdf"
-                onLoadSuccess={onLoadSuccess}
-                loading={<p>Loading resume…</p>}
-              >
-                {Array.from({ length: numPages }, (_, index) => (
-                  <Page key={`page_${index + 1}`} pageNumber={index + 1} scale={1.2} />
-                ))}
-              </Document>
+              <>
+                {loadError && <p style={{ color: "rgba(255,255,255,0.7)" }}>{loadError}</p>}
+                {!loadError && (
+                  <Document
+                    file="/MatinGathaniResume2026.pdf"
+                    onLoadSuccess={onLoadSuccess}
+                    onLoadError={() => setLoadError("Failed to load PDF file. Please use the download button above.")}
+                    loading={<p>Loading resume…</p>}
+                  >
+                    {Array.from({ length: numPages }, (_, index) => (
+                      <Page key={`page_${index + 1}`} pageNumber={index + 1} scale={1.2} />
+                    ))}
+                  </Document>
+                )}
+              </>
             )}
           </ViewerWrapper>
         </Container>
