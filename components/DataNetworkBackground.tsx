@@ -47,7 +47,7 @@ export default function DataNetworkBackground() {
       mouse.y = event.clientY - rect.top;
     };
 
-    canvas.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mousemove", onMouseMove);
 
     const draw = () => {
       if (!visible) {
@@ -103,7 +103,7 @@ export default function DataNetworkBackground() {
 
     return () => {
       window.removeEventListener("resize", resize);
-      canvas.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mousemove", onMouseMove);
       cancelAnimationFrame(animationFrame);
     };
   }, [reduced, isMobile, visible]);
@@ -111,7 +111,7 @@ export default function DataNetworkBackground() {
   if (reduced || isMobile) {
     return (
       <div
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-30 pointer-events-none"
         aria-hidden
         style={{
           backgroundImage:
@@ -124,7 +124,7 @@ export default function DataNetworkBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 h-full w-full opacity-30"
+      className="absolute inset-0 h-full w-full opacity-30 pointer-events-none"
       aria-hidden
     />
   );

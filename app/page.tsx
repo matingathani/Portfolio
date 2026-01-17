@@ -230,7 +230,18 @@ export default function HomePage() {
           <div className="card lg:col-span-2">
             <h3 className="text-lg font-heading text-primary">Core languages</h3>
             <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-4">
-              {["Python", "Java", "C++", "JavaScript", "SQL", "React", "Docker", "Git"].map((skill) => (
+              {[
+                "Python",
+                "Java",
+                "C++",
+                "JavaScript",
+                "SQL",
+                "HTML5",
+                "CSS3",
+                "React",
+                "Docker",
+                "Git",
+              ].map((skill) => (
                 <div key={skill} className="flex items-center gap-3">
                   <SkillLogo name={skill} />
                   <span className="text-sm text-secondary">{skill}</span>
