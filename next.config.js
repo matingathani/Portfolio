@@ -4,9 +4,6 @@ const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
-  experimental: {
-    optimizeCss: true,
-  },
   webpack: (config) => {
     config.resolve.fallback = { ...(config.resolve.fallback || {}), canvas: false };
     return config;
