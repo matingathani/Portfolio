@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SectionHeader from "../../components/SectionHeader";
 import ScrollReveal from "../../components/ScrollReveal";
 import { content } from "../../lib/content";
@@ -9,35 +10,103 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-content px-6 py-16">
-      <SectionHeader title="About" subtitle="Narrative" />
-      <div className="mt-8 grid gap-10 md:grid-cols-3">
-        <ScrollReveal className="md:col-span-2">
-          <div className="card space-y-4">
-            <p className="text-sm text-secondary">{content.summary}</p>
-            <p className="text-sm text-secondary">
-              I care about systems that move data cleanly from input to insight. That means stable preprocessing,
-              predictable APIs, and UX that makes the tooling approachable for real users.
-            </p>
-            <p className="text-sm text-secondary">
-              My focus areas right now: production-minded ML workflows, backend reliability, and collaboration
-              patterns that keep teams aligned.
-            </p>
-          </div>
-        </ScrollReveal>
+      <SectionHeader title="About Me" subtitle="Developer building useful tools with code and curiosity." />
+      <div className="mt-10 grid gap-10 lg:grid-cols-[320px_1fr]">
         <ScrollReveal>
           <div className="card space-y-4">
-            <h3 className="text-lg font-heading text-primary">Values</h3>
-            <ul className="space-y-2 text-sm text-secondary">
-              <li>Testing and regression discipline</li>
-              <li>Readable documentation and handoffs</li>
-              <li>Performance-first data handling</li>
-              <li>Collaborative delivery with clear ownership</li>
-            </ul>
-            <a href="/#contact" className="btn-secondary">
-              Connect on Home
-            </a>
+            <Image
+              src="/matin-gathani.png"
+              alt="Matin Gathani"
+              width={640}
+              height={800}
+              className="h-auto w-full rounded-card border border-border object-cover"
+              priority
+            />
+            <div>
+              <p className="text-lg font-heading text-primary">{content.name}</p>
+              <p className="text-sm text-secondary">{content.role}</p>
+              <p className="text-sm text-muted">{content.contact.location}</p>
+            </div>
+            <div className="space-y-2 text-sm text-secondary">
+              <a href={`mailto:${content.contact.email}`} className="hover:text-primary">
+                {content.contact.email}
+              </a>
+              <a href={content.contact.github} target="_blank" rel="noreferrer" className="hover:text-primary">
+                GitHub
+              </a>
+              <a href={content.contact.linkedin} target="_blank" rel="noreferrer" className="hover:text-primary">
+                LinkedIn
+              </a>
+            </div>
           </div>
         </ScrollReveal>
+        <div className="space-y-8">
+          <ScrollReveal>
+            <div className="card space-y-4">
+              <p className="text-sm text-secondary">{content.summary}</p>
+              <p className="text-sm text-secondary">
+                I care about systems that move data cleanly from input to insight. That means stable preprocessing,
+                predictable APIs, and UX that makes tooling approachable for real users.
+              </p>
+              <p className="text-sm text-secondary">
+                My focus areas right now: production-minded ML workflows, backend reliability, and collaboration
+                patterns that keep teams aligned.
+              </p>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal>
+            <div className="card space-y-4">
+              <h3 className="text-lg font-heading text-primary">Education</h3>
+              <div className="text-sm text-secondary">
+                <p>{content.education.dates}</p>
+                <p>{content.education.degree} - {content.education.school}</p>
+                <p className="text-sm text-muted">{content.education.location}</p>
+                <p className="text-sm text-muted">GPA {content.education.gpa}</p>
+              </div>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal>
+            <div className="card space-y-4">
+              <h3 className="text-lg font-heading text-primary">Work Experience</h3>
+              <div className="space-y-4 text-sm text-secondary">
+                {content.experience.map((item) => (
+                  <div key={item.role}>
+                    <p className="text-primary font-semibold">{item.role}</p>
+                    <p>{item.company} - {item.location}</p>
+                    <p className="text-xs text-muted">{item.dates}</p>
+                    <ul className="mt-2 list-disc space-y-2 pl-4">
+                      <li>{item.action}</li>
+                      <li>{item.impact}</li>
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal>
+            <div className="card space-y-4">
+              <h3 className="text-lg font-heading text-primary">Impact</h3>
+              <div className="grid gap-4 text-sm text-secondary md:grid-cols-2">
+                <div>
+                  <p className="text-2xl font-heading text-primary">180+</p>
+                  <p>Students mentored</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-heading text-primary">1,000+</p>
+                  <p>Code defects diagnosed</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-heading text-primary">10,000+</p>
+                  <p>Records processed</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-heading text-primary">10+</p>
+                  <p>Features delivered</p>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
       </div>
     </div>
   );
