@@ -7,6 +7,12 @@ export const content: SiteContent = {
     "AI/ML-focused software engineer with production experience in NLP pipelines, REST API integrations, and full-stack delivery. I care about clean abstractions, testing, and performance, and I enjoy building systems that move data reliably end-to-end.",
   recruiterIntro:
     "Hi - I'm Matin Gathani, a CS student focused on AI/ML pipelines and backend systems. I've built production ML/NLP workflows, integrated REST APIs, and delivered full-stack features on team projects. I'm looking for software/AI internship opportunities where I can contribute clean, tested, and well-documented code.",
+  impactMetrics: [
+    { label: "Students mentored", value: 180, suffix: "+" },
+    { label: "Code defects diagnosed", value: 1000, suffix: "+" },
+    { label: "Records processed", value: 10000, suffix: "+" },
+    { label: "Features delivered", value: 10, suffix: "+" },
+  ],
   contact: {
     email: "mgathan1@asu.edu",
     phone: "4805722372",

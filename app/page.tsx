@@ -10,6 +10,7 @@ import ContactForm from "../components/ContactForm";
 import CopyButton from "../components/CopyButton";
 import SkillGroupCard from "../components/SkillGroupCard";
 import { SkillLogo } from "../components/SkillLogo";
+import ImpactBars from "../components/ImpactBars";
 import { content } from "../lib/content";
 import { formatPhone, slugify } from "../lib/utils";
 
@@ -43,6 +44,7 @@ export default function HomePage() {
     <div>
       <section className="relative mx-auto flex max-w-content flex-col items-center gap-10 px-6 pb-16 pt-16 md:flex-row md:items-stretch">
         <div className="absolute inset-0 -z-10 rounded-card border border-border bg-soft-radial opacity-80" aria-hidden />
+        <div className="hero-aurora" aria-hidden />
         <div className="scanlines" aria-hidden />
         <div className="noise" aria-hidden />
         <div className="flex-1 space-y-6">
@@ -115,6 +117,22 @@ export default function HomePage() {
                 ))}
               </ul>
             </div>
+          </div>
+        </div>
+        <div className="mt-8 grid gap-6 md:grid-cols-2">
+          <div className="card">
+            <h3 className="text-lg font-heading text-primary">Impact snapshot</h3>
+            <p className="mt-2 text-sm text-secondary">Resume-backed metrics, scaled by magnitude.</p>
+            <div className="mt-4">
+              <ImpactBars items={content.impactMetrics} />
+            </div>
+          </div>
+          <div className="card space-y-3">
+            <h3 className="text-lg font-heading text-primary">Fast context</h3>
+            <p className="text-sm text-secondary">{content.recruiterIntro}</p>
+            <a href="/MatinGathaniResume2026.pdf" className="btn-secondary" download>
+              Download Resume
+            </a>
           </div>
         </div>
       </section>
@@ -248,6 +266,9 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
+            <p className="mt-4 text-xs text-muted">
+              Want proficiency percentages? Share your self-ratings and I will add them.
+            </p>
           </div>
           <div className="card">
             <h3 className="text-lg font-heading text-primary">Signal stack</h3>

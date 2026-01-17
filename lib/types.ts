@@ -43,6 +43,11 @@ export type SiteContent = {
   role: string;
   summary: string;
   recruiterIntro: string;
+  impactMetrics: {
+    label: string;
+    value: number;
+    suffix?: string;
+  }[];
   contact: {
     email: string;
     phone: string;
