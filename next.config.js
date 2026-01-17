@@ -4,6 +4,10 @@ const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
+  webpack: (config) => {
+    config.resolve.fallback = { ...(config.resolve.fallback || {}), canvas: false };
+    return config;
+  },
 };
 
 module.exports = nextConfig;
