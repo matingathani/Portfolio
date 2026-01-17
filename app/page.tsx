@@ -13,9 +13,30 @@ import { SkillLogo } from "../components/SkillLogo";
 import { content } from "../lib/content";
 import { formatPhone, slugify } from "../lib/utils";
 
-const Hero3D = dynamic(() => import("../components/Hero3D"), { ssr: false });
-const Signal3D = dynamic(() => import("../components/Signal3D"), { ssr: false });
-const ResumeViewer = dynamic(() => import("../components/ResumeViewer"), { ssr: false });
+const Hero3D = dynamic(() => import("../components/Hero3D"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-full w-full items-center justify-center rounded-card border border-border bg-[#0b1220]">
+      <span className="text-xs font-mono uppercase tracking-[0.3em] text-muted">Loading</span>
+    </div>
+  ),
+});
+const Signal3D = dynamic(() => import("../components/Signal3D"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-full w-full items-center justify-center rounded-card border border-border bg-[#0b1220]">
+      <span className="text-xs font-mono uppercase tracking-[0.3em] text-muted">Loading</span>
+    </div>
+  ),
+});
+const ResumeViewer = dynamic(() => import("../components/ResumeViewer"), {
+  ssr: false,
+  loading: () => (
+    <div className="card flex min-h-[520px] items-center justify-center text-sm text-secondary">
+      Loading resume...
+    </div>
+  ),
+});
 
 export default function HomePage() {
   return (
@@ -60,7 +81,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-content px-6 py-12">
+      <section className="section-block mx-auto max-w-content px-6 py-12">
         <div className="card pixel-grid">
           <div className="grid gap-8 md:grid-cols-3">
             <div className="space-y-4">
@@ -98,7 +119,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="experience" className="mx-auto max-w-content scroll-mt-24 px-6 py-12">
+      <section id="experience" className="section-block mx-auto max-w-content scroll-mt-24 px-6 py-12">
         <SectionHeader title="Experience" subtitle="Impact and roles" />
         <div className="mt-8 grid gap-6 md:grid-cols-2">
           {content.experience.map((item) => (
@@ -142,7 +163,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="projects" className="mx-auto max-w-content scroll-mt-24 px-6 py-12">
+      <section id="projects" className="section-block mx-auto max-w-content scroll-mt-24 px-6 py-12">
         <SectionHeader title="Projects" subtitle="Selected work" />
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           {content.projects.map((project) => (
@@ -203,7 +224,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="skills" className="mx-auto max-w-content scroll-mt-24 px-6 py-12">
+      <section id="skills" className="section-block mx-auto max-w-content scroll-mt-24 px-6 py-12">
         <SectionHeader title="Skills" subtitle="Toolbox" />
         <div className="mt-8 grid gap-6 lg:grid-cols-3">
           <div className="card lg:col-span-2">
@@ -234,7 +255,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="resume" className="mx-auto max-w-content scroll-mt-24 px-6 py-12">
+      <section id="resume" className="section-block mx-auto max-w-content scroll-mt-24 px-6 py-12">
         <SectionHeader title="Resume" subtitle="Preview" />
         <div className="mt-8 grid gap-8 lg:grid-cols-3">
           <div className="lg:col-span-2">
@@ -252,7 +273,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="contact" className="mx-auto max-w-content scroll-mt-24 px-6 py-12">
+      <section id="contact" className="section-block mx-auto max-w-content scroll-mt-24 px-6 py-12">
         <SectionHeader title="Contact" subtitle="Let's connect" />
         <div className="mt-8 grid gap-8 lg:grid-cols-3">
           <div className="lg:col-span-2">
@@ -279,7 +300,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-content px-6 py-12">
+      <section className="section-block mx-auto max-w-content px-6 py-12">
         <div className="card flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="section-subtitle">Deep dive</p>

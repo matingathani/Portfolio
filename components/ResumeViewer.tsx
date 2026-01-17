@@ -27,7 +27,7 @@ export default function ResumeViewer({ fileUrl }: { fileUrl: string }) {
 
   if (isMobile) {
     return (
-      <div className="card">
+      <div className="card min-h-[520px]">
         <iframe
           title="Resume PDF"
           src={fileUrl}
@@ -49,7 +49,7 @@ export default function ResumeViewer({ fileUrl }: { fileUrl: string }) {
   }
 
   return (
-    <div className="card" ref={containerRef}>
+    <div className="card min-h-[520px]" ref={containerRef}>
       <Document
         file={fileUrl}
         onLoadError={() => setError(true)}

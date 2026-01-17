@@ -167,6 +167,11 @@ body {
   @apply w-full rounded-xl border border-border bg-[#0f172a] px-4 py-3 text-sm text-primary placeholder:text-muted focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent;
 }
 
+.section-block {
+  content-visibility: auto;
+  contain-intrinsic-size: 800px;
+}
+
 .cursor-blink::after {
   content: "";
   display: inline-block;

@@ -8,9 +8,24 @@ import DataNetworkBackground from "../components/DataNetworkBackground";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { content } from "../lib/content";
 
-const headingFont = Space_Grotesk({ subsets: ["latin"], variable: "--font-heading", weight: ["600", "700"] });
-const bodyFont = Inter({ subsets: ["latin"], variable: "--font-body", weight: ["400", "500"] });
-const monoFont = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", weight: ["400", "500"] });
+const headingFont = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-heading",
+  weight: ["600", "700"],
+  display: "swap",
+});
+const bodyFont = Inter({
+  subsets: ["latin"],
+  variable: "--font-body",
+  weight: ["400", "500"],
+  display: "swap",
+});
+const monoFont = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  weight: ["400", "500"],
+  display: "swap",
+});
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
