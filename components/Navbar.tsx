@@ -11,11 +11,12 @@ const NavbarContainer = styled.header`
   top: 0;
   left: 0;
   z-index: 100;
-  backdrop-filter: blur(8px);
-  background: rgba(5, 8, 22, 0.8);
+  backdrop-filter: blur(12px);
+  background: rgba(10, 14, 23, 0.85);
+  border-bottom: 1px solid ${props => props.theme.colors.gridLine};
   transition: all 0.3s ease;
   padding: 0.5rem 0;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 `;
 
 const NavContent = styled.div`
@@ -33,12 +34,19 @@ const NavContent = styled.div`
 
 const Logo = styled.a`
   color: ${props => props.theme.colors.text};
+  font-family: ${props => props.theme.typography.headingFont};
   font-weight: 700;
   font-size: 1.5rem;
+  letter-spacing: -0.02em;
   cursor: pointer;
+  transition: all 0.2s ease;
 
   span {
     color: ${props => props.theme.colors.primary};
+  }
+  
+  &:hover {
+    text-shadow: 0 0 8px ${props => props.theme.colors.primary};
   }
 `;
 
@@ -51,7 +59,8 @@ const NavLinks = styled.nav<{ isOpen: boolean }>`
     top: 100%;
     left: 0;
     width: 100%;
-    background: rgba(5, 8, 22, 0.95);
+    background: rgba(10, 14, 23, 0.95);
+    border-top: 1px solid ${props => props.theme.colors.gridLine};
     flex-direction: column;
     align-items: center;
     padding: 2rem 0;
@@ -61,22 +70,41 @@ const NavLinks = styled.nav<{ isOpen: boolean }>`
 `;
 
 const NavLink = styled.a<{ $active?: boolean }>`
-  color: ${props => props.theme.colors.text};
+  color: ${props => props.theme.colors.textSecondary};
   margin: 0 1rem;
   font-size: 1rem;
+  font-family: ${props => props.theme.typography.bodyFont};
   font-weight: 500;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: all 0.2s ease;
   cursor: pointer;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: ${props => props.theme.colors.primary};
+    transition: width 0.3s ease;
+  }
 
   &:hover {
-    color: ${props => props.theme.colors.primary};
+    color: ${props => props.theme.colors.text};
+    
+    &::after {
+      width: 100%;
+    }
   }
 
   ${props => props.$active ? `
     color: ${props.theme.colors.primary};
-    border-bottom: 2px solid ${props.theme.colors.primary};
-    padding-bottom: 2px;
+    
+    &::after {
+      width: 100%;
+    }
   ` : ''}
 
   @media (max-width: ${props => props.theme.breakpoints.md}) {

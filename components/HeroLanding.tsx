@@ -29,6 +29,9 @@ const HeroContent = styled.div`
     font-size: 3.4rem;
     line-height: 1.1;
     margin-bottom: 1rem;
+    font-family: ${props => props.theme.typography.headingFont};
+    font-weight: 700;
+    letter-spacing: -0.02em;
     background: ${props => props.theme.colors.gradient1};
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -40,6 +43,7 @@ const HeroContent = styled.div`
     font-size: 1.1rem;
     line-height: 1.7;
     margin-bottom: 1.5rem;
+    font-family: ${props => props.theme.typography.bodyFont};
   }
 
   @media (max-width: ${props => props.theme.breakpoints.md}) {
@@ -80,10 +84,11 @@ const ToggleRow = styled.div`
 const HeroVisual = styled.div<{ $tilt: { x: number; y: number } }>`
   height: 360px;
   border-radius: ${props => props.theme.shapes.borderRadius};
-  border: 1px solid rgba(139, 92, 246, 0.3);
-  background: radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.2), transparent 60%),
-              radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.2), transparent 60%),
-              rgba(15, 15, 24, 0.8);
+  border: 1px solid ${props => props.theme.colors.gridLine};
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.15), transparent 60%),
+    radial-gradient(circle at 80% 80%, rgba(34, 211, 238, 0.12), transparent 60%),
+    ${props => props.theme.colors.surface};
   box-shadow: ${props => props.theme.shadows.large};
   overflow: hidden;
   position: relative;
@@ -193,12 +198,19 @@ const PillGroup = styled.div`
 
   span {
     padding: 0.4rem 0.9rem;
-    border-radius: 999px;
-    background: rgba(139, 92, 246, 0.2);
-    border: 1px solid rgba(139, 92, 246, 0.4);
-    color: #fff;
+    border-radius: ${props => props.theme.shapes.borderRadiusSmall};
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid ${props => props.theme.colors.gridLine};
+    color: ${props => props.theme.colors.text};
     font-size: 0.85rem;
+    font-family: ${props => props.theme.typography.monoFont};
     font-weight: 600;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      border-color: ${props => props.theme.colors.primary};
+      box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+    }
   }
 `;
 

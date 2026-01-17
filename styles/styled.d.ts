@@ -3,19 +3,35 @@ import 'styled-components';
 declare module 'styled-components' {
   export interface DefaultTheme {
     colors: {
-      primary: string;
-      secondary: string;
-      tertiary: string;
-      quaternary: string;
+      // Base Colors
       background: string;
-      backgroundLight: string;
-      backgroundGradient: string;
+      surface: string;
+      surfaceElevated: string;
+      
+      // Text Colors
       text: string;
       textSecondary: string;
-      accent: string;
+      textMuted: string;
+      
+      // Accent Colors
+      primary: string;
+      secondary: string;
+      pixelHit: string;
+      
+      // Pixel Grid
+      gridLine: string;
+      
+      // System Colors
       success: string;
       warning: string;
       error: string;
+      
+      // Legacy support
+      backgroundLight: string;
+      backgroundGradient: string;
+      accent: string;
+      tertiary?: string;
+      quaternary?: string;
       gradient1: string;
       gradient2: string;
       gradient3: string;
@@ -36,6 +52,12 @@ declare module 'styled-components' {
       medium: string;
       large: string;
       glow: string;
+      pixelGlow: string;
+    },
+    typography: {
+      headingFont: string;
+      bodyFont: string;
+      monoFont: string;
     }
   }
 }
