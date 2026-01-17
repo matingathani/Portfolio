@@ -2,18 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Layout from '../../components/Layout';
 import Link from 'next/link';
-
-const BlogSection = styled.section`
-  padding: 120px 5% 80px;
-`;
-
-const Title = styled.h1`
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-  background: linear-gradient(90deg, ${props => props.theme.colors.primary}, ${props => props.theme.colors.secondary});
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-`;
+import { Container, PageSection, SectionHeader } from '../../components/ui';
 
 const Grid = styled.div`
   display: grid;
@@ -61,19 +50,24 @@ const posts = [
 export default function BlogIndex() {
   return (
     <Layout>
-      <BlogSection>
-        <Title>Blog</Title>
-        <Grid>
-          {posts.map((post) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`} passHref legacyBehavior>
-              <Card>
-                <h3>{post.title}</h3>
-                <p>{post.excerpt}</p>
-              </Card>
-            </Link>
-          ))}
-        </Grid>
-      </BlogSection>
+      <PageSection>
+        <Container>
+          <SectionHeader>
+            <h1>Blog</h1>
+            <p>Notes on ML, teaching, and building production-ready portfolios.</p>
+          </SectionHeader>
+          <Grid>
+            {posts.map((post) => (
+              <Link key={post.slug} href={`/blog/${post.slug}`} passHref legacyBehavior>
+                <Card>
+                  <h3>{post.title}</h3>
+                  <p>{post.excerpt}</p>
+                </Card>
+              </Link>
+            ))}
+          </Grid>
+        </Container>
+      </PageSection>
     </Layout>
   );
 }

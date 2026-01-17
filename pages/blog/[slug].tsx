@@ -2,23 +2,16 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import Layout from '../../components/Layout';
-import { Canvas } from '@react-three/fiber';
-import { Float } from '@react-three/drei';
+import { Container, PageSection, SectionHeader } from '../../components/ui';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, RadialLinearScale } from 'chart.js';
 import { PolarArea } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, RadialLinearScale, Tooltip, Legend);
 
-const Section = styled.section`
-  padding: 120px 5% 80px;
-  max-width: 900px;
-  margin: 0 auto;
-`;
-
 const Title = styled.h1`
   font-size: 2.2rem;
   margin-bottom: .5rem;
-  background: linear-gradient(90deg, ${p => p.theme.colors.primary}, ${p => p.theme.colors.secondary});
+  background: ${p => p.theme.colors.gradient1};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
@@ -43,21 +36,6 @@ const Card = styled.div`
   border-radius: 14px;
   padding: 1rem 1.25rem;
 `;
-
-const Interactive3D = () => (
-  <div style={{ height: 260, borderRadius: 12, overflow: 'hidden' }}>
-    <Canvas camera={{ position: [0, 0, 5] }}>
-      <ambientLight intensity={0.5} />
-      <pointLight position={[10, 10, 10]} />
-      <Float speed={1.5} rotationIntensity={0.6} floatIntensity={0.8}>
-        <mesh>
-          <icosahedronGeometry args={[1.3, 0]} />
-          <meshStandardMaterial color="#6e57e0" wireframe emissive="#00c2ff" emissiveIntensity={0.35} />
-        </mesh>
-      </Float>
-    </Canvas>
-  </div>
-);
 
 const SkillPolar = () => {
   const data = {
@@ -116,10 +94,6 @@ const posts: Record<string, { title: string; date: string; content: React.ReactN
     content: (
       <>
         <P>Use lightweight geometry, limit lights, and float elements for a premium feel without heavy models.</P>
-        <H2>Interactive Demo</H2>
-        <Card>
-          <Interactive3D />
-        </Card>
         <H2>Performance Tips</H2>
         <P>Prefer wireframe or flat materials, memoize components, and lazy-load non-critical canvases.</P>
       </>
@@ -134,20 +108,24 @@ export default function BlogPost() {
 
   return (
     <Layout>
-      <Section>
-        {post ? (
-          <>
-            <Title>{post.title}</Title>
-            <Meta>{post.date} • 5 min read</Meta>
-            {post.content}
-          </>
-        ) : (
-          <>
-            <Title>Post not found</Title>
-            <P>The article you’re looking for does not exist yet.</P>
-          </>
-        )}
-      </Section>
+      <PageSection>
+        <Container style={{ maxWidth: 900 }}>
+          {post ? (
+            <>
+              <SectionHeader>
+                <h1>{post.title}</h1>
+                <p>{post.date} • 5 min read</p>
+              </SectionHeader>
+              {post.content}
+            </>
+          ) : (
+            <>
+              <Title>Post not found</Title>
+              <P>The article you’re looking for does not exist yet.</P>
+            </>
+          )}
+        </Container>
+      </PageSection>
     </Layout>
   );
 }

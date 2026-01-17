@@ -20,8 +20,25 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Matin Gathani – Computer Science student and AI Engineer portfolio." />
-        <meta name="theme-color" content={isDark ? '#050816' : '#ffffff'} />
+        <meta
+          name="description"
+          content="Matin Gathani — AI / Software Engineering student with production ML, backend, and full-stack delivery experience."
+        />
+        <meta name="theme-color" content={isDark ? '#0a0a0f' : '#ffffff'} />
+        <meta property="og:title" content="Matin Gathani | AI / Software Engineering Portfolio" />
+        <meta
+          property="og:description"
+          content="AI/ML pipelines, backend systems, data & APIs, and full‑stack delivery. Recruiter‑ready case studies and resume."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/og-card.svg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Matin Gathani | AI / Software Engineering Portfolio" />
+        <meta
+          name="twitter:description"
+          content="AI/ML pipelines, backend systems, data & APIs, and full‑stack delivery."
+        />
+        <meta name="twitter:image" content="/og-card.svg" />
         <title>Matin Gathani | Portfolio</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>

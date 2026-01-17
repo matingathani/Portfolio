@@ -3,6 +3,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { resume } from '../data/resume';
 
 const FooterContainer = styled.footer`
   background-color: rgba(10, 10, 25, 0.8);
@@ -82,16 +83,16 @@ const Footer: React.FC = () => {
     <FooterContainer>
       <FooterContent>
         <FooterSection>
-          <h3>Matin Gathani</h3>
-          <p>Computer Science Student & AI Engineer passionate about creating innovative solutions through machine learning, software development, and collaborative problem-solving.</p>
+          <h3>{resume.name}</h3>
+          <p>{resume.summary}</p>
           <SocialLinks>
-            <SocialIcon href="https://github.com/matingathani" target="_blank" rel="noopener noreferrer">
+            <SocialIcon href={resume.contact.github} target="_blank" rel="noopener noreferrer">
               <i className="fab fa-github"></i>
             </SocialIcon>
-            <SocialIcon href="https://www.linkedin.com/in/matin-gathani-185a7a192" target="_blank" rel="noopener noreferrer">
+            <SocialIcon href={resume.contact.linkedin} target="_blank" rel="noopener noreferrer">
               <i className="fab fa-linkedin"></i>
             </SocialIcon>
-            <SocialIcon href="mailto:mgathan1@asu.edu" target="_blank" rel="noopener noreferrer">
+            <SocialIcon href={`mailto:${resume.contact.email}`} target="_blank" rel="noopener noreferrer">
               <i className="fas fa-envelope"></i>
             </SocialIcon>
           </SocialLinks>
@@ -99,22 +100,34 @@ const Footer: React.FC = () => {
         
         <FooterSection>
           <h3>Quick Links</h3>
-          <FooterLink href="#about">About Me</FooterLink>
-          <FooterLink href="#skills">Skills</FooterLink>
-          <FooterLink href="#experience">Experience</FooterLink>
-          <FooterLink href="#projects">Projects</FooterLink>
-          <FooterLink href="#education">Education</FooterLink>
-          <FooterLink href="#contact">Contact</FooterLink>
+          <Link href="/" passHref legacyBehavior>
+            <FooterLink>Home</FooterLink>
+          </Link>
+          <Link href="/about" passHref legacyBehavior>
+            <FooterLink>About</FooterLink>
+          </Link>
+          <Link href="/experience" passHref legacyBehavior>
+            <FooterLink>Experience</FooterLink>
+          </Link>
+          <Link href="/projects" passHref legacyBehavior>
+            <FooterLink>Projects</FooterLink>
+          </Link>
+          <Link href="/skills" passHref legacyBehavior>
+            <FooterLink>Skills</FooterLink>
+          </Link>
+          <Link href="/resume" passHref legacyBehavior>
+            <FooterLink>Resume</FooterLink>
+          </Link>
+          <Link href="/contact" passHref legacyBehavior>
+            <FooterLink>Contact</FooterLink>
+          </Link>
         </FooterSection>
         
         <FooterSection>
-          <h3>Contact & Activities</h3>
-          <FooterLink href="mailto:mgathan1@asu.edu">mgathan1@asu.edu</FooterLink>
-          <FooterLink href="tel:4805722372">480-572-2372</FooterLink>
-          <p>Arizona State University<br/>Tempe, AZ</p>
-          <p><strong>Activities:</strong><br/>
-          Software Developers Association<br/>
-          HackerDevils (Coding Competitions)</p>
+          <h3>Contact</h3>
+          <FooterLink href={`mailto:${resume.contact.email}`}>{resume.contact.email}</FooterLink>
+          <FooterLink href={`tel:${resume.contact.phone}`}>{resume.contact.phone}</FooterLink>
+          <p>{resume.education.school}<br/>{resume.education.location}</p>
         </FooterSection>
       </FooterContent>
       

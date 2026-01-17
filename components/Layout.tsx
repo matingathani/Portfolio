@@ -4,6 +4,7 @@ import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import Chatbot from './Chatbot';
 
 interface LayoutProps {
   children: ReactNode;
@@ -19,6 +20,7 @@ const LayoutWrapper = styled.div`
 const Content = styled.main`
   position: relative;
   z-index: 1;
+  padding-top: 70px;
 `;
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
@@ -28,6 +30,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <Content>
         {children}
       </Content>
+      <Chatbot />
       <Footer />
     </LayoutWrapper>
   );

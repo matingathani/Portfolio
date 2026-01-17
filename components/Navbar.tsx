@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import ThemeToggle from './ThemeToggle';
 
 const NavbarContainer = styled.header`
@@ -31,7 +32,7 @@ const NavContent = styled.div`
   }
 `;
 
-const Logo = styled.div`
+const Logo = styled.a`
   color: ${props => props.theme.colors.text};
   font-weight: 700;
   font-size: 1.5rem;
@@ -100,7 +101,7 @@ const MobileMenuButton = styled.button`
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState<string>('');
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -111,25 +112,20 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    const ids = ['about','skills','experience','projects','education','resume','contact'];
-    const observers: IntersectionObserver[] = [];
-    ids.forEach(id => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) setActive(id); });
-      }, { root: null, threshold: 0.3 });
-      obs.observe(el);
-      observers.push(obs);
-    });
-    return () => observers.forEach(o => o.disconnect());
-  }, []);
+  const links = [
+    { label: 'Home', href: '/', match: (path: string) => path === '/' },
+    { label: 'About', href: '/about', match: (path: string) => path === '/about' },
+    { label: 'Experience', href: '/experience', match: (path: string) => path === '/experience' },
+    { label: 'Projects', href: '/projects', match: (path: string) => path.startsWith('/projects') },
+    { label: 'Skills', href: '/skills', match: (path: string) => path === '/skills' },
+    { label: 'Resume', href: '/resume', match: (path: string) => path === '/resume' },
+    { label: 'Contact', href: '/contact', match: (path: string) => path === '/contact' },
+  ];
 
   return (
     <NavbarContainer style={{ background: scrolled ? 'rgba(5, 8, 22, 0.95)' : 'transparent' }}>
       <NavContent>
-        <Link href="/">
+        <Link href="/" passHref legacyBehavior>
           <Logo>
             Matin<span>Gathani</span>
           </Logo>
@@ -140,15 +136,23 @@ const Navbar: React.FC = () => {
         </MobileMenuButton>
 
         <NavLinks isOpen={isOpen}>
-          <NavLink href="#about" $active={active==='about'}>About</NavLink>
-          <NavLink href="#skills" $active={active==='skills'}>Skills</NavLink>
-          <NavLink href="#experience" $active={active==='experience'}>Experience</NavLink>
-          <NavLink href="#projects" $active={active==='projects'}>Projects</NavLink>
-          <NavLink href="#education" $active={active==='education'}>Education</NavLink>
-          <NavLink href="#resume" $active={active==='resume'}>Resume</NavLink>
-          <NavLink href="#contact" $active={active==='contact'}>Contact</NavLink>
+          {links.map((link) => (
+            <Link key={link.href} href={link.href} passHref legacyBehavior>
+              <NavLink
+                $active={link.match(router.pathname)}
+                onClick={() => setIsOpen(false)}
+              >
+                {link.label}
+              </NavLink>
+            </Link>
+          ))}
           <Link href="/blog" passHref legacyBehavior>
-            <NavLink $active={false}>Blog</NavLink>
+            <NavLink
+              $active={router.pathname.startsWith('/blog')}
+              onClick={() => setIsOpen(false)}
+            >
+              Blog
+            </NavLink>
           </Link>
           <div style={{ marginLeft: '1rem' }}>
             <ThemeToggle />

@@ -15,9 +15,9 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
       Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+    background: ${props => props.theme.colors.backgroundGradient};
     background-attachment: fixed;
-    color: #ffffff;
+    color: ${props => props.theme.colors.text};
     overflow-x: hidden;
     position: relative;
     
@@ -29,17 +29,14 @@ const GlobalStyle = createGlobalStyle`
       width: 100%;
       height: 100%;
       background: 
-        radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 20%, rgba(236, 72, 153, 0.08) 0%, transparent 50%);
+        radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
       pointer-events: none;
       z-index: 0;
     }
   }
 
-  section {
-    padding: 100px 5%;
-  }
 
   h1, h2, h3, h4, h5, h6 {
     margin: 0;
