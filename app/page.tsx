@@ -11,6 +11,8 @@ import CopyButton from "../components/CopyButton";
 import SkillGroupCard from "../components/SkillGroupCard";
 import { SkillLogo } from "../components/SkillLogo";
 import ImpactBars from "../components/ImpactBars";
+import NoiseOverlay from "../components/NoiseOverlay";
+import LazyResume from "../components/LazyResume";
 import { content } from "../lib/content";
 import { formatPhone, slugify } from "../lib/utils";
 
@@ -30,14 +32,6 @@ const Signal3D = dynamic(() => import("../components/Signal3D"), {
     </div>
   ),
 });
-const ResumeViewer = dynamic(() => import("../components/ResumeViewer"), {
-  ssr: false,
-  loading: () => (
-    <div className="card flex min-h-[520px] items-center justify-center text-sm text-secondary">
-      Loading resume...
-    </div>
-  ),
-});
 
 export default function HomePage() {
   return (
@@ -46,7 +40,7 @@ export default function HomePage() {
         <div className="absolute inset-0 -z-10 rounded-card border border-border bg-soft-radial opacity-80" aria-hidden />
         <div className="hero-aurora" aria-hidden />
         <div className="scanlines" aria-hidden />
-        <div className="noise" aria-hidden />
+        <NoiseOverlay />
         <div className="flex-1 space-y-6">
           <p className="section-subtitle">Available for internships</p>
           <p className="text-xs font-mono uppercase tracking-[0.3em] text-muted cursor-blink">System ready</p>
@@ -78,7 +72,7 @@ export default function HomePage() {
             </a>
           </div>
         </div>
-        <div className="h-[320px] w-full max-w-md flex-1">
+        <div className="h-[320px] w-full max-w-md flex-1 md:flex-none md:w-[360px]">
           <Hero3D />
         </div>
       </section>
@@ -307,7 +301,7 @@ export default function HomePage() {
         <SectionHeader title="Resume" subtitle="Preview" />
         <div className="mt-8 grid gap-8 lg:grid-cols-3">
           <div className="lg:col-span-2">
-            <ResumeViewer fileUrl="/MatinGathaniResume2026.pdf" />
+            <LazyResume fileUrl="/MatinGathaniResume2026.pdf" />
           </div>
           <div className="space-y-4">
             <div className="card space-y-3">

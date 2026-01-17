@@ -81,6 +81,9 @@ body {
   .cursor-blink::after {
     animation: none;
   }
+  .hero-aurora {
+    animation: none;
+  }
 }
 
 .btn-primary {

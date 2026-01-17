@@ -2,7 +2,7 @@
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Mesh } from "three";
 import { useMediaQuery, usePageVisibility } from "../lib/hooks";
 import { isWebGLAvailable } from "../lib/utils";
@@ -30,11 +30,30 @@ function Knot() {
 export default function Signal3D() {
   const isMobile = useMediaQuery("(max-width: 768px)");
   const canRender = isWebGLAvailable();
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    const idle = "requestIdleCallback" in window;
+    if (idle) {
+      (window as any).requestIdleCallback(() => setReady(true));
+      return;
+    }
+    const timeout = setTimeout(() => setReady(true), 800);
+    return () => clearTimeout(timeout);
+  }, []);
 
   if (isMobile || !canRender) {
     return (
       <div className="flex h-full w-full items-center justify-center rounded-card border border-border bg-[#0b1220]">
         <span className="text-xs font-mono uppercase tracking-[0.3em] text-muted">Signal</span>
+      </div>
+    );
+  }
+
+  if (!ready) {
+    return (
+      <div className="flex h-full w-full items-center justify-center rounded-card border border-border bg-[#0b1220]">
+        <span className="text-xs font-mono uppercase tracking-[0.3em] text-muted">Loading</span>
       </div>
     );
   }

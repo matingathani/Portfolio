@@ -1,43 +1,26 @@
 "use client";
 
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Float } from "@react-three/drei";
-import { useMemo, useRef } from "react";
-import { Mesh } from "three";
+import dynamic from "next/dynamic";
+import { useEffect, useMemo, useState } from "react";
 import { isWebGLAvailable } from "../lib/utils";
-import { useMediaQuery, usePageVisibility } from "../lib/hooks";
+import { useMediaQuery } from "../lib/hooks";
 
-function FloatingMesh() {
-  const meshRef = useRef<Mesh>(null);
-  const visible = usePageVisibility();
-
-  useFrame((state) => {
-    if (!meshRef.current || !visible) return;
-    const { x, y } = state.pointer;
-    meshRef.current.rotation.x = x * 0.35;
-    meshRef.current.rotation.y = y * 0.35 + state.clock.elapsedTime * 0.15;
-  });
-
-  return (
-    <Float speed={1.4} rotationIntensity={0.8} floatIntensity={1.2}>
-      <mesh ref={meshRef}>
-        <icosahedronGeometry args={[1.2, 0]} />
-        <meshStandardMaterial
-          color="#3b82f6"
-          wireframe
-          roughness={0.4}
-          metalness={0.2}
-          emissive="#1e3a8a"
-          emissiveIntensity={0.6}
-        />
-      </mesh>
-    </Float>
-  );
-}
+const Hero3DScene = dynamic(() => import("./Hero3DScene"), { ssr: false });
 
 export default function Hero3D() {
   const isMobile = useMediaQuery("(max-width: 768px)");
   const canRender = useMemo(() => isWebGLAvailable(), []);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    const idle = "requestIdleCallback" in window;
+    if (idle) {
+      (window as any).requestIdleCallback(() => setReady(true));
+      return;
+    }
+    const timeout = setTimeout(() => setReady(true), 600);
+    return () => clearTimeout(timeout);
+  }, []);
 
   if (!canRender || isMobile) {
     return (
@@ -68,15 +51,13 @@ export default function Hero3D() {
     );
   }
 
-  return (
-    <Canvas
-      camera={{ position: [0, 0, 3] }}
-      className="h-full w-full"
-      dpr={[1, 1.5]}
-    >
-      <ambientLight intensity={0.6} />
-      <directionalLight position={[2, 2, 2]} intensity={1.2} />
-      <FloatingMesh />
-    </Canvas>
-  );
+  if (!ready) {
+    return (
+      <div className="flex h-full w-full items-center justify-center rounded-card border border-border bg-[#0b1220]">
+        <span className="text-xs font-mono uppercase tracking-[0.3em] text-muted">Loading</span>
+      </div>
+    );
+  }
+
+  return <Hero3DScene />;
 }
