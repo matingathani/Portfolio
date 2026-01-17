@@ -16,5 +16,5 @@
   <rect x="120" y="180" width="960" height="280" rx="32" fill="rgba(255,255,255,0.05)" stroke="rgba(139,92,246,0.3)" />
   <text x="180" y="280" fill="white" font-size="48" font-family="Inter, Arial, sans-serif" font-weight="700">Matin Gathani</text>
   <text x="180" y="340" fill="url(#accent)" font-size="28" font-family="Inter, Arial, sans-serif" font-weight="600">AI / Software Engineering Portfolio</text>
-  <text x="180" y="400" fill="#b8b8d4" font-size="22" font-family="Inter, Arial, sans-serif">ML pipelines · Backend systems · Data & APIs · Full-stack delivery</text>
+  <text x="180" y="400" fill="#b8b8d4" font-size="22" font-family="Inter, Arial, sans-serif">ML pipelines - Backend systems - Data &amp; APIs - Full-stack delivery</text>
 </svg>
