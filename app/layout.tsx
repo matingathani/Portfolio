@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PageTransition from "../components/PageTransition";
 import DataNetworkBackground from "../components/DataNetworkBackground";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { content } from "../lib/content";
 
 const headingFont = Space_Grotesk({ subsets: ["latin"], variable: "--font-heading", weight: ["600", "700"] });
@@ -50,6 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </main>
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   );

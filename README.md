@@ -21,7 +21,7 @@ CONTACT_FROM_EMAIL=portfolio@domain.com
 ```
 
 ## Resume PDF
-Replace the file at `public/resume.pdf` with your latest resume.
+Replace `public/MatinGathaniResume2026.pdf` with your latest resume (or update the path in `app/page.tsx`).
 
 ## Local Development
 ```bash
@@ -44,8 +44,13 @@ npm run start
 ## Editing Content
 All editable content lives in `lib/content.ts`. Update experience, projects, skills, and contact info there.
 
+## Routes
+- `/` Single-page experience (hero, experience, projects, skills, resume, contact)
+- `/about` Narrative background
+- `/blog` Notes and insights
+
 ## 3D Scene
-The hero scene is in `components/Hero3D.tsx`. Swap the geometry or material there to change the visual.
+The hero scene is in `components/Hero3D.tsx`. The secondary 3D element is in `components/Signal3D.tsx`.
 
 ## Notes
 - `react-pdf` uses `/public/pdf.worker.min.js` copied via `scripts/copy-pdf-worker.js` on install.

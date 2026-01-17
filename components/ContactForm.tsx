@@ -49,7 +49,11 @@ export default function ContactForm() {
 
       if (!res.ok) {
         const data = await res.json();
-        throw new Error(data.message || "Something went wrong.");
+        const message =
+          data?.message === "Email configuration missing."
+            ? "Email delivery is being configured. Please use the direct email link."
+            : data?.message;
+        throw new Error(message || "Something went wrong.");
       }
 
       setStatus("success");

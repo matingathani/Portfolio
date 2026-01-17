@@ -23,3 +23,9 @@ export const buildMailto = (email: string, subject: string) => {
   const params = new URLSearchParams({ subject });
   return `mailto:${email}?${params.toString()}`;
 };
+
+export const slugify = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)+/g, "");

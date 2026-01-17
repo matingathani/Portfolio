@@ -4,7 +4,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Experience } from "../lib/types";
 
-export default function ExperienceCard({ item }: { item: Experience }) {
+export default function ExperienceCard({
+  item,
+  detailsHref,
+}: {
+  item: Experience;
+  detailsHref?: string;
+}) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -25,13 +31,16 @@ export default function ExperienceCard({ item }: { item: Experience }) {
           </span>
         ))}
       </div>
-      <button
-        className="mt-4 text-sm font-semibold text-accent"
-        onClick={() => setOpen((prev) => !prev)}
-        aria-expanded={open}
-      >
-        {open ? "Hide details" : "View details"}
-      </button>
+      <div className="mt-4 flex flex-wrap items-center gap-4 text-sm font-semibold text-accent">
+        <button onClick={() => setOpen((prev) => !prev)} aria-expanded={open}>
+          {open ? "Hide details" : "View details"}
+        </button>
+        {detailsHref && (
+          <a href={detailsHref} className="text-xs font-semibold text-accent">
+            Jump to full notes
+          </a>
+        )}
+      </div>
       <AnimatePresence>
         {open && (
           <motion.div

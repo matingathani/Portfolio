@@ -7,12 +7,13 @@ import { motion } from "framer-motion";
 
 const links = [
   { href: "/", label: "Home" },
+  { href: "/#experience", label: "Experience" },
+  { href: "/#projects", label: "Projects" },
+  { href: "/#skills", label: "Skills" },
+  { href: "/#resume", label: "Resume" },
+  { href: "/#contact", label: "Contact" },
   { href: "/about", label: "About" },
-  { href: "/experience", label: "Experience" },
-  { href: "/projects", label: "Projects" },
-  { href: "/skills", label: "Skills" },
-  { href: "/resume", label: "Resume" },
-  { href: "/contact", label: "Contact" },
+  { href: "/blog", label: "Blog" },
 ];
 
 export default function Navbar() {
@@ -34,7 +35,7 @@ export default function Navbar() {
         </button>
         <div className="hidden items-center gap-6 md:flex">
           {links.map((link) => {
-            const active = pathname === link.href;
+            const active = !link.href.startsWith("/#") && pathname === link.href;
             return (
               <Link
                 key={link.href}

@@ -1,10 +1,16 @@
 import Link from "next/link";
 import { Project } from "../lib/types";
 
-export default function ProjectCard({ project }: { project: Project }) {
+export default function ProjectCard({
+  project,
+  detailsHref,
+}: {
+  project: Project;
+  detailsHref?: string;
+}) {
   return (
     <Link
-      href={`/projects/${project.slug}`}
+      href={detailsHref ?? "/#projects"}
       className="card hover-tilt pixel-ripple flex h-full flex-col gap-4"
     >
       <div className="flex items-center justify-between">
@@ -27,6 +33,9 @@ export default function ProjectCard({ project }: { project: Project }) {
           </span>
         ))}
       </div>
+      {detailsHref && (
+        <span className="mt-2 text-xs font-semibold text-accent">View details</span>
+      )}
     </Link>
   );
 }

@@ -10,17 +10,23 @@ export default function Footer() {
           <p className="text-sm text-secondary">{content.role}</p>
         </div>
         <div className="flex flex-wrap gap-4 text-sm text-secondary">
-          <Link href="/projects" className="hover:text-primary">
+          <Link href="/#projects" className="hover:text-primary">
             Projects
           </Link>
-          <Link href="/experience" className="hover:text-primary">
+          <Link href="/#experience" className="hover:text-primary">
             Experience
           </Link>
-          <Link href="/resume" className="hover:text-primary">
+          <Link href="/#resume" className="hover:text-primary">
             Resume
           </Link>
-          <Link href="/contact" className="hover:text-primary">
+          <Link href="/#contact" className="hover:text-primary">
             Contact
+          </Link>
+          <Link href="/about" className="hover:text-primary">
+            About
+          </Link>
+          <Link href="/blog" className="hover:text-primary">
+            Blog
           </Link>
         </div>
         <div className="flex gap-4 text-sm text-secondary">
