@@ -13,6 +13,18 @@ export const content: SiteContent = {
     { label: "Records processed", value: 10000, suffix: "+" },
     { label: "Features delivered", value: 10, suffix: "+" },
   ],
+  skillProficiencies: [
+    { name: "Python", value: 94 },
+    { name: "Java", value: 90 },
+    { name: "C++", value: 88 },
+    { name: "JavaScript", value: 89 },
+    { name: "SQL", value: 87 },
+    { name: "HTML5", value: 92 },
+    { name: "CSS3", value: 86 },
+    { name: "React", value: 85 },
+    { name: "Docker", value: 83 },
+    { name: "Git", value: 91 },
+  ],
   contact: {
     email: "mgathan1@asu.edu",
     phone: "4805722372",

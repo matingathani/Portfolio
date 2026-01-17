@@ -266,9 +266,25 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
-            <p className="mt-4 text-xs text-muted">
-              Want proficiency percentages? Share your self-ratings and I will add them.
-            </p>
+            <div className="mt-6">
+              <h4 className="text-sm font-semibold text-primary">Proficiency snapshot</h4>
+              <div className="mt-3 space-y-3">
+                {content.skillProficiencies.map((skill) => (
+                  <div key={skill.name} className="space-y-2">
+                    <div className="flex items-center justify-between text-xs text-secondary">
+                      <span>{skill.name}</span>
+                      <span className="text-primary">{skill.value}%</span>
+                    </div>
+                    <div className="h-2 w-full rounded-full bg-[#0f172a]">
+                      <div
+                        className="h-2 rounded-full bg-gradient-to-r from-accent to-accent2"
+                        style={{ width: `${skill.value}%` }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
           <div className="card">
             <h3 className="text-lg font-heading text-primary">Signal stack</h3>

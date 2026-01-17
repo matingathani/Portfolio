@@ -48,6 +48,10 @@ export type SiteContent = {
     value: number;
     suffix?: string;
   }[];
+  skillProficiencies: {
+    name: string;
+    value: number;
+  }[];
   contact: {
     email: string;
     phone: string;
