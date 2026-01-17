@@ -6,7 +6,7 @@ import SectionHeader from "../components/SectionHeader";
 import MetricCounter from "../components/MetricCounter";
 import ProjectCard from "../components/ProjectCard";
 import ExperienceCard from "../components/ExperienceCard";
-import ContactForm from "../components/ContactForm";
+import LazyContactForm from "../components/LazyContactForm";
 import CopyButton from "../components/CopyButton";
 import SkillGroupCard from "../components/SkillGroupCard";
 import { SkillLogo } from "../components/SkillLogo";
@@ -320,7 +320,7 @@ export default function HomePage() {
         <div className="mt-8 grid gap-8 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <div className="card">
-              <ContactForm />
+              <LazyContactForm />
             </div>
           </div>
           <div className="space-y-4">

@@ -4,7 +4,7 @@ import "../styles/globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PageTransition from "../components/PageTransition";
-import DataNetworkBackground from "../components/DataNetworkBackground";
+import BackgroundLayers from "../components/BackgroundLayers";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { content } from "../lib/content";
 
@@ -58,7 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Navbar />
         <main className="relative overflow-hidden">
-          <DataNetworkBackground />
+          <BackgroundLayers />
           <div className="relative z-10">
             <PageTransition>
               {children}
