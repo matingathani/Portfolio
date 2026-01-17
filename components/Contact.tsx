@@ -67,11 +67,23 @@ const ContactItem = styled.div`
 
 const ContactFormContainer = styled(motion.div)`
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  border-radius: ${props => props.theme.shapes.borderRadius};
   padding: 2.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  box-shadow: ${props => props.theme.shadows.medium};
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: ${props => props.theme.colors.gradient1};
+    border-radius: ${props => props.theme.shapes.borderRadius} ${props => props.theme.shapes.borderRadius} 0 0;
+  }
 `;
 
 const Form = styled.form`
@@ -127,23 +139,26 @@ const TextArea = styled.textarea`
 
 const SubmitButton = styled(motion.button)`
   padding: 1rem 2rem;
-  background: linear-gradient(45deg, ${props => props.theme.colors.primary}, ${props => props.theme.colors.secondary});
+  background: ${props => props.theme.colors.gradient2};
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: ${props => props.theme.shapes.borderRadiusSmall};
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   align-self: flex-start;
+  box-shadow: ${props => props.theme.shadows.medium};
   
   &:hover {
-    box-shadow: 0 5px 15px rgba(110, 87, 224, 0.4);
+    box-shadow: ${props => props.theme.shadows.large};
+    transform: translateY(-2px);
   }
   
   &:disabled {
     opacity: 0.7;
     cursor: not-allowed;
+    transform: none;
   }
 `;
 
@@ -157,7 +172,7 @@ const FloatingContactInfo = () => {
         <Text
           position={[0, 0, 0]}
           fontSize={0.6}
-          color="#6e57e0"
+          color="#8b5cf6"
           maxWidth={2}
           lineHeight={1}
           textAlign="center"
@@ -230,7 +245,16 @@ const Contact = () => {
         >
           <ContactItem>
             <i className="fas fa-envelope"></i>
-            <a href="mailto:mgathan1@asu.edu">mgathan1@asu.edu</a>
+            <a 
+              href="mailto:mgathan1@asu.edu?subject=Portfolio%20Inquiry&body=Hello%20Matin,%0D%0A%0D%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect.%0D%0A%0D%0A"
+              onClick={(e) => {
+                // Ensure mailto link opens email client
+                window.location.href = 'mailto:mgathan1@asu.edu?subject=Portfolio%20Inquiry&body=Hello%20Matin,%0D%0A%0D%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect.%0D%0A%0D%0A';
+              }}
+              style={{ cursor: 'pointer' }}
+            >
+              mgathan1@asu.edu
+            </a>
           </ContactItem>
           <ContactItem>
             <i className="fas fa-phone"></i>

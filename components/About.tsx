@@ -58,27 +58,42 @@ const AboutStats = styled(motion.div)`
 
 const StatCard = styled(motion.div)`
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  padding: 1.5rem;
-  border-radius: 15px;
+  backdrop-filter: blur(20px);
+  padding: 2rem;
+  border-radius: ${props => props.theme.shapes.borderRadius};
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  box-shadow: ${props => props.theme.shadows.medium};
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: ${props => props.theme.colors.gradient1};
+  }
   
   &:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px) scale(1.02);
     background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(139, 92, 246, 0.5);
+    box-shadow: ${props => props.theme.shadows.large};
   }
 `;
 
 const StatNumber = styled.h3`
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 3rem;
+  font-weight: 800;
   margin-bottom: 0.5rem;
-  background: linear-gradient(45deg, ${props => props.theme.colors.primary}, ${props => props.theme.colors.secondary});
+  background: ${props => props.theme.colors.gradient2};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 `;
 
 const StatLabel = styled.p`
@@ -104,9 +119,9 @@ const BrainModel = () => {
       <mesh>
         <dodecahedronGeometry args={[2, 0]} />
         <meshStandardMaterial 
-          color="#6e57e0" 
+          color="#8b5cf6" 
           wireframe={true} 
-          emissive="#00c2ff" 
+          emissive="#06b6d4" 
           emissiveIntensity={0.5}
         />
       </mesh>
@@ -154,12 +169,19 @@ const About = () => {
           <p>
             Recently completed a <strong>Project Internship at Musikaar</strong> where I built and optimized ML models using Python, 
             NLP, and tokenization to improve HR data processing workflows. I validated model performance with custom datasets 
-            and developed front-end pages with API integration for seamless AI-driven user experiences.
+            and developed front-end pages with API integration for seamless AI-driven user experiences. This experience taught me 
+            the importance of iterative model refinement and the value of user-centered design in AI applications.
           </p>
           <p>
             As an <strong>Engineering Tutor at ASU</strong>, I've mentored 180+ students in programming (Java, Assembly, C++), 
-            emphasizing debugging, testing, and problem-solving. I'm passionate about applying AI development and testing skills 
-            to solve real-world problems at the intersection of machine learning, software development, and creative problem-solving.
+            emphasizing debugging, testing, and problem-solving. I've developed a structured approach to teaching that focuses on 
+            reproducible debugging techniques and systematic problem-solving. My teaching philosophy centers on helping students 
+            build confidence through hands-on practice and clear explanations of complex concepts.
+          </p>
+          <p>
+            I'm passionate about applying AI development and testing skills to solve real-world problems at the intersection of 
+            machine learning, software development, and creative problem-solving. I enjoy working on projects that combine 
+            technical excellence with practical applications, and I'm always eager to learn new technologies and methodologies.
           </p>
           
           <AboutStats>

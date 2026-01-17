@@ -28,12 +28,15 @@ const HeroContent = styled(motion.div)`
   z-index: 2;
   
   h1 {
-    font-size: 4rem;
-    font-weight: 700;
+    font-size: 4.5rem;
+    font-weight: 800;
     margin-bottom: 0.5rem;
-    background: linear-gradient(45deg, #6e57e0, #00c2ff);
+    background: ${props => props.theme.colors.gradient1};
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
+    filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.3));
   }
   
   h2 {
@@ -81,25 +84,30 @@ const Button = styled(motion.a)`
 `;
 
 const PrimaryButton = styled(Button)`
-  background: linear-gradient(45deg, #6e57e0, #00c2ff);
+  background: ${props => props.theme.colors.gradient2};
   color: #fff;
   border: none;
-  box-shadow: 0 4px 15px rgba(110, 87, 224, 0.4);
+  box-shadow: ${props => props.theme.shadows.medium};
+  border-radius: ${props => props.theme.shapes.borderRadiusSmall};
   
   &:hover {
     transform: translateY(-3px);
-    box-shadow: 0 7px 20px rgba(110, 87, 224, 0.6);
+    box-shadow: ${props => props.theme.shadows.large};
   }
 `;
 
 const SecondaryButton = styled(Button)`
-  background: transparent;
+  background: rgba(139, 92, 246, 0.1);
   color: #fff;
-  border: 2px solid rgba(110, 87, 224, 0.8);
+  border: 2px solid rgba(139, 92, 246, 0.5);
+  border-radius: ${props => props.theme.shapes.borderRadiusSmall};
+  backdrop-filter: blur(10px);
   
   &:hover {
-    background: rgba(110, 87, 224, 0.1);
+    background: rgba(139, 92, 246, 0.2);
+    border-color: rgba(139, 92, 246, 0.8);
     transform: translateY(-3px);
+    box-shadow: ${props => props.theme.shadows.small};
   }
 `;
 
@@ -122,8 +130,10 @@ const ParallaxLayer = styled.div`
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(1200px 600px at 20% 10%, rgba(110,87,224,0.12), transparent),
-              radial-gradient(900px 500px at 80% 20%, rgba(0,194,255,0.10), transparent);
+  background: 
+    radial-gradient(1200px 600px at 20% 10%, rgba(139, 92, 246, 0.15), transparent),
+    radial-gradient(900px 500px at 80% 20%, rgba(6, 182, 212, 0.12), transparent),
+    radial-gradient(700px 400px at 50% 80%, rgba(236, 72, 153, 0.1), transparent);
   transform: translateZ(0);
 `;
 
@@ -178,7 +188,11 @@ const AnimatedBrain = () => {
             bevelSegments={5}
           >
             MG
-            <meshStandardMaterial color="#6e57e0" />
+            <meshStandardMaterial 
+              color="#8b5cf6" 
+              emissive="#8b5cf6"
+              emissiveIntensity={0.5}
+            />
           </Text3D>
         </Center>
       </Float>
@@ -192,8 +206,8 @@ const AnimatedBrain = () => {
         ]}>
           <sphereGeometry args={[0.08 + Math.sin(i) * 0.02, 12, 12]} />
           <meshStandardMaterial 
-            color={i % 3 === 0 ? "#6e57e0" : i % 3 === 1 ? "#00c2ff" : "#ffa500"} 
-            emissive={i % 3 === 0 ? "#6e57e0" : i % 3 === 1 ? "#00c2ff" : "#ffa500"}
+            color={i % 3 === 0 ? "#8b5cf6" : i % 3 === 1 ? "#06b6d4" : "#f59e0b"} 
+            emissive={i % 3 === 0 ? "#8b5cf6" : i % 3 === 1 ? "#06b6d4" : "#f59e0b"}
             emissiveIntensity={0.6}
             toneMapped={false}
           />
@@ -228,7 +242,7 @@ const AnimatedBrain = () => {
               />
             </bufferGeometry>
             <lineBasicMaterial 
-              color={i % 3 === 0 ? "#6e57e0" : i % 3 === 1 ? "#00c2ff" : "#ffa500"}
+              color={i % 3 === 0 ? "#8b5cf6" : i % 3 === 1 ? "#06b6d4" : "#f59e0b"}
               linewidth={1}
               opacity={0.7}
               transparent
@@ -275,7 +289,7 @@ const Hero: React.FC = () => {
         const y = (pt.y + Math.cos(t*0.00025 + pt.p)*0.003) * canvas.height;
         ctx.beginPath();
         ctx.arc(x, y, pt.s * DPR, 0, Math.PI*2);
-        ctx.fillStyle = pt.p % 3 === 0 ? 'rgba(110,87,224,0.7)' : pt.p % 3 === 1 ? 'rgba(0,194,255,0.7)' : 'rgba(255,165,0,0.7)';
+        ctx.fillStyle = pt.p % 3 === 0 ? 'rgba(139, 92, 246, 0.7)' : pt.p % 3 === 1 ? 'rgba(6, 182, 212, 0.7)' : 'rgba(245, 158, 11, 0.7)';
         ctx.fill();
       }
       raf = requestAnimationFrame(draw);

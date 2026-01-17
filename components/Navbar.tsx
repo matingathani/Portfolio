@@ -112,7 +112,7 @@ const Navbar: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const ids = ['about','skills','experience','projects','education','contact'];
+    const ids = ['about','skills','experience','projects','education','resume','contact'];
     const observers: IntersectionObserver[] = [];
     ids.forEach(id => {
       const el = document.getElementById(id);
@@ -129,8 +129,8 @@ const Navbar: React.FC = () => {
   return (
     <NavbarContainer style={{ background: scrolled ? 'rgba(5, 8, 22, 0.95)' : 'transparent' }}>
       <NavContent>
-        <Link href="/" passHref legacyBehavior>
-          <Logo as="a">
+        <Link href="/">
+          <Logo>
             Matin<span>Gathani</span>
           </Logo>
         </Link>
@@ -145,6 +145,7 @@ const Navbar: React.FC = () => {
           <NavLink href="#experience" $active={active==='experience'}>Experience</NavLink>
           <NavLink href="#projects" $active={active==='projects'}>Projects</NavLink>
           <NavLink href="#education" $active={active==='education'}>Education</NavLink>
+          <NavLink href="#resume" $active={active==='resume'}>Resume</NavLink>
           <NavLink href="#contact" $active={active==='contact'}>Contact</NavLink>
           <Link href="/blog" passHref legacyBehavior>
             <NavLink $active={false}>Blog</NavLink>

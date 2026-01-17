@@ -40,12 +40,31 @@ const SkillsGrid = styled.div`
 
 const SkillCategory = styled(motion.div)`
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  border-radius: ${props => props.theme.shapes.borderRadius};
   padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  box-shadow: ${props => props.theme.shadows.medium};
   height: 100%;
+  position: relative;
+  transition: all 0.3s ease;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: ${props => props.theme.colors.gradient1};
+    border-radius: ${props => props.theme.shapes.borderRadius} ${props => props.theme.shapes.borderRadius} 0 0;
+  }
+  
+  &:hover {
+    transform: translateY(-5px);
+    border-color: rgba(139, 92, 246, 0.5);
+    box-shadow: ${props => props.theme.shadows.large};
+  }
 `;
 
 const CategoryTitle = styled.h3`
@@ -71,9 +90,11 @@ const SkillBar = styled.div`
 
 const SkillProgress = styled.div<{ width: string }>`
   height: 100%;
-  background: linear-gradient(90deg, ${props => props.theme.colors.primary}, ${props => props.theme.colors.secondary});
+  background: ${props => props.theme.colors.gradient2};
   width: ${props => props.width};
   border-radius: 5px;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+  transition: width 0.5s ease;
 `;
 
 const SkillItem = styled.div`
@@ -129,15 +150,22 @@ const SkillTags = styled.div`
 `;
 
 const SkillTag = styled(motion.span)`
-  background: rgba(110, 87, 224, 0.2);
+  background: rgba(139, 92, 246, 0.2);
   padding: 0.5rem 1rem;
-  border-radius: 50px;
+  border-radius: ${props => props.theme.shapes.borderRadiusSmall};
   font-size: 0.9rem;
   color: ${props => props.theme.colors.text};
-  border: 1px solid rgba(110, 87, 224, 0.3);
+  border: 1px solid rgba(139, 92, 246, 0.3);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(139, 92, 246, 0.3);
+    border-color: rgba(139, 92, 246, 0.5);
+    transform: translateY(-2px);
+  }
 `;
 
 const ChartWrapper = styled.div`
@@ -162,8 +190,8 @@ const FloatingSkills = () => {
           ]}>
             <boxGeometry args={[0.6, 0.6, 0.6]} />
             <meshStandardMaterial 
-              color={i % 3 === 0 ? "#6e57e0" : i % 3 === 1 ? "#00c2ff" : "#ffa500"} 
-              emissive={i % 3 === 0 ? "#6e57e0" : i % 3 === 1 ? "#00c2ff" : "#ffa500"}
+              color={i % 3 === 0 ? "#8b5cf6" : i % 3 === 1 ? "#06b6d4" : "#f59e0b"} 
+              emissive={i % 3 === 0 ? "#8b5cf6" : i % 3 === 1 ? "#06b6d4" : "#f59e0b"}
               emissiveIntensity={0.4}
               wireframe={true}
             />
@@ -197,20 +225,20 @@ const Skills = () => {
         label: 'Skill Level',
         data: [90, 85, 80, 75, 85, 80],
         backgroundColor: [
-          'rgba(110, 87, 224, 0.7)',
-          'rgba(0, 194, 255, 0.7)',
-          'rgba(110, 87, 224, 0.7)',
-          'rgba(0, 194, 255, 0.7)',
-          'rgba(110, 87, 224, 0.7)',
-          'rgba(0, 194, 255, 0.7)'
+          'rgba(139, 92, 246, 0.7)',
+          'rgba(6, 182, 212, 0.7)',
+          'rgba(236, 72, 153, 0.7)',
+          'rgba(139, 92, 246, 0.7)',
+          'rgba(6, 182, 212, 0.7)',
+          'rgba(245, 158, 11, 0.7)'
         ],
         borderColor: [
-          'rgba(110, 87, 224, 1)',
-          'rgba(0, 194, 255, 1)',
-          'rgba(110, 87, 224, 1)',
-          'rgba(0, 194, 255, 1)',
-          'rgba(110, 87, 224, 1)',
-          'rgba(0, 194, 255, 1)'
+          'rgba(139, 92, 246, 1)',
+          'rgba(6, 182, 212, 1)',
+          'rgba(236, 72, 153, 1)',
+          'rgba(139, 92, 246, 1)',
+          'rgba(6, 182, 212, 1)',
+          'rgba(245, 158, 11, 1)'
         ],
         borderWidth: 1
       }
@@ -344,7 +372,7 @@ const Skills = () => {
             ].map((tag, index) => (
               <SkillTag 
                 key={index}
-                whileHover={{ scale: 1.1, backgroundColor: 'rgba(110, 87, 224, 0.3)' }}
+                whileHover={{ scale: 1.1, backgroundColor: 'rgba(139, 92, 246, 0.3)' }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
                 <i className={tag.icon} />

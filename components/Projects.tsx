@@ -35,20 +35,32 @@ const ProjectsGrid = styled.div`
 
 const ProjectCard = styled(motion.div)`
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  border-radius: ${props => props.theme.shapes.borderRadius};
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  box-shadow: ${props => props.theme.shadows.medium};
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease;
   height: 100%;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: ${props => props.theme.colors.gradient1};
+    z-index: 1;
+  }
   
   &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: ${props => props.theme.shadows.large};
+    border-color: rgba(139, 92, 246, 0.6);
   }
 `;
 
@@ -108,18 +120,21 @@ const ProjectLinks = styled.div`
 
 const ProjectButton = styled(motion.a)`
   padding: 0.7rem 1.5rem;
-  background: linear-gradient(45deg, ${props => props.theme.colors.primary}, ${props => props.theme.colors.secondary});
+  background: ${props => props.theme.colors.gradient2};
   color: white;
   border: none;
-  border-radius: 50px;
+  border-radius: ${props => props.theme.shapes.borderRadiusSmall};
   font-weight: 600;
   font-size: 0.9rem;
   cursor: pointer;
   text-decoration: none;
   text-align: center;
+  box-shadow: ${props => props.theme.shadows.small};
+  transition: all 0.3s ease;
   
   &:hover {
-    box-shadow: 0 5px 15px rgba(110, 87, 224, 0.4);
+    box-shadow: ${props => props.theme.shadows.medium};
+    transform: translateY(-2px);
   }
 `;
 
@@ -141,9 +156,9 @@ const Project3DModel = ({ index }: { index: number }) => {
     <mesh key={1}>
       <torusGeometry args={[1, 0.4, 16, 100]} />
       <meshStandardMaterial 
-        color="#00c2ff" 
+        color="#06b6d4" 
         wireframe={true} 
-        emissive="#6e57e0" 
+        emissive="#8b5cf6" 
         emissiveIntensity={0.5}
       />
     </mesh>,
@@ -152,9 +167,9 @@ const Project3DModel = ({ index }: { index: number }) => {
     <mesh key={2}>
       <octahedronGeometry args={[1.2, 0]} />
       <meshStandardMaterial 
-        color="#6e57e0" 
+        color="#ec4899" 
         wireframe={true} 
-        emissive="#00c2ff" 
+        emissive="#f59e0b" 
         emissiveIntensity={0.5}
       />
     </mesh>

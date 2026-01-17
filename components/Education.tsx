@@ -25,16 +25,28 @@ const SectionTitle = styled(motion.h2)`
 
 const EducationCard = styled(motion.div)`
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  border-radius: ${props => props.theme.shapes.borderRadius};
   padding: 2.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  box-shadow: ${props => props.theme.shadows.medium};
   display: flex;
   align-items: center;
   max-width: 900px;
   margin: 0 auto;
   gap: 2rem;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: ${props => props.theme.colors.gradient2};
+    border-radius: ${props => props.theme.shapes.borderRadius} ${props => props.theme.shapes.borderRadius} 0 0;
+  }
   
   @media (max-width: ${props => props.theme.breakpoints.md}) {
     flex-direction: column;
@@ -43,9 +55,10 @@ const EducationCard = styled(motion.div)`
   }
   
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: ${props => props.theme.shadows.large};
     background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(139, 92, 246, 0.5);
   }
 `;
 
@@ -109,7 +122,11 @@ const University3D = () => {
           bevelSegments={5}
         >
           ASU
-          <meshStandardMaterial color="#6e57e0" />
+          <meshStandardMaterial 
+            color="#8b5cf6" 
+            emissive="#8b5cf6"
+            emissiveIntensity={0.4}
+          />
         </Text3D>
       </Center>
     </Float>

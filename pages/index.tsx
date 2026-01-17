@@ -6,7 +6,9 @@ import Skills from '../components/Skills';
 import Experience from '../components/Experience';
 import Projects from '../components/Projects';
 import Education from '../components/Education';
+import Resume from '../components/Resume';
 import Contact from '../components/Contact';
+import Chatbot from '../components/Chatbot';
 
 export default function Home() {
   return (
@@ -17,7 +19,9 @@ export default function Home() {
       <Experience />
       <Projects />
       <Education />
+      <Resume />
       <Contact />
+      <Chatbot />
     </Layout>
   );
 }

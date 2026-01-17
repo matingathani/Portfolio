@@ -111,19 +111,31 @@ const TimelineItem = styled(motion.div)`
 
 const TimelineContent = styled.div`
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
   padding: 2rem;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: ${props => props.theme.shapes.borderRadius};
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  box-shadow: ${props => props.theme.shadows.medium};
   transition: all 0.3s ease;
   position: relative;
   z-index: 1;
   
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: ${props => props.theme.colors.gradient1};
+    border-radius: 2px 0 0 2px;
+  }
+  
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: ${props => props.theme.shadows.large};
     background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(139, 92, 246, 0.5);
   }
   
   h3 {
@@ -268,17 +280,17 @@ const Experience = () => {
           <FloatingText 
             text="ML Models" 
             position={[-2, 0, 0]} 
-            color="#6e57e0" 
+            color="#8b5cf6" 
           />
           <FloatingText 
             text="API Integration" 
             position={[0, 1, 0]} 
-            color="#00c2ff" 
+            color="#06b6d4" 
           />
           <FloatingText 
             text="Tutoring" 
             position={[2, -0.5, 0]} 
-            color="#6e57e0" 
+            color="#ec4899" 
           />
         </Canvas>
       </div>
