@@ -265,14 +265,14 @@ export default function CartoonFox() {
                 fill="url(#foxBody)"
                 animate={isHovered ? { rotate: [0, 15, -15, 0] } : { rotate: [0, 5, 0, -5, 0] }}
                 transition={{ duration: isHovered ? 0.8 : 1.2, repeat: Infinity }}
-                transformOrigin="-17 -49"
+                style={{ transformOrigin: "-17px -49px" }}
               />
               <motion.polygon
                 points="22,-40 12,-58 6,-48"
                 fill="url(#foxBody)"
                 animate={isHovered ? { rotate: [0, -15, 15, 0] } : { rotate: [0, -5, 0, 5, 0] }}
                 transition={{ duration: isHovered ? 0.8 : 1.2, repeat: Infinity }}
-                transformOrigin="17 -49"
+                style={{ transformOrigin: "17px -49px" }}
               />
               <polygon points="-22,-40 -12,-58 -6,-48" fill="#FFE5B4" opacity="0.7" />
               <polygon points="22,-40 12,-58 6,-48" fill="#FFE5B4" opacity="0.7" />
@@ -308,14 +308,13 @@ export default function CartoonFox() {
 
             {/* Tail - More Dynamic on Hover */}
             <motion.g
-              transformOrigin="-30 20"
               animate={isHovered ? { rotate: [-30, 30, -30] } : { rotate: [-15, 15, -15] }}
               transition={{ 
                 duration: isHovered ? 0.5 : 0.8, 
                 repeat: Infinity, 
                 ease: "easeInOut" 
               }}
-              style={{ willChange: 'transform' }}
+              style={{ transformOrigin: "-30px 20px", willChange: 'transform' }}
             >
               <ellipse cx="-30" cy="20" rx="18" ry="30" fill="url(#foxBody)" />
               <ellipse cx="-30" cy="20" rx="12" ry="24" fill="#FF8C42" />

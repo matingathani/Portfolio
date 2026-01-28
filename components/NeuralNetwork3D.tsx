@@ -71,7 +71,7 @@ function NeuralConnection({
     return curve.getPoints(100);
   }, [start, end, index]);
 
-  const lineRef = useRef<THREE.Line>(null);
+  const lineRef = useRef<THREE.Line>(null!);
 
   useFrame((state) => {
     if (lineRef.current) {
@@ -91,7 +91,7 @@ function NeuralConnection({
   });
 
   return (
-    <line ref={lineRef}>
+    <line ref={lineRef as any}>
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
