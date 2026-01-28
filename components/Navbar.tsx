@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import ColorShiftText from "./ColorShiftText";
 
 const links = [
   { href: "/", label: "Home" },
@@ -21,10 +22,10 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b-2 border-border bg-[rgba(255,255,255,0.95)] backdrop-blur-xl shadow-lg">
       <nav className="mx-auto flex max-w-content items-center justify-between px-6 py-4">
-        <Link href="/" className="font-heading text-lg font-semibold text-primary">
-          MG<span className="text-accent">.</span>
+        <Link href="/" className="font-heading text-xl font-bold hover:scale-105 transition-transform">
+          <ColorShiftText speed={0.4}>Matin Gathani</ColorShiftText>
         </Link>
         <button
           className="md:hidden text-sm text-secondary"
@@ -40,7 +41,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="relative text-sm text-secondary transition hover:text-primary"
+                className="relative text-sm font-semibold text-secondary transition-all hover:text-accent hover:scale-105"
               >
                 <span className={active ? "text-primary" : ""}>{link.label}</span>
                 {active && (

@@ -229,4 +229,50 @@ export const content: SiteContent = {
       proof: "Built responsive UI for AI integrations and a full-stack medical record system.",
     },
   ],
+  testimonials: [
+    {
+      quote:
+        "Matin has been an exceptional tutor, helping me understand complex algorithms and debugging techniques. His patience and clear explanations made a huge difference in my coursework.",
+      author: "Student",
+      role: "Computer Science Student",
+      company: "ASU",
+    },
+    {
+      quote:
+        "Working with Matin on our capstone project was seamless. He delivered high-quality code, conducted thorough reviews, and maintained excellent documentation throughout the project.",
+      author: "Team Member",
+      role: "Capstone Project Team",
+      company: "ASU",
+    },
+    {
+      quote:
+        "Matin's work on our NLP pipelines significantly improved our data processing efficiency. His attention to detail and technical documentation was outstanding.",
+      author: "Supervisor",
+      role: "Data Team Lead",
+      company: "Musikaar",
+    },
+  ],
+  achievements: [
+    {
+      title: "Engineering Tutor",
+      description: "Mentored 180+ students across 300+ sessions",
+      date: "2024 - Present",
+      category: "other",
+      icon: "🎓",
+    },
+    {
+      title: "Data Intern",
+      description: "Improved processing efficiency by 40%",
+      date: "2024",
+      category: "other",
+      icon: "💼",
+    },
+    {
+      title: "Capstone Project",
+      description: "100% on-time milestone delivery",
+      date: "2025",
+      category: "other",
+      icon: "🚀",
+    },
+  ],
 };

@@ -11,10 +11,10 @@ export default function ProjectCard({
   return (
     <Link
       href={detailsHref ?? "/#projects"}
-      className="card hover-tilt pixel-ripple flex h-full flex-col gap-4"
+      className="card hover-tilt pixel-ripple flex h-full flex-col gap-4 group"
     >
       <div className="flex items-center justify-between">
-        <span className="text-xs font-mono uppercase tracking-[0.2em] text-accent">
+        <span className="text-xs font-mono uppercase tracking-[0.2em] px-3 py-1 rounded-full bg-accent/20 text-accent font-bold border-2 border-accent/30">
           {project.category}
         </span>
         <span className="text-xs text-muted">{project.dates}</span>
@@ -27,14 +27,16 @@ export default function ProjectCard({
         {project.techStack.slice(0, 3).map((tech) => (
           <span
             key={tech}
-            className="rounded-full border border-border px-3 py-1 text-xs text-secondary"
+            className="rounded-full border-2 border-border px-3 py-1 text-xs font-semibold text-secondary hover:border-accent hover:text-accent transition-colors"
           >
             {tech}
           </span>
         ))}
       </div>
       {detailsHref && (
-        <span className="mt-2 text-xs font-semibold text-accent">View details</span>
+        <span className="mt-2 text-xs font-bold text-accent group-hover:underline flex items-center gap-1">
+          View details <span>→</span>
+        </span>
       )}
     </Link>
   );

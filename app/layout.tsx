@@ -5,6 +5,11 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PageTransition from "../components/PageTransition";
 import BackgroundLayers from "../components/BackgroundLayers";
+import FlowingCodeBackground from "../components/FlowingCodeBackground";
+import ScrollToTop from "../components/ScrollToTop";
+import ScrollProgress from "../components/ScrollProgress";
+import KeyboardShortcuts from "../components/KeyboardShortcuts";
+import AccessibilitySkipLink from "../components/AccessibilitySkipLink";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { content } from "../lib/content";
 
@@ -56,8 +61,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${headingFont.variable} ${bodyFont.variable} ${monoFont.variable}`}>
       <body>
+        <FlowingCodeBackground />
+        <AccessibilitySkipLink />
+        <KeyboardShortcuts />
         <Navbar />
-        <main className="relative overflow-hidden">
+        <main id="main-content" className="relative overflow-hidden">
           <BackgroundLayers />
           <div className="relative z-10">
             <PageTransition>
@@ -66,6 +74,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </main>
         <Footer />
+        <ScrollToTop />
+        <ScrollProgress />
         <SpeedInsights />
       </body>
     </html>

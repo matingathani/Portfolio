@@ -26,18 +26,22 @@ export default function ExperienceCard({
       </div>
       <div className="mt-4 flex flex-wrap gap-2">
         {item.tools.map((tool) => (
-          <span key={tool} className="rounded-full border border-border px-3 py-1 text-xs text-secondary">
+          <span key={tool} className="rounded-full border-2 border-border px-3 py-1 text-xs font-semibold text-secondary hover:border-accent hover:text-accent transition-colors">
             {tool}
           </span>
         ))}
       </div>
-      <div className="mt-4 flex flex-wrap items-center gap-4 text-sm font-semibold text-accent">
-        <button onClick={() => setOpen((prev) => !prev)} aria-expanded={open}>
+      <div className="mt-4 flex flex-wrap items-center gap-4 text-sm font-bold">
+        <button 
+          onClick={() => setOpen((prev) => !prev)} 
+          aria-expanded={open}
+          className="text-accent hover:text-accent2 transition-colors hover:underline"
+        >
           {open ? "Hide details" : "View details"}
         </button>
         {detailsHref && (
-          <a href={detailsHref} className="text-xs font-semibold text-accent">
-            Jump to full notes
+          <a href={detailsHref} className="text-xs font-bold text-accent hover:text-accent2 transition-colors hover:underline">
+            Jump to full notes →
           </a>
         )}
       </div>

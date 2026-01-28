@@ -1,6 +1,6 @@
 import ScrollReveal from "./ScrollReveal";
 
-export default function SectionHeader({ title, subtitle }: { title: string; subtitle?: string }) {
+export default function SectionHeader({ title, subtitle }: { title: string | React.ReactNode; subtitle?: string }) {
   return (
     <ScrollReveal>
       {subtitle && <p className="section-subtitle mb-2">{subtitle}</p>}

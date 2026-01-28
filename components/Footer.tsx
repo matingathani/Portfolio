@@ -3,7 +3,7 @@ import { content } from "../lib/content";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border bg-background/80">
+    <footer className="border-t-2 border-border bg-white/90 backdrop-blur-sm">
       <div className="mx-auto flex max-w-content flex-col gap-6 px-6 py-10 md:flex-row md:items-center md:justify-between">
         <div>
           <p className="font-heading text-lg text-primary">{content.name}</p>

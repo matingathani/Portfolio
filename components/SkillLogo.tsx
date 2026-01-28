@@ -16,8 +16,8 @@ const logoMap: Record<string, string> = {
 export const SkillLogo = ({ name }: { name: string }) => {
   const src = logoMap[name] ?? "/logos/sql.svg";
   return (
-    <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-[#0f172a] text-primary">
-      <Image src={src} alt={`${name} logo`} width={22} height={22} />
+    <div className="flex h-10 w-10 items-center justify-center rounded-xl border-2 border-border bg-white shadow-sm hover:shadow-md transition-shadow">
+      <Image src={src} alt={`${name} logo`} width={22} height={22} className="opacity-80" />
     </div>
   );
 };

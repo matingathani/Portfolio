@@ -38,6 +38,22 @@ export type Education = {
   gpa?: string;
 };
 
+export type Testimonial = {
+  quote: string;
+  author: string;
+  role: string;
+  company?: string;
+  avatar?: string;
+};
+
+export type Achievement = {
+  title: string;
+  description: string;
+  date: string;
+  icon?: string;
+  category: "certification" | "award" | "hackathon" | "other";
+};
+
 export type SiteContent = {
   name: string;
   role: string;
@@ -63,4 +79,6 @@ export type SiteContent = {
   experience: Experience[];
   projects: Project[];
   skills: SkillGroup[];
+  testimonials?: Testimonial[];
+  achievements?: Achievement[];
 };
