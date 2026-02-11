@@ -54,6 +54,14 @@ export type Achievement = {
   category: "certification" | "award" | "hackathon" | "other";
 };
 
+export type RecentAiTraining = {
+  title: string;
+  description: string;
+  date: string;
+  modelType?: string;
+  metrics?: string;
+};
+
 export type SiteContent = {
   name: string;
   role: string;
@@ -81,4 +89,5 @@ export type SiteContent = {
   skills: SkillGroup[];
   testimonials?: Testimonial[];
   achievements?: Achievement[];
+  recentAiTraining?: RecentAiTraining;
 };

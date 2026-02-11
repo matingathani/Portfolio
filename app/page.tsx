@@ -18,6 +18,8 @@ import TestimonialCard from "../components/TestimonialCard";
 import AchievementBadge from "../components/AchievementBadge";
 import ProjectFilter from "../components/ProjectFilter";
 import GitHubActivity from "../components/GitHubActivity";
+import GitContribSnapshot from "../components/GitContribSnapshot";
+import RecentAiTrainingCard from "../components/RecentAiTrainingCard";
 import ProjectsSection from "../components/ProjectsSection";
 import ColorShiftText from "../components/ColorShiftText";
 import Tooltip from "../components/Tooltip";
@@ -102,7 +104,7 @@ export default function HomePage() {
         <div className="w-full max-w-sm flex-1 md:flex-none md:w-[360px] relative">
           <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden border-2 border-border/40 bg-white shadow-xl hover:shadow-2xl transition-all duration-300">
             <Image
-              src="/profile-photo.png"
+              src="/profile-photo.webp"
               alt={content.name}
               fill
               className="object-cover"
@@ -159,15 +161,19 @@ export default function HomePage() {
               <ImpactBars items={content.impactMetrics} />
             </div>
           </div>
-            <div className="card space-y-3">
-              <h3 className="text-lg font-heading text-primary">Fast context</h3>
-              <p className="text-sm text-secondary">{content.recruiterIntro}</p>
-              <Tooltip content="Download my resume in PDF format">
-                <a href="/MatinGathaniResume2026.pdf" className="btn-secondary" download>
-                  Download Resume
-                </a>
-              </Tooltip>
-            </div>
+          <div className="card space-y-3">
+            <h3 className="text-lg font-heading text-primary">Fast context</h3>
+            <p className="text-sm text-secondary">{content.recruiterIntro}</p>
+            <Tooltip content="Download my resume in PDF format">
+              <a href="/MatinGathaniResume2026.pdf" className="btn-secondary" download>
+                Download Resume
+              </a>
+            </Tooltip>
+          </div>
+          <GitContribSnapshot username={content.contact.github.split("/").pop() || "matingathani"} />
+          {content.recentAiTraining && (
+            <RecentAiTrainingCard training={content.recentAiTraining} />
+          )}
         </div>
       </section>
 

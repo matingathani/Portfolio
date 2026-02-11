@@ -252,6 +252,13 @@ export const content: SiteContent = {
       company: "Musikaar",
     },
   ],
+  recentAiTraining: {
+    title: "NLP & ML pipeline training",
+    description: "Trained and evaluated ML models for HRMS data: preprocessing, tokenization, and production NLP pipelines. Improved model stability and accuracy on real-world HR datasets.",
+    date: "2024",
+    modelType: "NLP / classification",
+    metrics: "~20% accuracy improvement, 40% reduction in manual processing",
+  },
   achievements: [
     {
       title: "Engineering Tutor",

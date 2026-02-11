@@ -15,7 +15,7 @@ export default function AboutPage() {
         <ScrollReveal>
           <div className="card space-y-4">
             <Image
-              src="/matin-gathani.png"
+              src="/matin-gathani.webp"
               alt="Matin Gathani"
               width={640}
               height={800}
