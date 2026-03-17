@@ -151,6 +151,11 @@ export default function StoryCareer() {
                 <motion.div
                   initial={{ opacity: 0, x: job.side === "left" ? -40 : 40 }}
                   whileInView={{ opacity: 1, x: 0 }}
+                  whileHover={{
+                    borderColor: "rgba(34,211,238,0.35)",
+                    boxShadow: "0 0 32px rgba(34,211,238,0.08), inset 0 0 20px rgba(34,211,238,0.03)",
+                    y: -3,
+                  }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.7, delay: 0.1 }}
                   style={{
@@ -160,6 +165,7 @@ export default function StoryCareer() {
                     borderRadius: 16,
                     padding: "28px 32px",
                     position: "relative",
+                    cursor: "default",
                   }}
                 >
                   <p

@@ -2,6 +2,14 @@
 import { motion } from "framer-motion";
 import { TechIcon, TechTag } from "./TechIcon";
 
+const proficiencies = [
+  { name: "Python", value: 94 },
+  { name: "JavaScript / TypeScript", value: 89 },
+  { name: "Java", value: 90 },
+  { name: "SQL", value: 87 },
+  { name: "React / Next.js", value: 85 },
+];
+
 const row1 = ["Python", "JavaScript", "TypeScript", "Java", "C++", "SQL", "React", "Next.js", "Node.js", "Docker"];
 const row2 = ["NLP", "Pandas", "NumPy", "REST APIs", "Git", "Linux", "Postman", "CI/CD", "HTML5", "CSS3"];
 
@@ -100,6 +108,7 @@ export default function StoryTechStack() {
             <motion.div key={group.title}
               initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
+              whileHover={{ borderColor: `${group.accent}40`, y: -2 }}
               transition={{ duration: 0.6, delay: gi * 0.1 }}
               style={{
                 background: "rgba(255,255,255,0.02)",
@@ -118,6 +127,50 @@ export default function StoryTechStack() {
             </motion.div>
           ))}
         </div>
+
+        {/* Proficiency bars */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          style={{ marginTop: 60 }}
+        >
+          <p style={{
+            fontSize: 11, color: "#22d3ee",
+            letterSpacing: "3px", textTransform: "uppercase",
+            marginBottom: 32,
+          }}>
+            Proficiency
+          </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
+            {proficiencies.map((skill, i) => (
+              <div key={skill.name}>
+                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
+                  <span style={{ fontSize: 13, color: "#a89fad", letterSpacing: "0.5px" }}>{skill.name}</span>
+                  <span style={{ fontSize: 13, color: "#22d3ee", fontWeight: 600 }}>{skill.value}%</span>
+                </div>
+                <div style={{
+                  height: 3, width: "100%",
+                  background: "rgba(34,211,238,0.08)",
+                  borderRadius: 2, overflow: "hidden",
+                }}>
+                  <motion.div
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${skill.value}%` }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.9, delay: i * 0.08, ease: "easeOut" }}
+                    style={{
+                      height: "100%",
+                      background: "linear-gradient(to right, #22d3ee, #14b8a6)",
+                      borderRadius: 2,
+                    }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

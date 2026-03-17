@@ -174,10 +174,76 @@ export default function StoryLanding() {
           lineHeight: 1.6,
           maxWidth: 200,
           marginLeft: "auto",
+          marginBottom: 20,
         }}>
           ASU Computer Science<br />
           Tempe, AZ
         </p>
+
+        {/* Open to internships badge */}
+        <div style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 7,
+          background: "rgba(34,211,238,0.07)",
+          border: "1px solid rgba(34,211,238,0.22)",
+          borderRadius: 100,
+          padding: "6px 14px",
+          marginLeft: "auto",
+          marginBottom: 12,
+        }}>
+          <span className="pulse-dot" style={{
+            width: 7, height: 7, borderRadius: "50%",
+            background: "#22d3ee",
+            boxShadow: "0 0 6px 2px rgba(34,211,238,0.5)",
+            flexShrink: 0,
+            display: "inline-block",
+          }} />
+          <span style={{
+            fontSize: 11, color: "#22d3ee",
+            letterSpacing: "1.5px", textTransform: "uppercase",
+            fontWeight: 500, whiteSpace: "nowrap",
+          }}>
+            Open to Internships
+          </span>
+        </div>
+
+        {/* Resume CTA */}
+        <a
+          href="/resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="resume-cta"
+          style={{
+            display: "block",
+            padding: "9px 20px",
+            background: "transparent",
+            border: "1px solid rgba(34,211,238,0.25)",
+            borderRadius: 8,
+            fontSize: 11,
+            color: "#5eead4",
+            letterSpacing: "2px",
+            textTransform: "uppercase",
+            textDecoration: "none",
+            textAlign: "center",
+            transition: "all 0.2s",
+          }}
+        >
+          View Résumé
+        </a>
+
+        <style>{`
+          .pulse-dot { animation: pulse-badge 2s ease-in-out infinite; }
+          @keyframes pulse-badge {
+            0%, 100% { box-shadow: 0 0 6px 2px rgba(34,211,238,0.5); }
+            50% { box-shadow: 0 0 12px 4px rgba(34,211,238,0.15); }
+          }
+          .resume-cta:hover {
+            background: rgba(34,211,238,0.08) !important;
+            border-color: rgba(34,211,238,0.5) !important;
+            color: #22d3ee !important;
+          }
+        `}</style>
       </motion.div>
 
       {/* Scroll indicator */}

@@ -55,8 +55,8 @@ export default function Navbar() {
 
         {/* Desktop links */}
         <ul style={{
-          display: "flex", gap: 40, listStyle: "none",
-          margin: 0, padding: 0,
+          display: "flex", gap: 36, listStyle: "none",
+          margin: 0, padding: 0, alignItems: "center",
         }}
           className="nav-desktop"
         >
@@ -75,6 +75,33 @@ export default function Navbar() {
               </a>
             </li>
           ))}
+          <li>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontSize: 11, letterSpacing: "2px", fontWeight: 500,
+                textTransform: "uppercase", textDecoration: "none",
+                color: "#22d3ee",
+                border: "1px solid rgba(34,211,238,0.3)",
+                borderRadius: 6,
+                padding: "7px 16px",
+                transition: "all 0.2s",
+                display: "inline-block",
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLAnchorElement).style.background = "rgba(34,211,238,0.1)";
+                (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(34,211,238,0.6)";
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
+                (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(34,211,238,0.3)";
+              }}
+            >
+              Résumé
+            </a>
+          </li>
         </ul>
 
         {/* Mobile menu button */}
@@ -111,6 +138,19 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "block", padding: "14px 0",
+              fontSize: 13, color: "#22d3ee",
+              letterSpacing: "2px", textTransform: "uppercase",
+              textDecoration: "none", fontWeight: 500,
+            }}
+          >
+            Résumé ↗
+          </a>
         </div>
       )}
 
