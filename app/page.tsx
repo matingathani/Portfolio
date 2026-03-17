@@ -6,6 +6,7 @@ import StoryEducation from "../components/story/Education";
 import StoryProjects from "../components/story/Projects";
 import StoryTechStack from "../components/story/TechStack";
 import StoryTestimonials from "../components/story/Testimonials";
+import StoryLatestPosts from "../components/story/LatestPosts";
 import StoryContact from "../components/story/Contact";
 
 export default function HomePage() {
@@ -19,6 +20,7 @@ export default function HomePage() {
       <StoryProjects />
       <StoryTechStack />
       <StoryTestimonials />
+      <StoryLatestPosts />
       <StoryContact />
     </div>
   );

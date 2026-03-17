@@ -86,3 +86,4 @@ jspm_packages/
 .vercel
 .cursor
 .env*.local
+.worktrees/
