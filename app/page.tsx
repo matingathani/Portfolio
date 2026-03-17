@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import AnimatedText from "../components/AnimatedText";
 import Typewriter from "../components/Typewriter";
@@ -12,7 +11,6 @@ import SkillGroupCard from "../components/SkillGroupCard";
 import { SkillLogo } from "../components/SkillLogo";
 import SkillProficiencyBar from "../components/SkillProficiencyBar";
 import ImpactBars from "../components/ImpactBars";
-import NoiseOverlay from "../components/NoiseOverlay";
 import LazyResume from "../components/LazyResume";
 import TestimonialCard from "../components/TestimonialCard";
 import AchievementBadge from "../components/AchievementBadge";
@@ -27,29 +25,10 @@ import Image from "next/image";
 import { content } from "../lib/content";
 import { formatPhone, slugify } from "../lib/utils";
 
-const Hero3D = dynamic(() => import("../components/Hero3D"), {
-  ssr: false,
-  loading: () => (
-    <div className="flex h-full w-full items-center justify-center rounded-card border border-border bg-surface">
-      <span className="text-xs font-mono uppercase tracking-[0.3em] text-muted">Loading</span>
-    </div>
-  ),
-});
-const Signal3D = dynamic(() => import("../components/Signal3D"), {
-  ssr: false,
-  loading: () => (
-    <div className="flex h-full w-full items-center justify-center rounded-card border border-border bg-surface">
-      <span className="text-xs font-mono uppercase tracking-[0.3em] text-muted">Loading</span>
-    </div>
-  ),
-});
-
 export default function HomePage() {
   return (
     <div>
-      <section className="relative mx-auto flex max-w-content flex-col items-center gap-10 px-6 pb-16 pt-16 md:flex-row md:items-start">
-        <div className="absolute inset-0 -z-10 rounded-card border border-border bg-gradient-to-br from-white/40 via-white/30 to-white/40 backdrop-blur-md" aria-hidden />
-        <NoiseOverlay />
+      <section data-section="hero" className="relative mx-auto flex max-w-content flex-col items-center gap-10 px-6 pb-16 pt-16 md:flex-row md:items-start">
         <div className="flex-1 space-y-6">
           <div className="inline-flex items-center gap-2 rounded-full bg-accent/10 px-4 py-2 border-2 border-accent/20 backdrop-blur-sm">
             <span className="relative flex h-2 w-2">
@@ -102,7 +81,7 @@ export default function HomePage() {
           </div>
         </div>
         <div className="w-full max-w-sm flex-1 md:flex-none md:w-[360px] relative">
-          <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden border-2 border-border/40 bg-white shadow-xl hover:shadow-2xl transition-all duration-300">
+          <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden border border-blue-500/20 shadow-xl hover:shadow-2xl transition-all duration-300" style={{ background: 'rgba(6,11,24,0.4)' }}>
             <Image
               src="/profile-photo.webp"
               alt={content.name}
@@ -112,7 +91,7 @@ export default function HomePage() {
               sizes="(max-width: 768px) 300px, 360px"
               style={{ objectPosition: "center 30%" }}
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/5 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20 pointer-events-none" />
           </div>
         </div>
       </section>
@@ -177,7 +156,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="experience" className="section-block mx-auto max-w-content scroll-mt-24 px-6 py-12">
+      <section id="experience" data-section="experience" className="section-block mx-auto max-w-content scroll-mt-24 px-6 py-12">
         <SectionHeader title="Experience" subtitle="Impact and roles" />
         <div className="mt-8 grid gap-6 md:grid-cols-2">
           {content.experience.map((item) => (
@@ -221,7 +200,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="projects" className="section-block mx-auto max-w-content scroll-mt-24 px-6 py-12">
+      <section id="projects" data-section="projects" className="section-block mx-auto max-w-content scroll-mt-24 px-6 py-12">
         <SectionHeader 
           title={<ColorShiftText speed={0.3}>Projects</ColorShiftText>} 
           subtitle="Selected work" 
@@ -259,7 +238,7 @@ export default function HomePage() {
         </section>
       )}
 
-      <section id="skills" className="section-block mx-auto max-w-content scroll-mt-24 px-6 py-12">
+      <section id="skills" data-section="skills" className="section-block mx-auto max-w-content scroll-mt-24 px-6 py-12">
         <SectionHeader 
           title={<ColorShiftText speed={0.3}>Skills</ColorShiftText>} 
           subtitle="Toolbox" 
@@ -303,8 +282,8 @@ export default function HomePage() {
               <p className="mt-2 text-sm text-secondary">
                 Blending ML, APIs, and data systems with production-focused testing and documentation.
               </p>
-              <div className="mt-4 h-48">
-                <Signal3D />
+              <div className="mt-4 h-48 flex items-center justify-center rounded-xl" style={{ background: 'rgba(59,130,246,0.05)', border: '1px solid rgba(59,130,246,0.1)' }}>
+                <p className="text-xs font-mono text-muted tracking-widest uppercase">Neural signal stack</p>
               </div>
             </div>
             <GitHubActivity username={content.contact.github.split("/").pop() || "matingathani"} />
@@ -340,7 +319,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="contact" className="section-block mx-auto max-w-content scroll-mt-24 px-6 py-12">
+      <section id="contact" data-section="contact" className="section-block mx-auto max-w-content scroll-mt-24 px-6 py-12">
         <SectionHeader 
           title={<ColorShiftText speed={0.3}>Contact</ColorShiftText>} 
           subtitle="Let's connect" 
