@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PageTransition from "../components/PageTransition";
 import StoryCursor from "../components/story/Cursor";
+import ScrollReset from "../components/ScrollReset";
 import ScrollToTop from "../components/ScrollToTop";
 import ScrollProgress from "../components/ScrollProgress";
 import KeyboardShortcuts from "../components/KeyboardShortcuts";
@@ -60,6 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${headingFont.variable} ${bodyFont.variable} ${monoFont.variable}`}>
       <body>
+        <ScrollReset />
         <StoryCursor />
         <AccessibilitySkipLink />
         <KeyboardShortcuts />
