@@ -4,8 +4,7 @@ import "../styles/globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PageTransition from "../components/PageTransition";
-import ImmersiveCanvas from "../components/ImmersiveCanvas";
-import CursorGlow from "../components/CursorGlow";
+import StoryCursor from "../components/story/Cursor";
 import ScrollToTop from "../components/ScrollToTop";
 import ScrollProgress from "../components/ScrollProgress";
 import KeyboardShortcuts from "../components/KeyboardShortcuts";
@@ -61,15 +60,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${headingFont.variable} ${bodyFont.variable} ${monoFont.variable}`}>
       <body>
-        <ImmersiveCanvas />
-        <CursorGlow />
+        <StoryCursor />
         <AccessibilitySkipLink />
         <KeyboardShortcuts />
         <Navbar />
-        <main id="main-content" className="relative z-10 overflow-x-hidden">
-          <PageTransition>
-            {children}
-          </PageTransition>
+        <main id="main-content" className="relative">
+          <PageTransition>{children}</PageTransition>
         </main>
         <Footer />
         <ScrollToTop />
