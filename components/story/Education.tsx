@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function StoryEducation() {
   return (
@@ -70,6 +71,15 @@ export default function StoryEducation() {
           {/* Left: school info */}
           <div>
             <div>
+              <div style={{ marginBottom: 20 }}>
+                <Image
+                  src="/asu-logo.png"
+                  alt="Arizona State University"
+                  width={160}
+                  height={54}
+                  style={{ objectFit: "contain", objectPosition: "left" }}
+                />
+              </div>
               <p style={{
                 fontSize: 12,
                 color: "#22d3ee",

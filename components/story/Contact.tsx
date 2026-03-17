@@ -23,6 +23,12 @@ export default function StoryContact() {
       if (res.ok) {
         setStatus("success");
         setForm({ name: "", email: "", message: "", company: "" });
+      } else if (data.message === "Email configuration missing.") {
+        const subject = `Portfolio inquiry from ${form.name}`;
+        const body = `${form.message}\n\nFrom: ${form.name}\nEmail: ${form.email}`;
+        window.open(`mailto:mgathan1@asu.edu?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
+        setStatus("success");
+        setForm({ name: "", email: "", message: "", company: "" });
       } else {
         setStatus("error");
         setErrorMsg(data.message ?? "Something went wrong.");
