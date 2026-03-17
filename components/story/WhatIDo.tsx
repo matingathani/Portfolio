@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { TechTag } from "./TechIcon";
 
 const expertise = [
   {
@@ -105,14 +106,7 @@ export default function StoryWhatIDo() {
                 maxWidth: 260,
               }}>
                 {item.tags.map((tag) => (
-                  <span key={tag} style={{
-                    fontSize: 12,
-                    padding: "5px 14px",
-                    borderRadius: 100,
-                    border: "1px solid rgba(34,211,238,0.2)",
-                    color: "#5eead4",
-                    letterSpacing: "0.5px",
-                  }}>{tag}</span>
+                  <TechTag key={tag} name={tag} accent="#5eead4" />
                 ))}
               </div>
             </motion.div>

@@ -1,6 +1,7 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { TechTag } from "./TechIcon";
 
 const projects = [
   {
@@ -137,10 +138,7 @@ export default function StoryProjects() {
                 </p>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                   {p.tech.map(t => (
-                    <span key={t} style={{
-                      fontSize: 12, padding: "4px 12px", borderRadius: 100,
-                      border: `1px solid ${p.accent}40`, color: p.accent,
-                    }}>{t}</span>
+                    <TechTag key={t} name={t} accent={p.accent} />
                   ))}
                 </div>
               </div>

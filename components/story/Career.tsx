@@ -1,6 +1,7 @@
 "use client";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { TechTag } from "./TechIcon";
 
 const jobs = [
   {
@@ -204,20 +205,8 @@ export default function StoryCareer() {
                     {job.description}
                   </p>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                    {job.tools.map((t) => (
-                      <span
-                        key={t}
-                        style={{
-                          fontSize: 11,
-                          padding: "3px 10px",
-                          borderRadius: 100,
-                          border: "1px solid rgba(34,211,238,0.2)",
-                          color: "#5eead4",
-                          letterSpacing: "0.5px",
-                        }}
-                      >
-                        {t}
-                      </span>
+                    {job.tools.map(t => (
+                      <TechTag key={t} name={t} accent="#5eead4" />
                     ))}
                   </div>
                 </motion.div>
