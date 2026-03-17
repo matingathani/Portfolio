@@ -22,7 +22,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b-2 border-border bg-[rgba(255,255,255,0.95)] backdrop-blur-xl shadow-lg">
+    <header className="sticky top-0 z-50 border-b border-blue-500/10 backdrop-blur-xl shadow-lg" style={{ background: 'rgba(6, 11, 24, 0.85)' }}>
       <nav className="mx-auto flex max-w-content items-center justify-between px-6 py-4">
         <Link href="/" className="font-heading text-xl font-bold hover:scale-105 transition-transform">
           <ColorShiftText speed={0.4}>Matin Gathani</ColorShiftText>
@@ -56,7 +56,7 @@ export default function Navbar() {
         </div>
       </nav>
       {open && (
-        <div className="md:hidden border-t border-border bg-background/90 px-6 py-4">
+        <div className="md:hidden border-t border-blue-500/10 px-6 py-4" style={{ background: 'rgba(6, 11, 24, 0.95)' }}>
           <div className="flex flex-col gap-3">
             {links.map((link) => (
               <Link
