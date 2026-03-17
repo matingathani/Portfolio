@@ -7,6 +7,12 @@ export default function LoadingScreen() {
   const [done, setDone] = useState(false);
 
   useEffect(() => {
+    // Prevent browser scroll restoration from jumping mid-page
+    if (typeof window !== "undefined") {
+      window.history.scrollRestoration = "manual";
+      window.scrollTo(0, 0);
+    }
+
     const duration = 1800;
     const steps = 100;
     const interval = duration / steps;
@@ -17,6 +23,8 @@ export default function LoadingScreen() {
       setCount(current);
       if (current >= 100) {
         clearInterval(timer);
+        // Scroll to top again right before overlay fades, in case browser moved it
+        window.scrollTo(0, 0);
         setTimeout(() => setDone(true), 350);
       }
     }, interval);

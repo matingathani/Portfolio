@@ -68,29 +68,63 @@ export default function StoryEducation() {
           }}
         >
           {/* Left: school info */}
-          <div>
-            <p style={{
-              fontSize: 12,
-              color: "#22d3ee",
-              letterSpacing: "3px",
-              textTransform: "uppercase",
-              marginBottom: 14,
+          <div style={{ display: "flex", gap: 24, alignItems: "flex-start", flexWrap: "wrap" }}>
+            {/* ASU Logo badge */}
+            <div style={{
+              flexShrink: 0,
+              width: 72,
+              height: 72,
+              borderRadius: 14,
+              background: "#8C1D40",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 2,
+              boxShadow: "0 0 0 1px rgba(140,29,64,0.4), 0 4px 20px rgba(140,29,64,0.25)",
             }}>
-              Aug 2022 – May 2026
-            </p>
-            <h3 style={{
-              fontSize: "clamp(22px, 2.5vw, 38px)",
-              fontWeight: 600,
-              color: "#eae5ec",
-              fontFamily: "Space Grotesk, sans-serif",
-              marginBottom: 8,
-            }}>
-              Arizona State University
-            </h3>
-            <p style={{ fontSize: 16, color: "#5eead4", marginBottom: 6, letterSpacing: "0.3px" }}>
-              B.S. in Computer Science
-            </p>
-            <p style={{ fontSize: 14, color: "#6b6475" }}>Tempe, AZ · Ira A. Fulton Schools of Engineering</p>
+              <span style={{
+                fontSize: 28,
+                fontWeight: 800,
+                fontFamily: "Space Grotesk, sans-serif",
+                color: "#FFC627",
+                lineHeight: 1,
+                letterSpacing: "-1px",
+              }}>A</span>
+              <span style={{
+                fontSize: 9,
+                fontWeight: 600,
+                color: "#FFC627",
+                letterSpacing: "2px",
+                textTransform: "uppercase",
+                opacity: 0.85,
+              }}>ASU</span>
+            </div>
+
+            <div>
+              <p style={{
+                fontSize: 12,
+                color: "#22d3ee",
+                letterSpacing: "3px",
+                textTransform: "uppercase",
+                marginBottom: 14,
+              }}>
+                Aug 2022 – May 2026
+              </p>
+              <h3 style={{
+                fontSize: "clamp(22px, 2.5vw, 38px)",
+                fontWeight: 600,
+                color: "#eae5ec",
+                fontFamily: "Space Grotesk, sans-serif",
+                marginBottom: 8,
+              }}>
+                Arizona State University
+              </h3>
+              <p style={{ fontSize: 16, color: "#5eead4", marginBottom: 6, letterSpacing: "0.3px" }}>
+                B.S. in Computer Science
+              </p>
+              <p style={{ fontSize: 14, color: "#6b6475" }}>Tempe, AZ · Ira A. Fulton Schools of Engineering</p>
+            </div>
           </div>
 
           {/* Right: stats */}
