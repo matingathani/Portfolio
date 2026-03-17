@@ -1,6 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 export default function StoryEducation() {
   return (
@@ -69,27 +68,7 @@ export default function StoryEducation() {
           }}
         >
           {/* Left: school info */}
-          <div style={{ display: "flex", gap: 24, alignItems: "flex-start", flexWrap: "wrap" }}>
-            {/* ASU Official Logo */}
-            <div style={{
-              flexShrink: 0,
-              background: "#ffffff",
-              borderRadius: 12,
-              padding: "10px 16px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              boxShadow: "0 0 0 1px rgba(140,29,64,0.15), 0 4px 20px rgba(140,29,64,0.12)",
-            }}>
-              <Image
-                src="/asu-logo.png"
-                alt="Arizona State University"
-                width={150}
-                height={50}
-                style={{ objectFit: "contain", display: "block" }}
-              />
-            </div>
-
+          <div>
             <div>
               <p style={{
                 fontSize: 12,
