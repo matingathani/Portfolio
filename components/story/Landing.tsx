@@ -24,8 +24,8 @@ export default function StoryLanding() {
       {/* Nav fade */}
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 130, background: "linear-gradient(to bottom, #050810 0%, transparent 100%)", pointerEvents: "none", zIndex: 12 }} />
 
-      {/* ── Main layout ── */}
-      <div className="hero-wrap" style={{ position: "relative", zIndex: 5, width: "100%" }}>
+      {/* ── Grid layout ── */}
+      <div className="hero-wrap" style={{ position: "relative", zIndex: 5 }}>
 
         {/* LEFT — name */}
         <motion.div
@@ -34,10 +34,10 @@ export default function StoryLanding() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
-          <p style={{ fontSize: "clamp(12px, 1.1vw, 17px)", textTransform: "uppercase", letterSpacing: "5px", color: "#22d3ee", fontWeight: 400, marginBottom: 12 }}>
+          <p style={{ fontSize: "clamp(11px, 1vw, 16px)", textTransform: "uppercase", letterSpacing: "5px", color: "#22d3ee", fontWeight: 400, marginBottom: 12 }}>
             Hello! I&apos;m
           </p>
-          <h1 style={{ fontSize: "clamp(40px, 5.5vw, 88px)", fontWeight: 700, lineHeight: 0.95, letterSpacing: "-0.02em", color: "#eae5ec", fontFamily: "Space Grotesk, sans-serif", margin: 0 }}>
+          <h1 style={{ fontSize: "clamp(36px, 4.5vw, 80px)", fontWeight: 700, lineHeight: 0.95, letterSpacing: "-0.02em", color: "#eae5ec", fontFamily: "Space Grotesk, sans-serif", margin: 0 }}>
             MATIN<br />
             <span style={{ fontWeight: 300, color: "#a89fad" }}>GATHANI</span>
           </h1>
@@ -49,12 +49,12 @@ export default function StoryLanding() {
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.1, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-          style={{ position: "relative", flexShrink: 0 }}
+          style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center" }}
         >
           {/* Rim glow */}
-          <div style={{ position: "absolute", bottom: -30, left: "50%", transform: "translateX(-50%)", width: "80%", height: 120, background: "#22d3ee", borderRadius: "50%", filter: "blur(40px)", opacity: 0.25, zIndex: 1 }} />
-          <div style={{ position: "relative", borderRadius: "200px 200px 120px 120px", overflow: "hidden", border: "1px solid rgba(34,211,238,0.2)", zIndex: 2 }} className="hero-photo">
-            <Image src="/profile-photo.webp" alt="Matin Gathani" fill priority sizes="(max-width: 768px) 220px, 420px" style={{ objectFit: "cover", objectPosition: "center 20%" }} />
+          <div style={{ position: "absolute", bottom: -30, left: "50%", transform: "translateX(-50%)", width: "80%", height: 100, background: "#22d3ee", borderRadius: "50%", filter: "blur(40px)", opacity: 0.22, zIndex: 1 }} />
+          <div className="hero-photo" style={{ position: "relative", borderRadius: "200px 200px 120px 120px", overflow: "hidden", border: "1px solid rgba(34,211,238,0.2)", zIndex: 2 }}>
+            <Image src="/profile-photo.webp" alt="Matin Gathani" fill priority sizes="(max-width: 900px) 220px, 380px" style={{ objectFit: "cover", objectPosition: "center 20%" }} />
             <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "35%", background: "linear-gradient(to top, #050810 0%, transparent 100%)", pointerEvents: "none" }} />
           </div>
         </motion.div>
@@ -65,23 +65,24 @@ export default function StoryLanding() {
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+          style={{ display: "flex", flexDirection: "column" }}
         >
-          <p style={{ fontSize: "clamp(12px, 1.1vw, 17px)", textTransform: "uppercase", letterSpacing: "5px", color: "#22d3ee", fontWeight: 400, marginBottom: 8 }}>
+          <p style={{ fontSize: "clamp(11px, 1vw, 16px)", textTransform: "uppercase", letterSpacing: "5px", color: "#22d3ee", fontWeight: 400, marginBottom: 8 }}>
             A Software &amp;
           </p>
-          <h2 style={{ fontSize: "clamp(32px, 4.5vw, 72px)", fontWeight: 700, lineHeight: 0.95, letterSpacing: "-0.02em", color: "#eae5ec", fontFamily: "Space Grotesk, sans-serif", margin: 0, marginBottom: 14 }}>
+          <h2 style={{ fontSize: "clamp(30px, 4vw, 68px)", fontWeight: 700, lineHeight: 0.95, letterSpacing: "-0.02em", color: "#eae5ec", fontFamily: "Space Grotesk, sans-serif", margin: 0, marginBottom: 14 }}>
             DATA<br /><span style={{ color: "#22d3ee" }}>ENGINEER</span>
           </h2>
-          <p style={{ fontSize: "clamp(12px, 0.9vw, 14px)", color: "#6b6475", letterSpacing: "1px", lineHeight: 1.6, marginBottom: 20 }}>
+          <p style={{ fontSize: "clamp(11px, 0.85vw, 14px)", color: "#6b6475", letterSpacing: "1px", lineHeight: 1.6, marginBottom: 20 }}>
             ASU Computer Science · Tempe, AZ
           </p>
           {/* Badge */}
-          <div style={{ display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(34,211,238,0.07)", border: "1px solid rgba(34,211,238,0.22)", borderRadius: 100, padding: "6px 14px", marginBottom: 12 }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(34,211,238,0.07)", border: "1px solid rgba(34,211,238,0.22)", borderRadius: 100, padding: "6px 14px", marginBottom: 12, alignSelf: "flex-start" }}>
             <span className="pulse-dot" style={{ width: 7, height: 7, borderRadius: "50%", background: "#22d3ee", boxShadow: "0 0 6px 2px rgba(34,211,238,0.5)", flexShrink: 0, display: "inline-block" }} />
             <span style={{ fontSize: 11, color: "#22d3ee", letterSpacing: "1.5px", textTransform: "uppercase", fontWeight: 500, whiteSpace: "nowrap" }}>Open to Internships</span>
           </div>
           {/* Resume */}
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="resume-cta" style={{ display: "block", padding: "9px 20px", background: "transparent", border: "1px solid rgba(34,211,238,0.25)", borderRadius: 8, fontSize: 11, color: "#5eead4", letterSpacing: "2px", textTransform: "uppercase", textDecoration: "none", textAlign: "center", transition: "all 0.2s" }}>
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="resume-cta" style={{ display: "inline-block", padding: "9px 20px", background: "transparent", border: "1px solid rgba(34,211,238,0.25)", borderRadius: 8, fontSize: 11, color: "#5eead4", letterSpacing: "2px", textTransform: "uppercase", textDecoration: "none", transition: "all 0.2s", alignSelf: "flex-start" }}>
             View Résumé
           </a>
         </motion.div>
@@ -99,8 +100,9 @@ export default function StoryLanding() {
       </motion.div>
 
       <style>{`
-        /* ── Mobile: stacked column ── */
+        /* ── Mobile: single centered column ── */
         .hero-wrap {
+          width: 100%;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -110,48 +112,28 @@ export default function StoryLanding() {
         }
         .hero-left { order: 2; }
         .hero-center { order: 1; }
-        .hero-right { order: 3; display: flex; flex-direction: column; align-items: center; }
+        .hero-right { order: 3; align-items: center !important; }
+        .hero-right .inline-flex, .hero-right a { align-self: center !important; }
         .hero-photo { width: 200px; aspect-ratio: 3/4; }
+        .hero-scroll { display: none; }
 
-        /* ── Desktop: three-panel absolute layout ── */
+        /* ── Desktop: CSS grid — no overlap possible ── */
         @media (min-width: 900px) {
           .hero-wrap {
-            display: block;
-            position: relative;
-            height: 100svh;
-            min-height: 100vh;
-            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: clamp(20px, 3vw, 48px);
+            padding: 0 clamp(28px, 6vw, 100px);
+            width: 100%;
+            min-height: 100svh;
           }
-          .hero-left {
-            position: absolute;
-            left: clamp(24px, 8vw, 120px);
-            top: 50%;
-            transform: translateY(-50%);
-            text-align: left;
-            order: unset;
-          }
-          .hero-center {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            order: unset;
-          }
-          .hero-photo { width: clamp(260px, 28vw, 420px); aspect-ratio: 3/4; }
-          .hero-right {
-            position: absolute;
-            right: clamp(24px, 8vw, 120px);
-            top: 50%;
-            transform: translateY(-50%);
-            text-align: right;
-            align-items: flex-end;
-            order: unset;
-          }
+          .hero-left { order: unset; text-align: left; }
+          .hero-center { order: unset; }
+          .hero-right { order: unset; text-align: right; align-items: flex-end !important; }
+          .hero-right div[style], .hero-right a { align-self: flex-end !important; }
+          .hero-photo { width: clamp(240px, 24vw, 380px); aspect-ratio: 3/4; }
           .hero-scroll { display: flex; }
-        }
-
-        @media (max-width: 899px) {
-          .hero-scroll { display: none !important; }
         }
 
         .pulse-dot { animation: pulse-badge 2s ease-in-out infinite; }

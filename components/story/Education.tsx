@@ -73,23 +73,20 @@ export default function StoryEducation() {
             {/* ASU Official Logo */}
             <div style={{
               flexShrink: 0,
-              width: 120,
-              height: 72,
-              borderRadius: 12,
-              overflow: "hidden",
               background: "#ffffff",
+              borderRadius: 12,
+              padding: "10px 16px",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              padding: "8px 12px",
-              boxShadow: "0 0 0 1px rgba(140,29,64,0.2), 0 4px 20px rgba(140,29,64,0.15)",
+              boxShadow: "0 0 0 1px rgba(140,29,64,0.15), 0 4px 20px rgba(140,29,64,0.12)",
             }}>
               <Image
                 src="/asu-logo.png"
                 alt="Arizona State University"
-                width={120}
-                height={56}
-                style={{ objectFit: "contain", width: "100%", height: "auto" }}
+                width={150}
+                height={50}
+                style={{ objectFit: "contain", display: "block" }}
               />
             </div>
 
