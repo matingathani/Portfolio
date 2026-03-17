@@ -80,8 +80,8 @@ export default function StoryProjects() {
           </div>
           {/* Arrows */}
           <div style={{ display: "flex", gap: 12 }}>
-            {[{ fn: prev, label: "←" }, { fn: next, label: "→" }].map(({ fn, label }) => (
-              <button key={label} onClick={fn} style={{ width: 48, height: 48, borderRadius: "50%", border: "1px solid rgba(34,211,238,0.3)", background: "transparent", color: "#22d3ee", fontSize: 18, cursor: "pointer", transition: "all 0.2s", display: "flex", alignItems: "center", justifyContent: "center" }}
+            {[{ fn: prev, label: "←", ariaLabel: "Previous project" }, { fn: next, label: "→", ariaLabel: "Next project" }].map(({ fn, label, ariaLabel }) => (
+              <button key={label} onClick={fn} aria-label={ariaLabel} style={{ width: 48, height: 48, borderRadius: "50%", border: "1px solid rgba(34,211,238,0.3)", background: "transparent", color: "#22d3ee", fontSize: 18, cursor: "pointer", transition: "all 0.2s", display: "flex", alignItems: "center", justifyContent: "center" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(34,211,238,0.1)"; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = "transparent"; }}
               >{label}</button>
@@ -152,9 +152,12 @@ export default function StoryProjects() {
         </div>
 
         {/* Dots */}
-        <div style={{ display: "flex", gap: 8, justifyContent: "center", marginTop: 24 }}>
+        <div style={{ display: "flex", gap: 0, justifyContent: "center", marginTop: 16 }}>
           {projects.map((_, i) => (
-            <button key={i} onClick={() => go(i)} style={{ width: i === current ? 24 : 8, height: 8, borderRadius: 4, background: i === current ? "#22d3ee" : "rgba(34,211,238,0.2)", border: "none", cursor: "pointer", transition: "all 0.3s" }} />
+            <button key={i} onClick={() => go(i)} aria-label={`Go to project ${i + 1}`} aria-current={i === current ? "true" : undefined}
+              style={{ width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center", background: "transparent", border: "none", cursor: "pointer", padding: 0 }}>
+              <span style={{ width: i === current ? 24 : 8, height: 8, borderRadius: 4, background: i === current ? "#22d3ee" : "rgba(34,211,238,0.2)", transition: "all 0.3s", display: "block" }} />
+            </button>
           ))}
         </div>
       </div>

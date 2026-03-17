@@ -156,14 +156,16 @@ export default function StoryTechStack() {
                   borderRadius: 2, overflow: "hidden",
                 }}>
                   <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.value}%` }}
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.9, delay: i * 0.08, ease: "easeOut" }}
                     style={{
                       height: "100%",
+                      width: `${skill.value}%`,
                       background: "linear-gradient(to right, #22d3ee, #14b8a6)",
                       borderRadius: 2,
+                      transformOrigin: "left center",
                     }}
                   />
                 </div>
