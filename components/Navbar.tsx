@@ -1,76 +1,125 @@
 "use client";
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { motion } from "framer-motion";
-import ColorShiftText from "./ColorShiftText";
+import { useState, useEffect } from "react";
 
 const links = [
-  { href: "/", label: "Home" },
-  { href: "/#experience", label: "Experience" },
-  { href: "/#projects", label: "Projects" },
-  { href: "/#skills", label: "Skills" },
-  { href: "/#resume", label: "Resume" },
-  { href: "/#contact", label: "Contact" },
-  { href: "/about", label: "About" },
-  { href: "/blog", label: "Blog" },
+  { href: "#home", label: "Home" },
+  { href: "#about", label: "About" },
+  { href: "#career", label: "Career" },
+  { href: "#projects", label: "Projects" },
+  { href: "#skills", label: "Skills" },
+  { href: "#contact", label: "Contact" },
 ];
 
 export default function Navbar() {
-  const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-blue-500/10 backdrop-blur-xl shadow-lg" style={{ background: 'rgba(6, 11, 24, 0.85)' }}>
-      <nav className="mx-auto flex max-w-content items-center justify-between px-6 py-4">
-        <Link href="/" className="font-heading text-xl font-bold hover:scale-105 transition-transform">
-          <ColorShiftText speed={0.4}>Matin Gathani</ColorShiftText>
-        </Link>
-        <button
-          className="md:hidden text-sm text-secondary"
-          onClick={() => setOpen((prev) => !prev)}
-          aria-label="Toggle navigation"
+    <header
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 1000,
+        padding: "20px 0",
+        transition: "background 0.3s, backdrop-filter 0.3s",
+        background: scrolled ? "rgba(5,8,16,0.92)" : "transparent",
+        backdropFilter: scrolled ? "blur(12px)" : "none",
+        borderBottom: scrolled ? "1px solid rgba(34,211,238,0.08)" : "none",
+      }}
+    >
+      <nav style={{
+        width: "var(--cWidth)", maxWidth: "var(--cMaxWidth)",
+        margin: "0 auto",
+        display: "flex", alignItems: "center", justifyContent: "space-between",
+      }}>
+        {/* Logo */}
+        <a href="#home" style={{
+          fontSize: 16, fontWeight: 700,
+          fontFamily: "Space Grotesk, sans-serif",
+          color: "#eae5ec", letterSpacing: "0.5px",
+          textDecoration: "none",
+        }}>
+          MG
+          <span style={{ color: "#22d3ee", marginLeft: 2 }}>.</span>
+        </a>
+
+        {/* Desktop links */}
+        <ul style={{
+          display: "flex", gap: 40, listStyle: "none",
+          margin: 0, padding: 0,
+        }}
+          className="nav-desktop"
         >
-          Menu
-        </button>
-        <div className="hidden items-center gap-6 md:flex">
-          {links.map((link) => {
-            const active = !link.href.startsWith("/#") && pathname === link.href;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="relative text-sm font-semibold text-secondary transition-all hover:text-accent hover:scale-105"
-              >
-                <span className={active ? "text-primary" : ""}>{link.label}</span>
-                {active && (
-                  <motion.span
-                    layoutId="active-nav"
-                    className="absolute -bottom-2 left-0 h-[2px] w-full rounded-full bg-accent"
-                  />
-                )}
-              </Link>
-            );
-          })}
-        </div>
-      </nav>
-      {open && (
-        <div className="md:hidden border-t border-blue-500/10 px-6 py-4" style={{ background: 'rgba(6, 11, 24, 0.95)' }}>
-          <div className="flex flex-col gap-3">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm text-secondary hover:text-primary"
-                onClick={() => setOpen(false)}
+          {links.map(link => (
+            <li key={link.href}>
+              <a href={link.href} style={{
+                fontSize: 13, color: "#a89fad",
+                letterSpacing: "1px", fontWeight: 500,
+                textDecoration: "none",
+                transition: "color 0.2s",
+              }}
+                onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = "#22d3ee")}
+                onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = "#a89fad")}
               >
                 {link.label}
-              </Link>
-            ))}
-          </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        {/* Mobile menu button */}
+        <button
+          onClick={() => setOpen(p => !p)}
+          style={{
+            background: "none", border: "none", cursor: "pointer",
+            color: "#a89fad", fontSize: 13, letterSpacing: "1px",
+            display: "none",
+          }}
+          className="nav-mobile-btn"
+          aria-label="Toggle menu"
+        >
+          {open ? "CLOSE" : "MENU"}
+        </button>
+      </nav>
+
+      {/* Mobile drawer */}
+      {open && (
+        <div style={{
+          background: "rgba(5,8,16,0.97)",
+          borderTop: "1px solid rgba(34,211,238,0.08)",
+          padding: "24px",
+        }}>
+          {links.map(link => (
+            <a key={link.href} href={link.href}
+              onClick={() => setOpen(false)}
+              style={{
+                display: "block", padding: "12px 0",
+                fontSize: 15, color: "#a89fad",
+                borderBottom: "1px solid rgba(34,211,238,0.05)",
+                textDecoration: "none",
+              }}>
+              {link.label}
+            </a>
+          ))}
         </div>
       )}
+
+      <style>{`
+        @media (max-width: 768px) {
+          .nav-desktop { display: none !important; }
+          .nav-mobile-btn { display: block !important; }
+        }
+      `}</style>
     </header>
   );
 }
