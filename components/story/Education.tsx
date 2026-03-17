@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function StoryEducation() {
   return (
@@ -69,36 +70,26 @@ export default function StoryEducation() {
         >
           {/* Left: school info */}
           <div style={{ display: "flex", gap: 24, alignItems: "flex-start", flexWrap: "wrap" }}>
-            {/* ASU Logo badge */}
+            {/* ASU Official Logo */}
             <div style={{
               flexShrink: 0,
-              width: 72,
-              height: 72,
-              borderRadius: 14,
+              width: 90,
+              height: 90,
+              borderRadius: 16,
+              overflow: "hidden",
               background: "#8C1D40",
               display: "flex",
-              flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              gap: 2,
-              boxShadow: "0 0 0 1px rgba(140,29,64,0.4), 0 4px 20px rgba(140,29,64,0.25)",
+              boxShadow: "0 0 0 1px rgba(140,29,64,0.5), 0 4px 24px rgba(140,29,64,0.3)",
             }}>
-              <span style={{
-                fontSize: 28,
-                fontWeight: 800,
-                fontFamily: "Space Grotesk, sans-serif",
-                color: "#FFC627",
-                lineHeight: 1,
-                letterSpacing: "-1px",
-              }}>A</span>
-              <span style={{
-                fontSize: 9,
-                fontWeight: 600,
-                color: "#FFC627",
-                letterSpacing: "2px",
-                textTransform: "uppercase",
-                opacity: 0.85,
-              }}>ASU</span>
+              <Image
+                src="/asu-logo.svg"
+                alt="Arizona State University"
+                width={90}
+                height={90}
+                style={{ objectFit: "contain" }}
+              />
             </div>
 
             <div>

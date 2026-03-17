@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- ASU Maroon background -->
+  <rect width="200" height="200" rx="24" fill="#8C1D40"/>
+
+  <!-- ASU Pitchfork / Trident symbol (stylized) -->
+  <!-- Left prong -->
+  <rect x="38" y="38" width="26" height="72" rx="5" fill="#FFC627"/>
+  <!-- Middle prong (tallest) -->
+  <rect x="87" y="24" width="26" height="86" rx="5" fill="#FFC627"/>
+  <!-- Right prong -->
+  <rect x="136" y="38" width="26" height="72" rx="5" fill="#FFC627"/>
+  <!-- Crossbar connecting all prongs -->
+  <rect x="38" y="96" width="124" height="18" rx="5" fill="#FFC627"/>
+  <!-- Handle / stem -->
+  <rect x="87" y="114" width="26" height="44" rx="5" fill="#FFC627"/>
+
+  <!-- ASU text at bottom -->
+  <text
+    x="100"
+    y="178"
+    font-family="Arial Black, Arial, sans-serif"
+    font-weight="900"
+    font-size="22"
+    fill="#FFC627"
+    text-anchor="middle"
+    letter-spacing="4"
+  >ASU</text>
+</svg>
