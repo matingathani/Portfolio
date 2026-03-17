@@ -172,13 +172,13 @@ export default function StoryContact() {
               </a>
             </div>
             {[
-              { label: "LinkedIn", href: "https://www.linkedin.com/in/matin-gathani-185a7a192" },
-              { label: "GitHub", href: "https://github.com/matingathani" },
-              { label: "Résumé", href: "/MatinGathaniResume2026.pdf" },
-            ].map(({ label, href }) => (
+              { label: "LinkedIn", href: "https://www.linkedin.com/in/matin-gathani-185a7a192", ariaLabel: "View LinkedIn profile" },
+              { label: "GitHub", href: "https://github.com/matingathani", ariaLabel: "View GitHub profile" },
+              { label: "Résumé", href: "/MatinGathaniResume2026.pdf", ariaLabel: "View résumé PDF" },
+            ].map(({ label, href, ariaLabel }) => (
               <div key={label}>
                 <p style={{ fontSize: 11, color: "#6b6475", letterSpacing: "3px", textTransform: "uppercase", marginBottom: 10 }}>{label}</p>
-                <a href={href} target="_blank" rel="noreferrer"
+                <a href={href} target="_blank" rel="noreferrer" aria-label={ariaLabel}
                   style={{ fontSize: 14, color: "#a89fad", textDecoration: "none", transition: "color 0.2s" }}
                   onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = "#22d3ee")}
                   onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = "#a89fad")}

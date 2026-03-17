@@ -1,13 +1,15 @@
+import dynamic from "next/dynamic";
 import StoryLanding from "../components/story/Landing";
-import StoryAbout from "../components/story/About";
-import StoryWhatIDo from "../components/story/WhatIDo";
-import StoryCareer from "../components/story/Career";
-import StoryEducation from "../components/story/Education";
-import StoryProjects from "../components/story/Projects";
-import StoryTechStack from "../components/story/TechStack";
-import StoryTestimonials from "../components/story/Testimonials";
-import StoryLatestPosts from "../components/story/LatestPosts";
-import StoryContact from "../components/story/Contact";
+
+const StoryAbout        = dynamic(() => import("../components/story/About"));
+const StoryWhatIDo      = dynamic(() => import("../components/story/WhatIDo"));
+const StoryCareer       = dynamic(() => import("../components/story/Career"));
+const StoryEducation    = dynamic(() => import("../components/story/Education"));
+const StoryProjects     = dynamic(() => import("../components/story/Projects"));
+const StoryTechStack    = dynamic(() => import("../components/story/TechStack"));
+const StoryTestimonials = dynamic(() => import("../components/story/Testimonials"));
+const StoryLatestPosts  = dynamic(() => import("../components/story/LatestPosts"));
+const StoryContact      = dynamic(() => import("../components/story/Contact"));
 
 export default function HomePage() {
   return (

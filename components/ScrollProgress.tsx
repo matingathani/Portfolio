@@ -1,34 +1,33 @@
 "use client";
-
-import { useState, useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export default function ScrollProgress() {
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const barRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const updateScrollProgress = () => {
-      const windowHeight = window.innerHeight;
+    const update = () => {
+      if (!barRef.current) return;
       const documentHeight = document.documentElement.scrollHeight;
-      const scrollTop = window.scrollY;
-      const progress = (scrollTop / (documentHeight - windowHeight)) * 100;
-      setScrollProgress(progress);
+      const progress = window.scrollY / (documentHeight - window.innerHeight);
+      barRef.current.style.transform = `scaleX(${Math.min(1, Math.max(0, progress))})`;
     };
 
-    window.addEventListener("scroll", updateScrollProgress);
-    window.addEventListener("resize", updateScrollProgress);
-    updateScrollProgress();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update, { passive: true });
+    update();
 
     return () => {
-      window.removeEventListener("scroll", updateScrollProgress);
-      window.removeEventListener("resize", updateScrollProgress);
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
     };
   }, []);
 
   return (
     <div className="fixed top-0 left-0 right-0 h-1 bg-transparent z-50 pointer-events-none">
       <div
-        className="h-full bg-gradient-to-r from-accent via-accent2 to-accent transition-all duration-150 ease-out"
-        style={{ width: `${scrollProgress}%` }}
+        ref={barRef}
+        className="h-full bg-gradient-to-r from-accent via-accent2 to-accent"
+        style={{ width: "100%", transformOrigin: "left center", transform: "scaleX(0)" }}
       />
     </div>
   );
