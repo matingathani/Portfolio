@@ -40,6 +40,66 @@ const projects = [
     github: "https://github.com/matingathani",
     demo: null,
   },
+  {
+    number: "04",
+    name: "Prisma Driver\nAdapter Fixes",
+    category: "OSS Contribution",
+    description:
+      "9 open pull requests to prisma/prisma fixing typed error mapping, TIMESTAMPTZ conversion, and constraint violations across Neon, pg, libsql, MariaDB, and MSSQL adapters.",
+    tech: ["TypeScript", "Prisma", "PostgreSQL", "Neon", "libsql", "MSSQL"],
+    accent: "#818cf8",
+    gradient: "linear-gradient(135deg, rgba(129,140,248,0.15) 0%, rgba(99,102,241,0.08) 100%)",
+    github: "https://github.com/prisma/prisma/pulls?q=is%3Apr+author%3Amatingathani",
+    demo: null,
+  },
+  {
+    number: "05",
+    name: "Vercel Blob\nStorage Fixes",
+    category: "OSS Contribution",
+    description:
+      "3 pull requests to vercel/storage — resolved multipart upload deadlock on empty streams, fixed TransformStream backpressure, enforced size limits client-side. 2 merged.",
+    tech: ["TypeScript", "Vercel Blob", "Web Streams API"],
+    accent: "#34d399",
+    gradient: "linear-gradient(135deg, rgba(52,211,153,0.15) 0%, rgba(16,185,129,0.08) 100%)",
+    github: "https://github.com/vercel/storage/pulls?q=is%3Apr+author%3Amatingathani",
+    demo: null,
+  },
+  {
+    number: "06",
+    name: "Stripe.js\nType Fix",
+    category: "OSS Contribution",
+    description:
+      "Pull request to stripe/stripe-js narrowing the update() TypeScript type, documenting the Apple Pay WebKit bug, and adding SECURITY.md with vulnerability disclosure guidelines.",
+    tech: ["TypeScript", "Stripe.js"],
+    accent: "#f472b6",
+    gradient: "linear-gradient(135deg, rgba(244,114,182,0.15) 0%, rgba(236,72,153,0.08) 100%)",
+    github: "https://github.com/stripe/stripe-js/pull/910",
+    demo: null,
+  },
+  {
+    number: "07",
+    name: "Kanban\nTask Board",
+    category: "Full-Stack",
+    description:
+      "Real-time Kanban board built with React, TypeScript, and Supabase. Drag-and-drop column management with live database persistence across sessions.",
+    tech: ["React", "TypeScript", "Supabase", "CSS"],
+    accent: "#38bdf8",
+    gradient: "linear-gradient(135deg, rgba(56,189,248,0.15) 0%, rgba(14,165,233,0.08) 100%)",
+    github: "https://github.com/matingathani/kanban-taskboard",
+    demo: null,
+  },
+  {
+    number: "08",
+    name: "Innovation Devs\nHackathon",
+    category: "Hackathon",
+    description:
+      "Full-stack TypeScript application built and delivered under hackathon time constraints. Demonstrates rapid prototyping and cross-functional execution.",
+    tech: ["TypeScript", "HTML", "CSS"],
+    accent: "#fb923c",
+    gradient: "linear-gradient(135deg, rgba(251,146,60,0.15) 0%, rgba(249,115,22,0.08) 100%)",
+    github: "https://github.com/matingathani/InnovationDevsHackathon",
+    demo: null,
+  },
 ];
 
 export default function StoryProjects() {
