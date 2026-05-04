@@ -67,17 +67,17 @@ export const content: SiteContent = {
       tools: ["Python", "NLP", "Tokenization", "HTML", "CSS", "Documentation"],
     },
     {
-      role: "Capstone Sponsor Integration",
-      company: "Arizona State University",
+      role: "Software Engineer",
+      company: "ASU Industry Capstone · Arizona State University",
       location: "Tempe, AZ",
       dates: "Jan 2025 - Dec 2025",
       problem:
-        "An industry-sponsored capstone required production-grade delivery with consistent collaboration and technical governance.",
+        "Live production platform serving an industry sponsor was hit by a crypto-mining malware injection via the Docker build pipeline, while the team also lacked a CI/CD system, had no uptime monitoring, and was blocked by a high-severity CVE in the xlsx dependency that failed the security audit.",
       action:
-        "Established Git/GitHub workflows, managed 150+ commits, and conducted 20+ code reviews. Built frontend and backend features and integrated RESTful APIs across a multi-member Agile team.",
+        "Detected and contained the malware attack: identified the injection vector, hardened the Dockerfile with targeted COPY exclusions and /tmp cleanup, wrote automated malware detection scripts, and authored a security incident response runbook. Built a 24/7 monitoring and auto-recovery daemon (systemd service, 60-second health checks, automatic container restart on failure). Designed and shipped a GitHub Actions CI/CD pipeline — build → push to GHCR → SSH webhook deploy — cutting deployment time from ~15 min manual to ~2 min automated. Integrated Microsoft Graph API for transactional email (project approval notifications, CC routing, HTML templates). Replaced the vulnerable xlsx library with ExcelJS across all API routes and admin scripts, and eliminated all TypeScript any types across the codebase to unblock a CI lint gate that had been blocking merges.",
       impact:
-        "Delivered 10+ features and achieved 100% on-time milestone delivery across six sprints with clear documentation and review discipline.",
-      tools: ["Git", "GitHub", "REST APIs", "Agile", "Code Reviews"],
+        "Server recovered from active malware attack with zero data loss; no recurrence after hardening. Deployment pipeline went from manual SSH sessions to fully automated. CI lint gate unblocked, enabling clean merges. Email system enabled sponsor communication workflows that previously required manual intervention.",
+      tools: ["Next.js", "TypeScript", "Docker", "GitHub Actions", "MySQL", "Microsoft Graph API"],
     },
   ],
   projects: [

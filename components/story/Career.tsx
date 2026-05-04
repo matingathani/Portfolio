@@ -23,12 +23,12 @@ const jobs = [
     side: "right" as const,
   },
   {
-    role: "Capstone Sponsor Integration",
-    company: "Arizona State University",
+    role: "Software Engineer",
+    company: "ASU Industry Capstone · Arizona State University",
     dates: "Jan 2025 – Dec 2025",
     description:
-      "Delivered 10+ features across 6 sprints. Managed 150+ commits, 20+ code reviews, and RESTful API integrations in an Agile team.",
-    tools: ["Git", "REST APIs", "Agile", "React"],
+      "Built and secured a live Next.js platform for an industry sponsor. Detected and contained a crypto-mining malware attack targeting the Docker build pipeline — hardened the Dockerfile, wrote automated malware detection scripts, and authored a security incident response runbook. Built a 24/7 monitoring and auto-recovery daemon (systemd service, 60-second health checks, automatic container restart). Designed and shipped a GitHub Actions CI/CD pipeline: build → push to GHCR → SSH webhook deploy, cutting deployment time from ~15 min manual to ~2 min automated. Integrated Microsoft Graph API for transactional email (approval notifications, CC routing, HTML templates). Replaced the high-severity xlsx CVE with ExcelJS across all API routes and scripts, and eliminated all TypeScript any types to unblock a CI lint gate that had been blocking merges.",
+    tools: ["Next.js", "TypeScript", "Docker", "GitHub Actions", "MySQL", "Microsoft Graph API"],
     side: "left" as const,
   },
 ];
