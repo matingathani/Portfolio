@@ -9,6 +9,7 @@ const links = [
   { href: "#career", label: "Career" },
   { href: "#projects", label: "Projects" },
   { href: "#skills", label: "Skills" },
+  { href: "/oss", label: "OSS" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -60,21 +61,31 @@ export default function Navbar() {
         }}
           className="nav-desktop"
         >
-          {links.map(link => (
-            <li key={link.href}>
-              <a href={link.href} style={{
-                fontSize: 13, color: "#a89fad",
-                letterSpacing: "1px", fontWeight: 500,
-                textDecoration: "none",
-                transition: "color 0.2s",
-              }}
-                onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = "#22d3ee")}
-                onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = "#a89fad")}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
+          {links.map(link => {
+            const navStyle = {
+              fontSize: 13, color: "#a89fad",
+              letterSpacing: "1px", fontWeight: 500,
+              textDecoration: "none",
+              transition: "color 0.2s",
+            } as const;
+            const hoverIn = (e: React.MouseEvent<HTMLAnchorElement>) =>
+              ((e.currentTarget as HTMLAnchorElement).style.color = "#22d3ee");
+            const hoverOut = (e: React.MouseEvent<HTMLAnchorElement>) =>
+              ((e.currentTarget as HTMLAnchorElement).style.color = "#a89fad");
+            return (
+              <li key={link.href}>
+                {link.href.startsWith("#") ? (
+                  <a href={link.href} style={navStyle} onMouseEnter={hoverIn} onMouseLeave={hoverOut}>
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link href={link.href} style={navStyle} onMouseEnter={hoverIn} onMouseLeave={hoverOut}>
+                    {link.label}
+                  </Link>
+                )}
+              </li>
+            );
+          })}
           <li>
             <a
               href="/resume.pdf"
@@ -126,18 +137,24 @@ export default function Navbar() {
           borderTop: "1px solid rgba(34,211,238,0.08)",
           padding: "24px",
         }}>
-          {links.map(link => (
-            <a key={link.href} href={link.href}
-              onClick={() => setOpen(false)}
-              style={{
-                display: "block", padding: "12px 0",
-                fontSize: 15, color: "#a89fad",
-                borderBottom: "1px solid rgba(34,211,238,0.05)",
-                textDecoration: "none",
-              }}>
-              {link.label}
-            </a>
-          ))}
+          {links.map(link => {
+            const mobileStyle = {
+              display: "block", padding: "12px 0",
+              fontSize: 15, color: "#a89fad",
+              borderBottom: "1px solid rgba(34,211,238,0.05)",
+              textDecoration: "none",
+            } as const;
+            return link.href.startsWith("#") ? (
+              <a key={link.href} href={link.href} onClick={() => setOpen(false)} style={mobileStyle}>
+                {link.label}
+              </a>
+            ) : (
+              <Link key={link.href} href={link.href} onClick={() => setOpen(false)} style={mobileStyle}>
+                {link.label}
+              </Link>
+            );
+          }
+          )}
           <a
             href="/resume.pdf"
             target="_blank"
