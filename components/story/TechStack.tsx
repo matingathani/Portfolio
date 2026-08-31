@@ -3,15 +3,15 @@ import { motion } from "framer-motion";
 import { TechIcon, TechTag } from "./TechIcon";
 
 const proficiencies = [
-  { name: "Python", value: 94 },
-  { name: "JavaScript / TypeScript", value: 89 },
-  { name: "Java", value: 90 },
-  { name: "SQL", value: 87 },
-  { name: "React / Next.js", value: 85 },
+  { name: "Python", value: 95 },
+  { name: "SQL", value: 90 },
+  { name: "Power BI", value: 87 },
+  { name: "JavaScript / TypeScript", value: 80 },
+  { name: "React / Next.js", value: 78 },
 ];
 
-const row1 = ["Python", "JavaScript", "TypeScript", "Java", "C++", "SQL", "React", "Next.js", "Node.js", "Docker"];
-const row2 = ["NLP", "Pandas", "NumPy", "REST APIs", "Git", "Linux", "Postman", "CI/CD", "HTML5", "CSS3"];
+const row1 = ["Python", "TypeScript", "JavaScript", "Java", "C++", "SQL", "React", "Next.js", "Node.js", "Docker"];
+const row2 = ["Power BI", "Excel", "Pandas", "NumPy", "NLP", "PostgreSQL", "AWS", "REST APIs", "Git", "CI/CD"];
 
 function MarqueeRow({ items, reverse = false }: { items: string[]; reverse?: boolean }) {
   const doubled = [...items, ...items];
@@ -44,24 +44,29 @@ function MarqueeRow({ items, reverse = false }: { items: string[]; reverse?: boo
 
 const skillGroups = [
   {
-    title: "AI & Data",
+    title: "Analytics & BI",
     accent: "#22d3ee",
-    items: ["Python", "NLP", "Pandas", "NumPy", "REST APIs", "SQL"],
+    items: ["Power BI", "Excel", "SQL", "Pandas", "NumPy", "Causal Modelling"],
+  },
+  {
+    title: "AI & ML",
+    accent: "#5eead4",
+    items: ["Python", "NLP", "LLMs", "Generative AI", "Model Training", "Feature Engineering"],
   },
   {
     title: "Backend & APIs",
-    accent: "#5eead4",
-    items: ["REST APIs", "Docker", "Git", "Postman", "Testing", "CI/CD"],
+    accent: "#14b8a6",
+    items: ["REST APIs", "Node.js", "PostgreSQL", "MySQL", "Testing", "CI/CD"],
+  },
+  {
+    title: "Open Source & DevOps",
+    accent: "#22d3ee",
+    items: ["Cloudflare Workers", "Wrangler", "Docker", "Git", "GitHub Actions", "Linux"],
   },
   {
     title: "Frontend",
-    accent: "#14b8a6",
+    accent: "#5eead4",
     items: ["React", "Next.js", "JavaScript", "TypeScript", "HTML5", "CSS3"],
-  },
-  {
-    title: "DevOps & Tools",
-    accent: "#22d3ee",
-    items: ["Git", "GitHub", "Docker", "Linux", "Shell", "Agile"],
   },
 ];
 

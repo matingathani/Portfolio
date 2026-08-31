@@ -83,9 +83,10 @@ export default function StoryAbout() {
             transition={{ duration: 0.8, delay: 0.1 }}
           >
             I&apos;m a{" "}
-            <span style={{ color: "#22d3ee" }}>Computer Science student at ASU</span>
-            {" "}focused on building AI/ML pipelines and backend systems that move data reliably
-            end-to-end. I care deeply about clean abstractions, rigorous testing, and
+            <span style={{ color: "#22d3ee" }}>Computer Science graduate from ASU</span>
+            {" "}working across data, analytics, and AI - and heading to{" "}
+            <span style={{ color: "#22d3ee" }}>Imperial College London</span> for an MSc in
+            Business Analytics and AI. I care deeply about clean abstractions, rigorous testing, and
             {" "}<span style={{ color: "#5eead4" }}>performance that holds in production</span>.
           </motion.p>
 
@@ -97,18 +98,18 @@ export default function StoryAbout() {
             transition={{ duration: 0.8, delay: 0.25 }}
             style={{ marginTop: 32, color: "#a89fad" }}
           >
-            From mentoring 180+ students on debugging and algorithms to building
-            NLP pipelines that cut manual effort by 40% — I ship things that work,
-            are documented, and built to last.
+            From 28 merged fixes to Cloudflare&apos;s developer toolkit to NLP pipelines
+            that cut manual effort by 40% to mentoring 180+ students on debugging and
+            algorithms — I ship things that work, are documented, and built to last.
           </motion.p>
         </div>
 
         {/* Animated stats row */}
         <div style={{ display: "flex", gap: "clamp(32px, 5vw, 80px)", marginTop: 64, flexWrap: "wrap" }}>
-          <AnimatedStat value={180}   suffix="+"  label="Students mentored" delay={0} />
-          <AnimatedStat value={1000}  suffix="+"  label="Bugs diagnosed"     delay={0.08} />
-          <AnimatedStat value={10000} suffix="K+" label="Records processed"  delay={0.16} />
-          <AnimatedStat value={374}   suffix="."  label="GPA at ASU"         delay={0.24} />
+          <AnimatedStat value={28}    suffix=""   label="Merged OSS fixes"  delay={0} />
+          <AnimatedStat value={180}   suffix="+"  label="Students mentored" delay={0.08} />
+          <AnimatedStat value={10000} suffix="K+" label="Records processed" delay={0.16} />
+          <AnimatedStat value={374}   suffix="."  label="GPA at ASU"        delay={0.24} />
         </div>
       </div>
     </section>

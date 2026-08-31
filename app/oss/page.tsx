@@ -11,11 +11,9 @@ const STATUS_COLORS: Record<OssPR["status"], { bg: string; text: string; label: 
   closed: { bg: "rgba(107,114,128,0.12)", text: "#6b7280", label: "Closed" },
 };
 
-const totalPRs = ossRepos.reduce((sum, r) => sum + r.prs.length, 0);
-const mergedPRs = ossRepos.reduce(
-  (sum, r) => sum + r.prs.filter((p) => p.status === "merged").length,
-  0
-);
+// Totals reflect all contributed PRs, not just the highlights listed below.
+const totalPRs = "45+";
+const mergedPRs = "30+";
 
 function PRCard({ pr }: { pr: OssPR }) {
   const chip = STATUS_COLORS[pr.status];
@@ -151,7 +149,7 @@ export default function OSSPage() {
           transition={{ duration: 0.6, delay: 0.2 }}
           style={{ fontSize: 16, color: "#a89fad", maxWidth: 560, lineHeight: 1.7, marginBottom: 48 }}
         >
-          Bug fixes across production-grade open-source repos — Prisma, Lexical, Vercel Storage, and Stripe.js.
+          Bug fixes across production-grade open-source repos — 28 merged into Cloudflare's developer toolkit (Wrangler, Miniflare, Vite plugin), plus Prisma, Vercel Storage, Lexical, and Stripe.js.
         </motion.p>
 
         {/* Metrics */}

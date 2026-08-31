@@ -68,13 +68,13 @@ export default function StoryLanding() {
           style={{ display: "flex", flexDirection: "column" }}
         >
           <p style={{ fontSize: "clamp(11px, 1vw, 16px)", textTransform: "uppercase", letterSpacing: "5px", color: "#22d3ee", fontWeight: 400, marginBottom: 8 }}>
-            A Software &amp;
+            A Data, AI &amp;
           </p>
           <h2 style={{ fontSize: "clamp(30px, 4vw, 68px)", fontWeight: 700, lineHeight: 0.95, letterSpacing: "-0.02em", color: "#eae5ec", fontFamily: "Space Grotesk, sans-serif", margin: 0, marginBottom: 14 }}>
-            DATA<br /><span style={{ color: "#22d3ee" }}>ENGINEER</span>
+            SOFTWARE<br /><span style={{ color: "#22d3ee" }}>ENGINEER</span>
           </h2>
           <p style={{ fontSize: "clamp(11px, 0.85vw, 14px)", color: "#6b6475", letterSpacing: "1px", lineHeight: 1.6, marginBottom: 20 }}>
-            ASU Computer Science · Tempe, AZ
+            ASU Computer Science · Imperial MSc 2026
           </p>
           {/* Badge */}
           <div style={{ display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(34,211,238,0.07)", border: "1px solid rgba(34,211,238,0.22)", borderRadius: 100, padding: "6px 14px", marginBottom: 12, alignSelf: "flex-start" }}>

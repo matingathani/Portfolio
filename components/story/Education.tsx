@@ -47,6 +47,68 @@ export default function StoryEducation() {
           Where I <span style={{ fontWeight: 200 }}>Studied</span>
         </motion.h2>
 
+        <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+
+        {/* Imperial College */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          whileHover={{
+            borderColor: "rgba(34,211,238,0.3)",
+            boxShadow: "0 0 40px rgba(34,211,238,0.08)",
+          }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          style={{
+            background: "rgba(255,255,255,0.02)",
+            border: "1px solid rgba(34,211,238,0.12)",
+            borderRadius: 20,
+            padding: "44px 52px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: 40,
+          }}
+        >
+          <div>
+            <p style={{
+              fontSize: 12,
+              color: "#22d3ee",
+              letterSpacing: "3px",
+              textTransform: "uppercase",
+              marginBottom: 14,
+            }}>
+              Sep 2026 – Aug 2027
+            </p>
+            <h3 style={{
+              fontSize: "clamp(22px, 2.5vw, 38px)",
+              fontWeight: 600,
+              color: "#eae5ec",
+              fontFamily: "Space Grotesk, sans-serif",
+              marginBottom: 8,
+            }}>
+              Imperial College London
+            </h3>
+            <p style={{ fontSize: 16, color: "#5eead4", marginBottom: 6, letterSpacing: "0.3px" }}>
+              MSc Business Analytics and AI
+            </p>
+            <p style={{ fontSize: 14, color: "#6b6475" }}>Imperial College Business School · London, UK</p>
+          </div>
+          <div style={{ display: "flex", gap: 20, flexWrap: "wrap", maxWidth: 360 }}>
+            {["Financial Analytics", "Advanced ML", "Generative AI & LLMs", "Causal Modelling"].map((m) => (
+              <span key={m} style={{
+                fontSize: 12,
+                color: "#a89fad",
+                border: "1px solid rgba(34,211,238,0.15)",
+                borderRadius: 100,
+                padding: "5px 12px",
+              }}>{m}</span>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Arizona State University */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -131,6 +193,8 @@ export default function StoryEducation() {
             </div>
           </div>
         </motion.div>
+
+        </div>
       </div>
     </section>
   );

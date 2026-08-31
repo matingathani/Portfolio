@@ -21,7 +21,7 @@ CONTACT_FROM_EMAIL=portfolio@domain.com
 ```
 
 ## Resume PDF
-Replace `public/MatinGathaniResume2026.pdf` with your latest resume (or update the path in `app/page.tsx`).
+Replace both `public/resume.pdf` and `public/MatinGathaniResume2026.pdf` with your latest resume (both paths are linked from the site).
 
 ## Local Development
 ```bash
@@ -42,7 +42,7 @@ npm run start
 5. Deploy.
 
 ## Editing Content
-All editable content lives in `lib/content.ts`. Update experience, projects, skills, and contact info there.
+`lib/content.ts` drives site metadata, the `/about` page, and testimonials. The homepage scroll-story sections hardcode their own copy in `components/story/*`. Open-source PRs live in `lib/oss.ts`.
 
 ## Routes
 - `/` Single-page experience (hero, experience, projects, skills, resume, contact)

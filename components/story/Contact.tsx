@@ -26,7 +26,7 @@ export default function StoryContact() {
       } else if (data.message === "Email configuration missing.") {
         const subject = `Portfolio inquiry from ${form.name}`;
         const body = `${form.message}\n\nFrom: ${form.name}\nEmail: ${form.email}`;
-        window.open(`mailto:mgathan1@asu.edu?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
+        window.open(`mailto:mg3246@imperial.ac.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
         setStatus("success");
         setForm({ name: "", email: "", message: "", company: "" });
       } else {
@@ -164,11 +164,11 @@ export default function StoryContact() {
           <div style={{ display: "flex", flexDirection: "column", gap: 32, paddingTop: 4 }}>
             <div>
               <p style={{ fontSize: 11, color: "#6b6475", letterSpacing: "3px", textTransform: "uppercase", marginBottom: 10 }}>Email</p>
-              <a href="mailto:mgathan1@asu.edu" style={{ fontSize: 15, color: "#22d3ee", textDecoration: "none", borderBottom: "1px solid rgba(34,211,238,0.3)", paddingBottom: 2, transition: "border-color 0.2s" }}
+              <a href="mailto:mg3246@imperial.ac.uk" style={{ fontSize: 15, color: "#22d3ee", textDecoration: "none", borderBottom: "1px solid rgba(34,211,238,0.3)", paddingBottom: 2, transition: "border-color 0.2s" }}
                 onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.borderColor = "#22d3ee")}
                 onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(34,211,238,0.3)")}
               >
-                mgathan1@asu.edu
+                mg3246@imperial.ac.uk
               </a>
             </div>
             {[
@@ -194,7 +194,7 @@ export default function StoryContact() {
         <div style={{ marginTop: 80 }}>
           <div className="teal-divider" />
           <p style={{ textAlign: "center", fontSize: 12, color: "#6b6475", letterSpacing: "2px", textTransform: "uppercase", marginTop: 24 }}>
-            Matin Gathani · Tempe, AZ · {new Date().getFullYear()}
+            Matin Gathani · London, UK / Tempe, AZ · {new Date().getFullYear()}
           </p>
         </div>
       </div>

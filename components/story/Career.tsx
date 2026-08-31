@@ -5,11 +5,29 @@ import { TechTag } from "./TechIcon";
 
 const jobs = [
   {
+    role: "Open-Source Contributor",
+    company: "Cloudflare",
+    dates: "Mar 2026 – Present",
+    description:
+      "28 merged bug fixes to Cloudflare's open-source developer toolkit — Wrangler CLI, Miniflare, and the Vite plugin. Traced a Cloudflare Workflows crash on large step outputs to a SQLite size limit and shipped the fix. Removed output-polluting CLI logs and shell autocomplete corruption, hardened file-handling error paths, and stabilized flaky Windows CI.",
+    tools: ["TypeScript", "Node.js", "Wrangler", "Miniflare", "Vitest"],
+    side: "left" as const,
+  },
+  {
+    role: "Software Engineering Specialist",
+    company: "ASU Industry Capstone · Arizona State University",
+    dates: "Jan 2025 – Dec 2025",
+    description:
+      "Built a full-stack AI-matching platform (Next.js, TypeScript, MySQL) pairing students with sponsor capstone projects for hundreds of concurrent users — 5th of 30+ teams at ASU's Capstone Showcase. Shipped 8+ backend API features with structured error handling. Detected and contained a crypto-mining malware attack on the Docker build pipeline — hardened the image, wrote detection scripts, and authored an incident runbook. Built a 24/7 monitoring daemon and a GitHub Actions CI/CD pipeline (build → GHCR → SSH webhook), cutting deploys from ~15 min to ~2 min. Automated Excel catalogue generation with Python, cutting data-prep from hours to minutes.",
+    tools: ["Next.js", "TypeScript", "Docker", "GitHub Actions", "MySQL", "Python"],
+    side: "right" as const,
+  },
+  {
     role: "Engineering Tutor",
     company: "Arizona State University",
-    dates: "Aug 2024 – Present",
+    dates: "Aug 2024 – May 2026",
     description:
-      "Mentored 180+ CS students across 300+ sessions, diagnosing 1,000+ code defects. Improved project quality by 25% and test coverage by 20%.",
+      "Mentored 180+ CS students across 300+ sessions, diagnosing 1,000+ code defects. Improved project quality and exam scores by 25% and test coverage by 20%.",
     tools: ["Java", "C++", "JUnit", "Git"],
     side: "left" as const,
   },
@@ -21,15 +39,6 @@ const jobs = [
       "Engineered Python ML/NLP pipelines processing 10,000+ records. Reduced manual effort by 40% and improved model accuracy by 20%.",
     tools: ["Python", "NLP", "HTML", "CSS"],
     side: "right" as const,
-  },
-  {
-    role: "Software Engineer",
-    company: "ASU Industry Capstone · Arizona State University",
-    dates: "Jan 2025 – Dec 2025",
-    description:
-      "Built and secured a live Next.js platform for an industry sponsor. Detected and contained a crypto-mining malware attack targeting the Docker build pipeline — hardened the Dockerfile, wrote automated malware detection scripts, and authored a security incident response runbook. Built a 24/7 monitoring and auto-recovery daemon (systemd service, 60-second health checks, automatic container restart). Designed and shipped a GitHub Actions CI/CD pipeline: build → push to GHCR → SSH webhook deploy, cutting deployment time from ~15 min manual to ~2 min automated. Integrated Microsoft Graph API for transactional email (approval notifications, CC routing, HTML templates). Replaced the high-severity xlsx CVE with ExcelJS across all API routes and scripts, and eliminated all TypeScript any types to unblock a CI lint gate that had been blocking merges.",
-    tools: ["Next.js", "TypeScript", "Docker", "GitHub Actions", "MySQL", "Microsoft Graph API"],
-    side: "left" as const,
   },
 ];
 

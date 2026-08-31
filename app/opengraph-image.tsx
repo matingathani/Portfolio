@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Matin Gathani | Software + Data + AI Engineer";
+export const alt = "Matin Gathani | Data, AI & Software Engineer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -36,10 +36,10 @@ export default function OGImage() {
           Matin Gathani
         </div>
         <div style={{ color: "#94a3b8", fontSize: 32 }}>
-          Software + Data + AI Engineer
+          Data, AI &amp; Software Engineer
         </div>
         <div style={{ color: "#64748b", fontSize: 22, marginTop: 40 }}>
-          ASU Computer Science · Tempe, AZ
+          CS @ ASU · MSc Business Analytics &amp; AI @ Imperial
         </div>
       </div>
     ),

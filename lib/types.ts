@@ -83,7 +83,7 @@ export type SiteContent = {
     linkedin: string;
     github: string;
   };
-  education: Education;
+  education: Education[];
   experience: Experience[];
   projects: Project[];
   skills: SkillGroup[];

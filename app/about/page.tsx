@@ -10,7 +10,7 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-content px-6 py-16">
-      <SectionHeader title="About Me" subtitle="Developer building useful tools with code and curiosity." />
+      <SectionHeader title="About Me" subtitle="Engineer building across data, analytics, and AI." />
       <div className="mt-10 grid gap-10 lg:grid-cols-[320px_1fr]">
         <ScrollReveal>
           <div className="card space-y-4">
@@ -45,23 +45,27 @@ export default function AboutPage() {
             <div className="card space-y-4">
               <p className="text-sm text-secondary">{content.summary}</p>
               <p className="text-sm text-secondary">
-                I care about systems that move data cleanly from input to insight. That means stable preprocessing,
-                predictable APIs, and UX that makes tooling approachable for real users.
+                I care about systems that move data cleanly from input to insight - stable preprocessing,
+                predictable APIs, and analytics that decision-makers can trust.
               </p>
               <p className="text-sm text-secondary">
-                My focus areas right now: production-minded ML workflows, backend reliability, and collaboration
-                patterns that keep teams aligned.
+                My focus areas right now: open-source contribution to Cloudflare&apos;s developer tooling,
+                business analytics and applied AI, and backend reliability.
               </p>
             </div>
           </ScrollReveal>
           <ScrollReveal>
             <div className="card space-y-4">
               <h3 className="text-lg font-heading text-primary">Education</h3>
-              <div className="text-sm text-secondary">
-                <p>{content.education.dates}</p>
-                <p>{content.education.degree} - {content.education.school}</p>
-                <p className="text-sm text-muted">{content.education.location}</p>
-                <p className="text-sm text-muted">GPA {content.education.gpa}</p>
+              <div className="space-y-4 text-sm text-secondary">
+                {content.education.map((edu) => (
+                  <div key={edu.school}>
+                    <p>{edu.dates}</p>
+                    <p>{edu.degree} - {edu.school}</p>
+                    <p className="text-sm text-muted">{edu.location}</p>
+                    {edu.gpa && <p className="text-sm text-muted">GPA {edu.gpa}</p>}
+                  </div>
+                ))}
               </div>
             </div>
           </ScrollReveal>
@@ -88,6 +92,10 @@ export default function AboutPage() {
               <h3 className="text-lg font-heading text-primary">Impact</h3>
               <div className="grid gap-4 text-sm text-secondary md:grid-cols-2">
                 <div>
+                  <p className="text-2xl font-heading text-primary">28</p>
+                  <p>Merged OSS fixes</p>
+                </div>
+                <div>
                   <p className="text-2xl font-heading text-primary">180+</p>
                   <p>Students mentored</p>
                 </div>
@@ -98,10 +106,6 @@ export default function AboutPage() {
                 <div>
                   <p className="text-2xl font-heading text-primary">10,000+</p>
                   <p>Records processed</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-heading text-primary">10+</p>
-                  <p>Features delivered</p>
                 </div>
               </div>
             </div>

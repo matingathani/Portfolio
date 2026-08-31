@@ -75,10 +75,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 jobTitle: content.role,
                 url: baseUrl,
                 sameAs: [content.contact.linkedin, content.contact.github],
-                alumniOf: {
+                alumniOf: content.education.map((e) => ({
                   "@type": "CollegeOrUniversity",
-                  name: content.education.school,
-                },
+                  name: e.school,
+                })),
                 address: {
                   "@type": "PostalAddress",
                   addressLocality: "Tempe",

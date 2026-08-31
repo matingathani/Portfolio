@@ -5,24 +5,24 @@ import { TechTag } from "./TechIcon";
 const expertise = [
   {
     number: "01",
-    title: "AI & ML Engineering",
+    title: "Data & Analytics",
     description:
-      "Building production NLP pipelines, model training workflows, and AI integrations that hold in real-world environments.",
-    tags: ["Python", "NLP", "Pandas", "NumPy", "Feature Eng."],
+      "Turning messy data into decisions — SQL modelling, Power BI dashboards, Python pipelines, and the analytics coursework behind an Imperial MSc.",
+    tags: ["Power BI", "SQL", "Python", "Pandas", "Excel"],
   },
   {
     number: "02",
-    title: "Backend & APIs",
+    title: "Open-Source Engineering",
     description:
-      "Designing RESTful APIs with structured validation, error handling, and performance-focused data flows.",
-    tags: ["REST APIs", "Postman", "SQL", "Docker", "Testing"],
+      "28 merged bug fixes to Cloudflare's developer toolkit — Wrangler CLI, Miniflare, and the Vite plugin — plus ongoing work across the ecosystem.",
+    tags: ["TypeScript", "Node.js", "Cloudflare Workers", "Vitest", "Git"],
   },
   {
     number: "03",
-    title: "Full-Stack Delivery",
+    title: "AI & Full-Stack Delivery",
     description:
-      "End-to-end feature delivery in Agile teams — frontend, backend, code reviews, and documentation.",
-    tags: ["React", "JavaScript", "Git", "Agile", "CI/CD"],
+      "Production NLP pipelines and full-stack platforms — Next.js and TypeScript front to back, with CI/CD, monitoring, and incident response.",
+    tags: ["Next.js", "NLP", "LLMs", "Docker", "CI/CD"],
   },
 ];
 
