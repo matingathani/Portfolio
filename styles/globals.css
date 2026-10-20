@@ -12,9 +12,6 @@
   --color-accent: #1f4fd8;
   --color-accent-soft: #eef2fd;
   --color-border: #e4e2da;
-  --font-heading: "Source Serif 4";
-  --font-body: "Inter";
-  --font-mono: "JetBrains Mono";
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }

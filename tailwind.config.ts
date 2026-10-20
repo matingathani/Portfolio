@@ -19,9 +19,9 @@ const config: Config = {
         border: "var(--color-border)",
       },
       fontFamily: {
-        heading: ["var(--font-heading)", "Source Serif 4", "Georgia", "serif"],
+        heading: ["var(--font-heading)", '"Source Serif 4"', "Georgia", "serif"],
         body: ["var(--font-body)", "Inter", "system-ui", "sans-serif"],
-        mono: ["var(--font-mono)", "JetBrains Mono", "ui-monospace", "SFMono-Regular"],
+        mono: ["var(--font-mono)", '"JetBrains Mono"', "ui-monospace", "SFMono-Regular"],
       },
       maxWidth: {
         content: "72rem",
