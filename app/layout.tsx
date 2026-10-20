@@ -1,29 +1,23 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { Source_Serif_4, Inter, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import "../styles/globals.css";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import PageTransition from "../components/PageTransition";
-import StoryCursor from "../components/story/Cursor";
-import ScrollReset from "../components/ScrollReset";
-import ScrollToTop from "../components/ScrollToTop";
-import ScrollProgress from "../components/ScrollProgress";
-import KeyboardShortcuts from "../components/KeyboardShortcuts";
+import SiteHeader from "../components/SiteHeader";
+import SiteFooter from "../components/SiteFooter";
 import AccessibilitySkipLink from "../components/AccessibilitySkipLink";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { content } from "../lib/content";
 
-const headingFont = Space_Grotesk({
+const headingFont = Source_Serif_4({
   subsets: ["latin"],
   variable: "--font-heading",
-  weight: ["600", "700"],
+  weight: ["400", "600"],
   display: "swap",
 });
 const bodyFont = Inter({
   subsets: ["latin"],
   variable: "--font-body",
-  weight: ["400", "500"],
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 const monoFont = JetBrains_Mono({
@@ -60,11 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${headingFont.variable} ${bodyFont.variable} ${monoFont.variable}`}>
       <body>
-        <Script
-          id="json-ld"
-          type="application/ld+json"
-          strategy="beforeInteractive"
-        >
+        <Script id="json-ld" type="application/ld+json" strategy="beforeInteractive">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@graph": [
@@ -95,17 +85,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             ],
           })}
         </Script>
-        <ScrollReset />
-        <StoryCursor />
         <AccessibilitySkipLink />
-        <KeyboardShortcuts />
-        <Navbar />
-        <main id="main-content" className="relative">
-          <PageTransition>{children}</PageTransition>
-        </main>
-        <Footer />
-        <ScrollToTop />
-        <ScrollProgress />
+        <SiteHeader />
+        <main id="main-content">{children}</main>
+        <SiteFooter />
         <SpeedInsights />
       </body>
     </html>
