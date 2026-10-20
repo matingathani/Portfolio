@@ -4,13 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
-import { useMediaQuery } from "../lib/hooks";
 
 pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
 
 export default function ResumeViewer({ fileUrl }: { fileUrl: string }) {
   const [error, setError] = useState(false);
-  const isMobile = useMediaQuery("(max-width: 768px)");
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [pageWidth, setPageWidth] = useState(800);
 
@@ -24,18 +22,6 @@ export default function ResumeViewer({ fileUrl }: { fileUrl: string }) {
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
   }, []);
-
-  if (isMobile) {
-    return (
-      <div className="card min-h-[520px]">
-        <iframe
-          title="Resume PDF"
-          src={fileUrl}
-          className="h-[520px] w-full rounded-xl border border-border"
-        />
-      </div>
-    );
-  }
 
   if (error) {
     return (

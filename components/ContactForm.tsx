@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 
 const initialState = {
   name: "",
@@ -120,7 +119,7 @@ export default function ContactForm() {
         />
       </div>
       {status === "error" && error && (
-        <p className="text-sm text-red-300" role="alert">
+        <p className="text-sm text-red-700" role="alert">
           {error}
         </p>
       )}
@@ -129,13 +128,9 @@ export default function ContactForm() {
           {status === "loading" ? "Sending..." : "Send message"}
         </button>
         {status === "success" && (
-          <motion.span
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-sm text-accent"
-          >
+          <span role="status" className="text-sm text-accent">
             Message sent. I will reply soon.
-          </motion.span>
+          </span>
         )}
       </div>
     </form>
