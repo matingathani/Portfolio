@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { describe, it, expect } from "vitest";
 import config from "../tailwind.config";
 
@@ -17,5 +18,22 @@ describe("tailwind font families", () => {
         }
       }
     }
+  });
+});
+
+describe("heading font", () => {
+  const families = (config.theme?.extend?.fontFamily ?? {}) as Record<string, string[]>;
+
+  it("loads Fraunces for headings in the layout", () => {
+    const layout = readFileSync("app/layout.tsx", "utf8");
+    expect(layout).toContain("Fraunces");
+    expect(layout).not.toContain("Source_Serif_4");
+  });
+
+  it("lists Fraunces first in the heading stack, with a serif fallback", () => {
+    const heading = families.heading;
+    expect(heading[0]).toBe("var(--font-heading)");
+    expect(heading).toContain("Fraunces");
+    expect(heading[heading.length - 1]).toBe("serif");
   });
 });

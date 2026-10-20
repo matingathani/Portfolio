@@ -4,9 +4,9 @@ import { ossRepos, type OssPR, type OssRepo } from "../../lib/oss";
 export const metadata = { title: "Open source" };
 
 const STATUS: Record<OssPR["status"], { label: string; className: string }> = {
-  merged: { label: "Merged", className: "bg-[#e6f4ec] text-[#1a6b3c]" },
+  merged: { label: "Merged", className: "bg-ok-bg text-ok-text" },
   open: { label: "Open", className: "bg-accent-soft text-accent" },
-  closed: { label: "Closed", className: "bg-[#eeeeea] text-[#5a5a54]" },
+  closed: { label: "Closed", className: "bg-neutral-bg text-neutral-text" },
 };
 
 function PullRequest({ pr }: { pr: OssPR }) {

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Source_Serif_4, Inter, JetBrains_Mono } from "next/font/google";
+import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import "../styles/globals.css";
 import SiteHeader from "../components/SiteHeader";
@@ -7,8 +7,9 @@ import SiteFooter from "../components/SiteFooter";
 import AccessibilitySkipLink from "../components/AccessibilitySkipLink";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { content } from "../lib/content";
+import { themeInitScript } from "../lib/theme";
 
-const headingFont = Source_Serif_4({
+const headingFont = Fraunces({
   subsets: ["latin"],
   variable: "--font-heading",
   weight: ["400", "600"],
@@ -52,7 +53,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${headingFont.variable} ${bodyFont.variable} ${monoFont.variable}`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${headingFont.variable} ${bodyFont.variable} ${monoFont.variable}`}
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body>
         <Script id="json-ld" type="application/ld+json" strategy="beforeInteractive">
           {JSON.stringify({
