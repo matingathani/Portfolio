@@ -4,9 +4,9 @@ export const content: SiteContent = {
   name: "Matin Gathani",
   role: "Data, AI & Software Engineer",
   summary:
-    "Software engineer working across data, analytics, and AI. I've shipped 28 merged fixes to Cloudflare's developer toolkit, built full-stack platforms that survived production incidents, and engineered NLP pipelines that move data reliably end-to-end. Starting an MSc in Business Analytics and AI at Imperial College London in 2026.",
+    "Software and data engineer. I've had 28 pull requests merged into Cloudflare's developer toolkit, built a student-matching platform for ASU's capstone program, and engineered NLP pipelines that move data reliably end to end. Studying MSc Artificial Intelligence (Financial Analytics) at Imperial Business School.",
   recruiterIntro:
-    "Hi - I'm Matin Gathani. I build across the stack and the data pipeline: 28 merged bug fixes to Cloudflare's open-source toolkit (Wrangler, Miniflare, Vite plugin), full-stack platform delivery, and production ML/NLP work. I'm heading to Imperial College London for an MSc in Business Analytics and AI, and I'm looking for software, data, and analytics roles where I can ship clean, tested, well-documented code.",
+    "Hi, I'm Matin Gathani. I build across the stack and the data pipeline: 28 merged pull requests to Cloudflare's open-source toolkit (Wrangler, Miniflare, Vite plugin), full-stack platform delivery, and production ML and NLP work. I'm studying MSc Artificial Intelligence (Financial Analytics) at Imperial Business School and looking for software, data and analytics roles.",
   hero: {
     currently: "MSc at Imperial Business School · Open to internships and graduate roles",
     headline: "I build and fix the tools developers rely on.",
@@ -92,10 +92,10 @@ export const content: SiteContent = {
   },
   education: [
     {
-      school: "Imperial College Business School",
+      school: "Imperial Business School",
       location: "London, United Kingdom",
-      dates: "Sep 2026 - Aug 2027",
-      degree: "MSc Business Analytics and AI",
+      dates: "Sep 2026 - Jan 2028",
+      degree: "MSc Artificial Intelligence (Financial Analytics)",
       modules: [
         "Advanced Machine Learning",
         "Generative AI and Large Language Models",
@@ -145,7 +145,7 @@ export const content: SiteContent = {
       action:
         "Built the full-stack platform (Next.js, TypeScript, MySQL) with 8+ backend API features and structured error handling. Detected and contained the malware attack: identified the injection vector, hardened the Dockerfile with targeted COPY exclusions and /tmp cleanup, wrote automated malware detection scripts, and authored a security incident response runbook. Built a 24/7 monitoring and auto-recovery daemon (systemd service, 60-second health checks, automatic container restart on failure). Designed and shipped a GitHub Actions CI/CD pipeline - build → push to GHCR → SSH webhook deploy - cutting deployment time from ~15 min manual to ~2 min automated. Automated Excel catalogue generation with Python data pipelines, cutting data-prep from hours to minutes. Integrated Microsoft Graph API for transactional email, and replaced the vulnerable xlsx library with ExcelJS across all API routes and admin scripts.",
       impact:
-        "Placed 5th of 30+ teams at ASU's Capstone Showcase. Server recovered from an active malware attack with zero data loss and no recurrence after hardening; deployment went from manual SSH sessions to fully automated; CI lint gate unblocked for clean merges.",
+        "Placed 5th at ASU's Capstone Showcase. Server recovered from an active malware attack with zero data loss and no recurrence after hardening; deployment went from manual SSH sessions to fully automated; CI lint gate unblocked for clean merges.",
       tools: ["Next.js", "TypeScript", "Docker", "GitHub Actions", "MySQL", "Python", "Microsoft Graph API"],
     },
     {
@@ -212,7 +212,7 @@ export const content: SiteContent = {
       dates: "Jan 2025 - Dec 2025",
       category: "Full-stack",
       overview:
-        "Industry-sponsored AI-matching platform (Next.js, TypeScript, MySQL) pairing students with sponsor capstone projects for hundreds of concurrent users. Placed 5th of 30+ teams at ASU's Capstone Showcase.",
+        "Industry-sponsored AI-matching platform (Next.js, TypeScript, MySQL) pairing students with sponsor capstone projects for hundreds of concurrent users. Placed 5th at ASU's Capstone Showcase.",
       responsibilities: [
         "Built 8+ backend API features with structured error handling.",
         "Contained a crypto-mining malware attack on the Docker build pipeline and hardened the image.",
@@ -224,7 +224,7 @@ export const content: SiteContent = {
         "Replacing a high-severity xlsx CVE across every API route and admin script.",
       ],
       results: [
-        "5th of 30+ teams at ASU's Capstone Showcase; deployment time cut from ~15 min to ~2 min.",
+        "5th at ASU's Capstone Showcase; deployment time cut from ~15 min to ~2 min.",
       ],
       architecture: [
         "Next.js app on a hardened Docker image, deployed build → GHCR → SSH webhook.",
@@ -403,7 +403,7 @@ export const content: SiteContent = {
     },
     {
       title: "Imperial College London",
-      description: "MSc Business Analytics and AI, 2026 intake",
+      description: "MSc Artificial Intelligence (Financial Analytics), 2026 intake",
       date: "2026",
       category: "other",
       icon: "🎓",
@@ -417,7 +417,7 @@ export const content: SiteContent = {
     },
     {
       title: "ASU Capstone Showcase",
-      description: "5th of 30+ teams",
+      description: "5th place",
       date: "2025",
       category: "award",
       icon: "🏆",
