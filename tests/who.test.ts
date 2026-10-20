@@ -54,3 +54,17 @@ describe("who-am-I copy", () => {
     for (const stat of homeStats) expect(stat.label.length).toBeLessThanOrEqual(28);
   });
 });
+
+describe("what I'm looking for", () => {
+  it("says graduate programmes, analyst roles and banking", () => {
+    expect(content.lookingFor).toMatch(/graduate programmes/i);
+    expect(content.lookingFor).toMatch(/analyst/i);
+    expect(content.lookingFor).toMatch(/banking/i);
+  });
+
+  it("mirrors the goal in the hero line", () => {
+    expect(content.hero.currently).toMatch(/graduate/i);
+    expect(content.hero.currently).toMatch(/analyst/i);
+    expect(content.hero.currently).toMatch(/banking/i);
+  });
+});

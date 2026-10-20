@@ -8,13 +8,13 @@ export const content: SiteContent = {
   recruiterIntro:
     "Hi, I'm Matin Gathani. I build across the stack and the data pipeline: 28 merged pull requests to Cloudflare's open-source toolkit (Wrangler, Miniflare, Vite plugin), full-stack platform delivery, and production ML and NLP work. I'm studying MSc Artificial Intelligence (Financial Analytics) at Imperial Business School and looking for software, data and analytics roles.",
   hero: {
-    currently: "MSc at Imperial Business School · Open to internships and graduate roles",
+    currently: "MSc at Imperial Business School · Seeking graduate analyst programmes in banking",
     headline: "I build and fix the tools developers rely on.",
     intro:
       "I'm Matin Gathani, a software and data engineer. I've had 28 pull requests merged into Cloudflare's developer toolkit, built a student-matching platform for ASU's capstone program, and I'm now studying AI and financial analytics at Imperial in London.",
   },
   lookingFor:
-    "I'm looking for internships and graduate roles in software engineering, data and applied AI, where I can ship clean, tested code. Email is the quickest way to reach me.",
+    "I'm looking for graduate programmes in analyst roles, with a particular interest in the banking sector. I'm also open to internships in software engineering, data and applied AI, where I can ship clean, tested code. Email is the quickest way to reach me.",
   why:
     "I like fixing the small things that quietly break someone's day: a command that prints the wrong thing, a crash on a large output, a test that only fails on Windows. Open source taught me how maintainers think. Tutoring taught me to explain hard ideas plainly. Now I'm adding machine learning and financial analytics to that toolkit at Imperial.",
   highlights: [
