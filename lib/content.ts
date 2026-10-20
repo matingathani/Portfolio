@@ -25,6 +25,56 @@ export const content: SiteContent = {
     { name: "C++", value: 55 },
     { name: "AWS", value: 45 },
   ],
+  expertise: [
+    {
+      title: "Data & Analytics",
+      description:
+        "Turning messy data into decisions: SQL modelling, Power BI dashboards, Python pipelines, and the analytics coursework behind an Imperial MSc.",
+      tags: ["Power BI", "SQL", "Python", "Pandas", "Excel"],
+    },
+    {
+      title: "Open-Source Engineering",
+      description:
+        "28 merged bug fixes to Cloudflare's developer toolkit (Wrangler CLI, Miniflare and the Vite plugin), plus ongoing work across the ecosystem.",
+      tags: ["TypeScript", "Node.js", "Cloudflare Workers", "Vitest", "Git"],
+    },
+    {
+      title: "AI & Full-Stack Delivery",
+      description:
+        "Production NLP pipelines and full-stack platforms, Next.js and TypeScript front to back, with CI/CD, monitoring and incident response.",
+      tags: ["Next.js", "NLP", "LLMs", "Docker", "CI/CD"],
+    },
+  ],
+  toolkit: [
+    "Python", "TypeScript", "JavaScript", "Java", "C++", "SQL", "React", "Next.js", "Node.js", "Docker",
+    "Power BI", "Excel", "Pandas", "NumPy", "NLP", "PostgreSQL", "AWS", "REST APIs", "Git", "CI/CD",
+  ],
+  skillLevels: [
+    {
+      level: "Advanced",
+      skills: ["C++", "Python", "SQL", "Power BI", "Excel", "Tableau"],
+    },
+    {
+      level: "Intermediate",
+      skills: [
+        "JavaScript / TypeScript",
+        "Java",
+        "Docker",
+        "GitHub Actions CI/CD",
+        "PostgreSQL",
+        "MySQL",
+      ],
+    },
+    {
+      level: "Basic",
+      skills: ["AWS (EC2, S3, Lambda)"],
+    },
+  ],
+  languages: [
+    { name: "Gujarati", level: "Native" },
+    { name: "Hindi", level: "Native" },
+    { name: "English", level: "Fluent" },
+  ],
   contact: {
     email: "mg3246@imperial.ac.uk",
     phone: "4805722372",
@@ -38,6 +88,11 @@ export const content: SiteContent = {
       location: "London, United Kingdom",
       dates: "Sep 2026 - Aug 2027",
       degree: "MSc Business Analytics and AI",
+      modules: [
+        "Advanced Machine Learning",
+        "Generative AI and Large Language Models",
+        "Causal Modelling for Business Analytics",
+      ],
     },
     {
       school: "Arizona State University",
@@ -60,6 +115,17 @@ export const content: SiteContent = {
       impact:
         "28 merged PRs improving the reliability of tools used across Cloudflare's developer ecosystem, plus clearer error messages for D1, DO migrations, and _routes.json misconfiguration.",
       tools: ["TypeScript", "Node.js", "Wrangler", "Miniflare", "Vitest", "Cloudflare Workers"],
+    },
+    {
+      role: "Export Market Research",
+      company: "Family Stainless Steel Manufacturing Business",
+      location: "Ahmedabad, India",
+      dates: "May 2026 - Aug 2026",
+      problem: "Exploring export markets for a family stainless steel manufacturing business.",
+      action:
+        "Conducted market research and export buyer analysis, identifying target buyers across Germany, UAE, Singapore, and the US using trade data and competitive benchmarking.",
+      impact: "Identified target buyers across four export markets: Germany, UAE, Singapore and the US.",
+      tools: ["Market research", "Trade data analysis", "Competitive benchmarking"],
     },
     {
       role: "Software Engineering Specialist",
@@ -354,6 +420,13 @@ export const content: SiteContent = {
       date: "2026",
       category: "certification",
       icon: "📜",
+    },
+    {
+      title: "Mathematics for Machine Learning",
+      description: "Specialisation, Imperial College London via Coursera",
+      date: "2026",
+      category: "certification",
+      icon: "📐",
     },
     {
       title: "Dean's List",

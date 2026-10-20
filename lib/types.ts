@@ -36,6 +36,7 @@ export type Education = {
   dates: string;
   degree: string;
   gpa?: string;
+  modules?: string[];
 };
 
 export type Testimonial = {
@@ -75,6 +76,20 @@ export type SiteContent = {
   skillProficiencies: {
     name: string;
     value: number;
+  }[];
+  expertise: {
+    title: string;
+    description: string;
+    tags: string[];
+  }[];
+  toolkit: string[];
+  skillLevels: {
+    level: "Advanced" | "Intermediate" | "Basic";
+    skills: string[];
+  }[];
+  languages: {
+    name: string;
+    level: string;
   }[];
   contact: {
     email: string;
