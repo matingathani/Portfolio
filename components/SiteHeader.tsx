@@ -19,7 +19,7 @@ export default function SiteHeader() {
       : "text-sm text-secondary hover:text-primary";
 
   return (
-    <header className="border-b border-border bg-background">
+    <header className="sticky top-0 z-40 border-b border-border bg-background">
       <div className="mx-auto flex max-w-content items-center justify-between px-6 py-4">
         <Link href="/" className="font-heading text-lg font-semibold text-primary" onClick={() => setOpen(false)}>
           {content.name}

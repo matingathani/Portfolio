@@ -1,3 +1,4 @@
+import SocialLinks from "./SocialLinks";
 import { content } from "../lib/content";
 
 export default function SiteFooter() {
@@ -7,23 +8,7 @@ export default function SiteFooter() {
         <p>
           &copy; {new Date().getFullYear()} {content.name}
         </p>
-        <ul className="flex flex-wrap gap-6">
-          <li>
-            <a href={`mailto:${content.contact.email}`} className="hover:text-primary">
-              Email
-            </a>
-          </li>
-          <li>
-            <a href={content.contact.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary">
-              GitHub
-            </a>
-          </li>
-          <li>
-            <a href={content.contact.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-primary">
-              LinkedIn
-            </a>
-          </li>
-        </ul>
+        <SocialLinks />
       </div>
     </footer>
   );

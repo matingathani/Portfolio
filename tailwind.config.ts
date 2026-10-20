@@ -16,6 +16,7 @@ const config: Config = {
         muted: "var(--color-muted)",
         accent: "var(--color-accent)",
         "accent-soft": "var(--color-accent-soft)",
+        band: "var(--color-band)",
         border: "var(--color-border)",
       },
       fontFamily: {

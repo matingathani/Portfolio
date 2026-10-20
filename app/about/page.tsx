@@ -11,12 +11,32 @@ const H2 = "font-heading text-2xl font-semibold text-primary";
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-content px-6 py-16">
-      <SectionHeading as="h1" eyebrow="About" title="Hi, I'm Matin.">
-        {content.summary}
-      </SectionHeading>
+      <SectionHeading as="h1" eyebrow="About" title="Hi, I'm Matin." />
+      <div className="mb-14 max-w-3xl space-y-5 text-lg leading-relaxed text-secondary">
+        {content.aboutIntro.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
+      </div>
 
       <div className="mb-14">
         <StatsStrip stats={impactStats()} />
+      </div>
+
+      <div className="mb-14 grid gap-6 md:grid-cols-2">
+        <section className="card" aria-labelledby="availability">
+          <h2 id="availability" className="font-heading text-xl font-semibold text-primary">
+            Availability
+          </h2>
+          <p className="mt-2 text-sm leading-relaxed text-secondary">{content.lookingFor}</p>
+        </section>
+        {content.outsideCode && (
+          <section className="card" aria-labelledby="outside-code">
+            <h2 id="outside-code" className="font-heading text-xl font-semibold text-primary">
+              Outside of code
+            </h2>
+            <p className="mt-2 text-sm leading-relaxed text-secondary">{content.outsideCode}</p>
+          </section>
+        )}
       </div>
 
       <div className="grid gap-12 md:grid-cols-[260px_1fr]">

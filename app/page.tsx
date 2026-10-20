@@ -1,45 +1,28 @@
 import Link from "next/link";
+import Hero from "../components/Hero";
+import Section from "../components/Section";
 import SectionHeading from "../components/SectionHeading";
-import StatsStrip from "../components/StatsStrip";
-import WorkCard from "../components/WorkCard";
+import WhyIBuild from "../components/WhyIBuild";
+import WorkRow from "../components/WorkRow";
 import { content } from "../lib/content";
 import { posts } from "../lib/blog";
-import { homeStats } from "../lib/stats";
 import { featuredByGroup, workGroups } from "../lib/work";
 
 export default function HomePage() {
-  const { hero, lookingFor } = content;
+  const { lookingFor } = content;
 
   return (
-    <div className="mx-auto max-w-content px-6">
-      <section className="py-16 md:py-24">
-        <p className="eyebrow mb-4">{hero.currently}</p>
-        <h1 className="max-w-3xl font-heading text-4xl font-semibold leading-tight text-primary md:text-6xl">
-          {hero.headline}
-        </h1>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-secondary">{hero.intro}</p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Link href="/work" className="btn-primary">
-            See my work
-          </Link>
-          <Link href="/resume" className="btn-secondary">
-            View resume
-          </Link>
-          <Link href="/contact" className="btn-secondary">
-            Contact
-          </Link>
-        </div>
-      </section>
+    <>
+      <Hero />
+      <WhyIBuild />
 
-      <StatsStrip stats={homeStats} />
-
-      <section className="pt-14" aria-labelledby="what-i-do">
-        <SectionHeading id="what-i-do" eyebrow="What I do" title="Where I work" />
+      <Section labelledBy="what-i-do">
+        <SectionHeading id="what-i-do" eyebrow="02 / What I do" title="Where I work" />
         <div className="grid gap-6 md:grid-cols-3">
           {content.expertise.map((area) => (
             <div key={area.title} className="card">
-              <h3 className="font-heading text-lg font-semibold text-primary">{area.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-secondary">{area.description}</p>
+              <h3 className="font-heading text-xl font-semibold text-primary">{area.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-secondary">{area.description}</p>
               <ul className="mt-4 flex flex-wrap gap-2" aria-label="Topics">
                 {area.tags.map((tag) => (
                   <li key={tag} className="tag">
@@ -50,29 +33,28 @@ export default function HomePage() {
             </div>
           ))}
         </div>
-      </section>
+      </Section>
 
-      {workGroups.map((group) => (
-        <section key={group.id} className="pt-14" aria-labelledby={`group-${group.id}`}>
-          <SectionHeading id={`group-${group.id}`} eyebrow="Selected work" title={group.label}>
-            {group.blurb}
-          </SectionHeading>
-          <div className="grid gap-6 md:grid-cols-2">
+      <Section labelledBy="selected-work">
+        <SectionHeading id="selected-work" eyebrow="03 / Selected work" title="Things I've built and fixed" />
+        {workGroups.map((group) => (
+          <div key={group.id} className="mb-12 last:mb-0">
+            <h3 className="font-heading text-xl font-semibold text-primary">{group.label}</h3>
+            <p className="mb-4 mt-1 text-sm text-muted">{group.blurb}</p>
             {featuredByGroup(group.id).map((item) => (
-              <WorkCard key={item.slug} item={item} />
+              <WorkRow key={item.slug} item={item} />
             ))}
           </div>
-        </section>
-      ))}
+        ))}
+        <p className="mt-6">
+          <Link href="/work" className="link text-sm">
+            See all work &rarr;
+          </Link>
+        </p>
+      </Section>
 
-      <p className="mt-10">
-        <Link href="/work" className="link text-sm">
-          See all work &rarr;
-        </Link>
-      </p>
-
-      <section className="pt-14" aria-labelledby="latest-writing">
-        <SectionHeading id="latest-writing" eyebrow="Writing" title="Latest writing" />
+      <Section band labelledBy="latest-writing">
+        <SectionHeading id="latest-writing" eyebrow="04 / Writing" title="Latest writing" />
         <ul className="grid gap-6 md:grid-cols-3">
           {posts.slice(0, 3).map((post) => (
             <li key={post.slug}>
@@ -92,22 +74,24 @@ export default function HomePage() {
             All writing &rarr;
           </Link>
         </p>
-      </section>
+      </Section>
 
-      <section className="mt-16 rounded-xl border border-border bg-accent-soft p-8" aria-labelledby="looking-for">
-        <h2 id="looking-for" className="font-heading text-2xl font-semibold text-primary">
-          What I&apos;m looking for
-        </h2>
-        <p className="mt-3 max-w-2xl leading-relaxed text-secondary">{lookingFor}</p>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Link href="/contact" className="btn-primary">
-            Get in touch
-          </Link>
-          <Link href="/resume" className="btn-secondary">
-            View resume
-          </Link>
+      <Section labelledBy="looking-for">
+        <div className="rounded-xl border border-border bg-accent-soft p-8 md:p-10">
+          <h2 id="looking-for" className="font-heading text-3xl font-semibold tracking-tight text-primary">
+            What I&apos;m looking for
+          </h2>
+          <p className="mt-3 max-w-2xl text-lg leading-relaxed text-secondary">{lookingFor}</p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link href="/contact" className="btn-primary">
+              Get in touch
+            </Link>
+            <Link href="/resume" className="btn-secondary">
+              View resume
+            </Link>
+          </div>
         </div>
-      </section>
-    </div>
+      </Section>
+    </>
   );
 }

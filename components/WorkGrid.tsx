@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import WorkCard from "./WorkCard";
+import WorkRow from "./WorkRow";
 import { workGroups, workItems, type WorkGroup } from "../lib/work";
 
 type Filter = WorkGroup | "all";
@@ -34,9 +34,9 @@ export default function WorkGrid() {
           </button>
         ))}
       </div>
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="border-b border-border">
         {visible.map((item) => (
-          <WorkCard key={item.slug} item={item} headingLevel="h2" />
+          <WorkRow key={item.slug} item={item} headingLevel="h2" />
         ))}
       </div>
       <p aria-live="polite" className="sr-only">
