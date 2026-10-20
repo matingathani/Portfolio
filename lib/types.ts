@@ -74,6 +74,13 @@ export type SiteContent = {
     intro: string;
   };
   lookingFor: string;
+  why: string;
+  highlights: {
+    title: string;
+    detail: string;
+  }[];
+  aboutIntro: string[];
+  outsideCode?: string;
   impactMetrics: {
     label: string;
     value: number;

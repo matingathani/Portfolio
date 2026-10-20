@@ -15,6 +15,27 @@ export const content: SiteContent = {
   },
   lookingFor:
     "I'm looking for internships and graduate roles in software engineering, data and applied AI, where I can ship clean, tested code. Email is the quickest way to reach me.",
+  why:
+    "I like fixing the small things that quietly break someone's day: a command that prints the wrong thing, a crash on a large output, a test that only fails on Windows. Open source taught me how maintainers think. Tutoring taught me to explain hard ideas plainly. Now I'm adding machine learning and financial analytics to that toolkit at Imperial.",
+  highlights: [
+    {
+      title: "Cloudflare developer toolkit",
+      detail: "28 merged fixes to Wrangler, Miniflare and the Vite plugin",
+    },
+    {
+      title: "ASU Capstone platform",
+      detail: "Student and sponsor matching, 5th at the Capstone Showcase",
+    },
+    {
+      title: "Teaching",
+      detail: "Tutored 180+ students across 300+ sessions in Java, C++ and Assembly",
+    },
+  ],
+  aboutIntro: [
+    "I'm Matin. I finished my B.S. in Computer Science at Arizona State University in May 2026 with a 3.74 GPA, and I'm now studying MSc Artificial Intelligence (Financial Analytics) at Imperial Business School in London.",
+    "The work I'm proudest of is the unglamorous kind: 28 merged fixes to Cloudflare's developer toolkit, including a Workflows crash I traced to a SQLite size limit, and a capstone platform that kept running through a malware incident.",
+    "I also tutored 180+ students in Java, C++ and Assembly, and I still write code and documentation with that reader in mind.",
+  ],
   impactMetrics: [
     { label: "Merged OSS fixes", value: 28, suffix: "" },
     { label: "Students mentored", value: 180, suffix: "+" },

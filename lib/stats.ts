@@ -10,8 +10,8 @@ export const impactStats = (): { value: string; label: string }[] =>
 const gpa = content.education.find((entry) => entry.gpa)?.gpa ?? "";
 
 export const homeStats: { value: string; label: string }[] = [
-  { value: "28", label: "merged PRs in Cloudflare's workers-sdk" },
-  { value: String(ossRepos.length), label: "open-source projects contributed to" },
-  { value: gpa, label: "GPA, B.S. Computer Science, ASU" },
-  { value: "4×", label: "Dean's List at ASU" },
+  { value: "28", label: "merged PRs, Cloudflare" },
+  { value: String(ossRepos.length), label: "OSS projects" },
+  { value: gpa, label: "GPA, ASU B.S." },
+  { value: "4×", label: "Dean's List, ASU" },
 ];
