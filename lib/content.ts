@@ -7,6 +7,14 @@ export const content: SiteContent = {
     "Software engineer working across data, analytics, and AI. I've shipped 28 merged fixes to Cloudflare's developer toolkit, built full-stack platforms that survived production incidents, and engineered NLP pipelines that move data reliably end-to-end. Starting an MSc in Business Analytics and AI at Imperial College London in 2026.",
   recruiterIntro:
     "Hi - I'm Matin Gathani. I build across the stack and the data pipeline: 28 merged bug fixes to Cloudflare's open-source toolkit (Wrangler, Miniflare, Vite plugin), full-stack platform delivery, and production ML/NLP work. I'm heading to Imperial College London for an MSc in Business Analytics and AI, and I'm looking for software, data, and analytics roles where I can ship clean, tested, well-documented code.",
+  hero: {
+    currently: "MSc at Imperial Business School · Open to internships and graduate roles",
+    headline: "I build and fix the tools developers rely on.",
+    intro:
+      "I'm Matin Gathani, a software and data engineer. I've had 28 pull requests merged into Cloudflare's developer toolkit, built a student-matching platform for ASU's capstone program, and I'm now studying AI and financial analytics at Imperial in London.",
+  },
+  lookingFor:
+    "I'm looking for internships and graduate roles in software engineering, data and applied AI, where I can ship clean, tested code. Email is the quickest way to reach me.",
   impactMetrics: [
     { label: "Merged OSS fixes", value: 28, suffix: "" },
     { label: "Students mentored", value: 180, suffix: "+" },

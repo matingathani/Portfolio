@@ -68,6 +68,12 @@ export type SiteContent = {
   role: string;
   summary: string;
   recruiterIntro: string;
+  hero: {
+    currently: string;
+    headline: string;
+    intro: string;
+  };
+  lookingFor: string;
   impactMetrics: {
     label: string;
     value: number;
