@@ -99,3 +99,16 @@ Projects drawn from notes rather than the repo (UK Grocer, CityMart): included o
 ## Rollout
 
 Work on `redesign/light-site`, push, review the Vercel preview, then merge to `main` (auto-deploys). Rollback: revert the merge commit.
+
+## Addendum (2026-10-20): keep old-site content, add new resume content
+
+The user asked to keep content from the old site and also add new content. This overrides the "about 6 sections" simplification where they conflict.
+
+Kept from the old site (rendered statically, no marquee or motion):
+- "What I do" (three areas) on `/`; latest writing (three posts) on `/`.
+- On `/about`: impact numbers (28 merged fixes, 180+ students mentored, 1,000+ defects diagnosed, 10,000+ records processed), all four past roles including the Musikaar Data Intern role, skill groups, the tools list, highlights, and the three testimonials.
+
+Added from the new resume:
+- Imperial relevant modules; the export market research role (May-Aug 2026); skill levels (Advanced / Intermediate / Basic); languages; the Mathematics for Machine Learning certificate.
+
+Still excluded: UK Grocer and CityMart (private or no repo), unverified metrics, the CNN AUC figure.

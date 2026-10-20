@@ -29,10 +29,10 @@
 ## Review Focus
 
 - Old links `/blog/<slug>` must redirect to `/writing/<slug>` (not 404): pinned in Task 1 (`tests/site.test.ts`) and Task 3.
-- Contact form with SMTP env vars unset (the local and preview default): server returns 500 "Email configuration missing."; the page must show the friendly message and a visible `mailto:` link, not a dead form: checked in Task 7.
-- `/resume` on a 375px phone: the old mobile `<iframe>` is blocked by CSP; the page must show the rendered PDF or the download buttons: Task 7.
-- Private repos or unverified metrics leaking onto the site (`uk-grocer`, `91%`, `500+`, `of 150`, `30+ teams`, old "Business Analytics and AI"): pinned in Task 1 and Task 8 tests.
-- JavaScript disabled or slow: `/work` must still list every project in the server HTML (filter defaults to "All"): checked in Task 5 with `curl`.
+- Contact form with SMTP env vars unset (the local and preview default): server returns 500 "Email configuration missing."; the page must show the friendly message and a visible `mailto:` link, not a dead form: checked in Task 8.
+- `/resume` on a 375px phone: the old mobile `<iframe>` is blocked by CSP; the page must show the rendered PDF or the download buttons: Task 8.
+- Private repos or unverified metrics leaking onto the site (`uk-grocer`, `91%`, `500+`, `of 150`, `30+ teams`, old "Business Analytics and AI"): pinned in Task 1 and Task 9 tests.
+- JavaScript disabled or slow: `/work` must still list every project in the server HTML (filter defaults to "All"): checked in Task 6 with `curl`.
 
 ---
 
@@ -832,7 +832,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 - [ ] **Step 7: Build to verify nothing is broken**
 
 Run: `npm run build 2>&1 | tail -25`
-Expected: build succeeds. (The old homepage still renders with its own dark inline styles; that is expected until Task 4.)
+Expected: build succeeds. (The old homepage still renders with its own dark inline styles; that is expected until Task 5.)
 
 - [ ] **Step 8: Commit**
 
@@ -1023,12 +1023,305 @@ Claude-Session: https://claude.ai/code/session_01QUqXuwUfbwrbF1cqsXMU7k"
 
 ---
 
-### Task 4: Homepage (hero, stats, featured work)
+### Task 4: Carry over old-site content and add new resume content
+
+The old site had sections the first draft of this plan dropped (what I do, toolkit, impact numbers, Musikaar role, testimonials). The new resume adds items the old site never had (Imperial modules, export market research, skill levels, languages, a maths certificate). This task puts all of it in `lib/content.ts` as data, test-first. Later tasks render it.
+
+**Files:**
+- Create: `tests/carryover.test.ts`
+- Modify: `lib/types.ts`
+- Modify: `lib/content.ts`
+- Modify: `lib/stats.ts` (add `impactStats`; this file is created in Task 5 if absent, so create it here)
+
+**Interfaces:**
+- Consumes: existing `content` (`experience`, `testimonials`, `impactMetrics`, `education`, `achievements`).
+- Produces:
+  - `Education.modules?: string[]`
+  - `content.expertise: { title: string; description: string; tags: string[] }[]` (3 items)
+  - `content.toolkit: string[]`
+  - `content.skillLevels: { level: "Advanced" | "Intermediate" | "Basic"; skills: string[] }[]`
+  - `content.languages: { name: string; level: string }[]`
+  - `impactStats(): { value: string; label: string }[]` from `lib/stats.ts`, giving `["28","180+","1,000+","10,000+"]` for values.
+
+- [ ] **Step 1: Write the failing tests**
+
+Create `tests/carryover.test.ts`:
+
+```ts
+import { describe, it, expect } from "vitest";
+import { content } from "../lib/content";
+import { impactStats } from "../lib/stats";
+
+describe("content carried over from the old site", () => {
+  it("keeps all four past roles", () => {
+    const roles = content.experience.map((e) => e.role);
+    for (const role of [
+      "Open-Source Contributor",
+      "Software Engineering Specialist",
+      "Engineering Tutor",
+      "Data Intern",
+    ]) {
+      expect(roles).toContain(role);
+    }
+  });
+
+  it("keeps the three testimonials", () => {
+    expect(content.testimonials).toHaveLength(3);
+  });
+
+  it("keeps the three 'what I do' areas", () => {
+    expect(content.expertise.map((e) => e.title)).toEqual([
+      "Data & Analytics",
+      "Open-Source Engineering",
+      "AI & Full-Stack Delivery",
+    ]);
+    for (const area of content.expertise) expect(area.tags.length).toBeGreaterThan(0);
+  });
+
+  it("keeps the toolkit list", () => {
+    expect(content.toolkit).toEqual(expect.arrayContaining(["Python", "TypeScript", "Docker", "Power BI"]));
+  });
+
+  it("formats the impact numbers with separators", () => {
+    expect(impactStats().map((s) => s.value)).toEqual(["28", "180+", "1,000+", "10,000+"]);
+  });
+});
+
+describe("new content from the Imperial resume", () => {
+  it("adds the relevant Imperial modules", () => {
+    expect(content.education[0].modules).toEqual([
+      "Advanced Machine Learning",
+      "Generative AI and Large Language Models",
+      "Causal Modelling for Business Analytics",
+    ]);
+  });
+
+  it("adds the export market research role", () => {
+    const role = content.experience.find((e) => e.company.includes("Stainless"));
+    expect(role?.dates).toBe("May 2026 - Aug 2026");
+    expect(role?.action).toContain("Germany, UAE, Singapore");
+  });
+
+  it("adds the resume skill levels", () => {
+    const level = (name: string) => content.skillLevels.find((l) => l.level === name)?.skills ?? [];
+    expect(level("Advanced")).toEqual(
+      expect.arrayContaining(["C++", "Python", "SQL", "Power BI", "Excel", "Tableau"])
+    );
+    expect(level("Intermediate")).toEqual(
+      expect.arrayContaining(["JavaScript / TypeScript", "Java", "Docker", "GitHub Actions CI/CD", "PostgreSQL", "MySQL"])
+    );
+    expect(level("Basic")).toEqual(["AWS (EC2, S3, Lambda)"]);
+  });
+
+  it("adds spoken languages", () => {
+    expect(content.languages.map((l) => l.name)).toEqual(["Gujarati", "Hindi", "English"]);
+  });
+
+  it("adds the Imperial maths certificate", () => {
+    expect(content.achievements.map((a) => a.title)).toContain("Mathematics for Machine Learning");
+  });
+});
+```
+
+- [ ] **Step 2: Run the tests to verify they fail**
+
+Run: `npm test 2>&1 | tail -20`
+Expected: FAIL. `tests/carryover.test.ts` errors on a missing export `impactStats` from `../lib/stats` (module not found), and nothing else regresses.
+
+- [ ] **Step 3: Extend the types in `lib/types.ts`**
+
+In the `Education` type, add after `gpa?: string;`:
+
+```ts
+  modules?: string[];
+```
+
+In `SiteContent`, add after the `skillProficiencies` array type (anywhere inside the type is fine; keep it next to the other list fields):
+
+```ts
+  expertise: {
+    title: string;
+    description: string;
+    tags: string[];
+  }[];
+  toolkit: string[];
+  skillLevels: {
+    level: "Advanced" | "Intermediate" | "Basic";
+    skills: string[];
+  }[];
+  languages: {
+    name: string;
+    level: string;
+  }[];
+```
+
+- [ ] **Step 4: Add the new data to `lib/content.ts`**
+
+Insert the following block directly before the line `  contact: {` (two-space indent):
+
+```ts
+  expertise: [
+    {
+      title: "Data & Analytics",
+      description:
+        "Turning messy data into decisions: SQL modelling, Power BI dashboards, Python pipelines, and the analytics coursework behind an Imperial MSc.",
+      tags: ["Power BI", "SQL", "Python", "Pandas", "Excel"],
+    },
+    {
+      title: "Open-Source Engineering",
+      description:
+        "28 merged bug fixes to Cloudflare's developer toolkit (Wrangler CLI, Miniflare and the Vite plugin), plus ongoing work across the ecosystem.",
+      tags: ["TypeScript", "Node.js", "Cloudflare Workers", "Vitest", "Git"],
+    },
+    {
+      title: "AI & Full-Stack Delivery",
+      description:
+        "Production NLP pipelines and full-stack platforms, Next.js and TypeScript front to back, with CI/CD, monitoring and incident response.",
+      tags: ["Next.js", "NLP", "LLMs", "Docker", "CI/CD"],
+    },
+  ],
+  toolkit: [
+    "Python", "TypeScript", "JavaScript", "Java", "C++", "SQL", "React", "Next.js", "Node.js", "Docker",
+    "Power BI", "Excel", "Pandas", "NumPy", "NLP", "PostgreSQL", "AWS", "REST APIs", "Git", "CI/CD",
+  ],
+  skillLevels: [
+    {
+      level: "Advanced",
+      skills: ["C++", "Python", "SQL", "Power BI", "Excel", "Tableau"],
+    },
+    {
+      level: "Intermediate",
+      skills: [
+        "JavaScript / TypeScript",
+        "Java",
+        "Docker",
+        "GitHub Actions CI/CD",
+        "PostgreSQL",
+        "MySQL",
+      ],
+    },
+    {
+      level: "Basic",
+      skills: ["AWS (EC2, S3, Lambda)"],
+    },
+  ],
+  languages: [
+    { name: "Gujarati", level: "Native" },
+    { name: "Hindi", level: "Native" },
+    { name: "English", level: "Fluent" },
+  ],
+```
+
+Then, in the first `education` entry (Imperial), use the Edit tool to replace the single line
+
+```ts
+      degree: "MSc Business Analytics and AI",
+```
+
+with:
+
+```ts
+      degree: "MSc Business Analytics and AI",
+      modules: [
+        "Advanced Machine Learning",
+        "Generative AI and Large Language Models",
+        "Causal Modelling for Business Analytics",
+      ],
+```
+
+(Task 10 later renames this degree string; the `modules` line stays.)
+
+Next, add the export-research role to `experience`, directly after the Cloudflare entry. Use the Edit tool to replace
+
+```ts
+      tools: ["TypeScript", "Node.js", "Wrangler", "Miniflare", "Vitest", "Cloudflare Workers"],
+    },
+```
+
+with:
+
+```ts
+      tools: ["TypeScript", "Node.js", "Wrangler", "Miniflare", "Vitest", "Cloudflare Workers"],
+    },
+    {
+      role: "Export Market Research",
+      company: "Family Stainless Steel Manufacturing Business",
+      location: "Ahmedabad, India",
+      dates: "May 2026 - Aug 2026",
+      problem: "Exploring export markets for a family stainless steel manufacturing business.",
+      action:
+        "Conducted market research and export buyer analysis, identifying target buyers across Germany, UAE, Singapore, and the US using trade data and competitive benchmarking.",
+      impact: "Identified target buyers across four export markets: Germany, UAE, Singapore and the US.",
+      tools: ["Market research", "Trade data analysis", "Competitive benchmarking"],
+    },
+```
+
+Finally, add the certificate to `achievements`, directly after the IBM entry. Use the Edit tool to replace
+
+```ts
+      description: "Professional Certificate (Coursera)",
+      date: "2026",
+      category: "certification",
+      icon: "📜",
+    },
+```
+
+with:
+
+```ts
+      description: "Professional Certificate (Coursera)",
+      date: "2026",
+      category: "certification",
+      icon: "📜",
+    },
+    {
+      title: "Mathematics for Machine Learning",
+      description: "Specialisation, Imperial College London via Coursera",
+      date: "2026",
+      category: "certification",
+      icon: "📐",
+    },
+```
+
+- [ ] **Step 5: Create `lib/stats.ts` with `impactStats`**
+
+Create `lib/stats.ts` (Task 5 appends `homeStats` to this file):
+
+```ts
+import { content } from "./content";
+
+export const impactStats = (): { value: string; label: string }[] =>
+  content.impactMetrics.map((metric) => ({
+    value: `${metric.value.toLocaleString("en-US")}${metric.suffix ?? ""}`,
+    label: metric.label,
+  }));
+```
+
+- [ ] **Step 6: Run the tests to verify they pass**
+
+Run: `npm test 2>&1 | tail -20`
+Expected: PASS, every file green (site, work, sitemap, carryover).
+
+Run: `npx tsc --noEmit 2>&1 | tail -15`
+Expected: no output.
+
+- [ ] **Step 7: Commit**
+
+```bash
+git add tests/carryover.test.ts lib/types.ts lib/content.ts lib/stats.ts
+git commit -m "feat: carry over old-site content and add new resume content
+
+Claude-Session: https://claude.ai/code/session_01QUqXuwUfbwrbF1cqsXMU7k"
+```
+
+---
+
+### Task 5: Homepage (hero, stats, what I do, featured work, latest writing)
 
 **Files:**
 - Modify: `lib/types.ts` (extend `SiteContent`)
 - Modify: `lib/content.ts` (add `hero`, `lookingFor`)
-- Create: `lib/stats.ts`
+- Modify: `lib/stats.ts` (created in Task 4; add `homeStats`)
 - Create: `tests/stats.test.ts`
 - Create: `components/StatsStrip.tsx`
 - Create: `components/WorkCard.tsx`
@@ -1101,11 +1394,17 @@ In `lib/content.ts`, directly after the `recruiterIntro: ...,` property (it ends
     "I'm looking for internships and graduate roles in software engineering, data and applied AI, where I can ship clean, tested code. Email is the quickest way to reach me.",
 ```
 
-- [ ] **Step 5: Create `lib/stats.ts`**
+- [ ] **Step 5: Replace `lib/stats.ts` (keeps `impactStats` from Task 4, adds `homeStats`)**
 
 ```ts
 import { content } from "./content";
 import { ossRepos } from "./oss";
+
+export const impactStats = (): { value: string; label: string }[] =>
+  content.impactMetrics.map((metric) => ({
+    value: `${metric.value.toLocaleString("en-US")}${metric.suffix ?? ""}`,
+    label: metric.label,
+  }));
 
 const gpa = content.education.find((entry) => entry.gpa)?.gpa ?? "";
 
@@ -1178,6 +1477,7 @@ import SectionHeading from "../components/SectionHeading";
 import StatsStrip from "../components/StatsStrip";
 import WorkCard from "../components/WorkCard";
 import { content } from "../lib/content";
+import { posts } from "../lib/blog";
 import { homeStats } from "../lib/stats";
 import { featuredByGroup, workGroups } from "../lib/work";
 
@@ -1207,6 +1507,25 @@ export default function HomePage() {
 
       <StatsStrip stats={homeStats} />
 
+      <section className="pt-14" aria-labelledby="what-i-do">
+        <SectionHeading id="what-i-do" eyebrow="What I do" title="Where I work" />
+        <div className="grid gap-6 md:grid-cols-3">
+          {content.expertise.map((area) => (
+            <div key={area.title} className="card">
+              <h3 className="font-heading text-lg font-semibold text-primary">{area.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-secondary">{area.description}</p>
+              <ul className="mt-4 flex flex-wrap gap-2" aria-label="Topics">
+                {area.tags.map((tag) => (
+                  <li key={tag} className="tag">
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {workGroups.map((group) => (
         <section key={group.id} className="pt-14" aria-labelledby={`group-${group.id}`}>
           <SectionHeading id={`group-${group.id}`} eyebrow="Selected work" title={group.label}>
@@ -1225,6 +1544,29 @@ export default function HomePage() {
           See all work &rarr;
         </Link>
       </p>
+
+      <section className="pt-14" aria-labelledby="latest-writing">
+        <SectionHeading id="latest-writing" eyebrow="Writing" title="Latest writing" />
+        <ul className="grid gap-6 md:grid-cols-3">
+          {posts.slice(0, 3).map((post) => (
+            <li key={post.slug}>
+              <Link
+                href={`/writing/${post.slug}`}
+                className="card block h-full transition-colors hover:border-accent"
+              >
+                <p className="eyebrow">{post.date}</p>
+                <p className="mt-2 font-heading text-lg font-semibold text-primary">{post.title}</p>
+                <p className="mt-2 text-sm leading-relaxed text-secondary">{post.summary}</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-6">
+          <Link href="/writing" className="link text-sm">
+            All writing &rarr;
+          </Link>
+        </p>
+      </section>
 
       <section className="mt-16 rounded-xl border border-border bg-accent-soft p-8" aria-labelledby="looking-for">
         <h2 id="looking-for" className="font-heading text-2xl font-semibold text-primary">
@@ -1255,7 +1597,7 @@ Expected: build succeeds.
 
 - [ ] **Step 10: Visual check of the homepage**
 
-Run: `npx next start -p 3100 > /dev/null 2>&1 & SERVER=$!; sleep 4; curl -s http://localhost:3100/ | grep -oE "(I build and fix the tools developers rely on\.|Selected work|What I&#x27;m looking for|Cloudflare developer toolkit|CNN cancer detection pipeline)" | sort | uniq -c; kill $SERVER`
+Run: `npx next start -p 3100 > /dev/null 2>&1 & SERVER=$!; sleep 4; curl -s http://localhost:3100/ | grep -oE "(I build and fix the tools developers rely on\.|Where I work|Latest writing|Selected work|What I&#x27;m looking for|Cloudflare developer toolkit|CNN cancer detection pipeline)" | sort | uniq -c; kill $SERVER`
 Expected: each phrase appears at least once. Then open `http://localhost:3100` in a browser (run the server again) and confirm: light background, no animation, hero readable at 375px and 1280px, no horizontal scroll.
 
 - [ ] **Step 11: Commit**
@@ -1269,7 +1611,7 @@ Claude-Session: https://claude.ai/code/session_01QUqXuwUfbwrbF1cqsXMU7k"
 
 ---
 
-### Task 5: Work page with filter
+### Task 6: Work page with filter
 
 **Files:**
 - Create: `components/WorkGrid.tsx`
@@ -1385,7 +1727,7 @@ Claude-Session: https://claude.ai/code/session_01QUqXuwUfbwrbF1cqsXMU7k"
 
 ---
 
-### Task 6: About and Open-source pages
+### Task 7: About and Open-source pages
 
 **Files:**
 - Modify (full rewrite): `app/about/page.tsx`
@@ -1400,9 +1742,13 @@ Claude-Session: https://claude.ai/code/session_01QUqXuwUfbwrbF1cqsXMU7k"
 ```tsx
 import Image from "next/image";
 import SectionHeading from "../../components/SectionHeading";
+import StatsStrip from "../../components/StatsStrip";
 import { content } from "../../lib/content";
+import { impactStats } from "../../lib/stats";
 
 export const metadata = { title: "About" };
+
+const H2 = "font-heading text-2xl font-semibold text-primary";
 
 export default function AboutPage() {
   return (
@@ -1410,6 +1756,10 @@ export default function AboutPage() {
       <SectionHeading as="h1" eyebrow="About" title="Hi, I'm Matin.">
         {content.summary}
       </SectionHeading>
+
+      <div className="mb-14">
+        <StatsStrip stats={impactStats()} />
+      </div>
 
       <div className="grid gap-12 md:grid-cols-[260px_1fr]">
         <aside className="space-y-4">
@@ -1442,14 +1792,24 @@ export default function AboutPage() {
               </a>
             </li>
           </ul>
+          <div>
+            <p className="eyebrow mb-2">Languages</p>
+            <ul className="space-y-1 text-sm text-secondary">
+              {content.languages.map((language) => (
+                <li key={language.name}>
+                  {language.name} <span className="text-muted">({language.level})</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </aside>
 
         <div className="space-y-14">
           <section aria-labelledby="education">
-            <h2 id="education" className="font-heading text-2xl font-semibold text-primary">
+            <h2 id="education" className={H2}>
               Education
             </h2>
-            <div className="mt-4 space-y-5">
+            <div className="mt-4 space-y-6">
               {content.education.map((edu) => (
                 <div key={edu.school}>
                   <p className="font-medium text-primary">{edu.degree}</p>
@@ -1460,13 +1820,22 @@ export default function AboutPage() {
                     {edu.dates}
                     {edu.gpa ? ` · GPA ${edu.gpa}` : ""}
                   </p>
+                  {edu.modules && (
+                    <ul className="mt-3 flex flex-wrap gap-2" aria-label="Relevant modules">
+                      {edu.modules.map((module) => (
+                        <li key={module} className="tag">
+                          {module}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               ))}
             </div>
           </section>
 
           <section aria-labelledby="experience">
-            <h2 id="experience" className="font-heading text-2xl font-semibold text-primary">
+            <h2 id="experience" className={H2}>
               Experience
             </h2>
             <div className="mt-4 space-y-8">
@@ -1495,10 +1864,24 @@ export default function AboutPage() {
           </section>
 
           <section aria-labelledby="skills">
-            <h2 id="skills" className="font-heading text-2xl font-semibold text-primary">
+            <h2 id="skills" className={H2}>
               Skills
             </h2>
-            <div className="mt-4 grid gap-6 md:grid-cols-2">
+            <div className="mt-4 space-y-3">
+              {content.skillLevels.map((group) => (
+                <div key={group.level} className="flex flex-col gap-2 md:flex-row md:items-baseline md:gap-4">
+                  <p className="w-32 shrink-0 text-sm font-medium text-primary">{group.level}</p>
+                  <ul className="flex flex-wrap gap-2">
+                    {group.skills.map((skill) => (
+                      <li key={skill} className="tag">
+                        {skill}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 grid gap-6 md:grid-cols-2">
               {content.skills.map((group) => (
                 <div key={group.title} className="card">
                   <h3 className="font-medium text-primary">{group.title}</h3>
@@ -1515,8 +1898,21 @@ export default function AboutPage() {
             </div>
           </section>
 
+          <section aria-labelledby="toolkit">
+            <h2 id="toolkit" className={H2}>
+              Tools I use
+            </h2>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {content.toolkit.map((tool) => (
+                <li key={tool} className="tag">
+                  {tool}
+                </li>
+              ))}
+            </ul>
+          </section>
+
           <section aria-labelledby="highlights">
-            <h2 id="highlights" className="font-heading text-2xl font-semibold text-primary">
+            <h2 id="highlights" className={H2}>
               Highlights
             </h2>
             <ul className="mt-4 space-y-3">
@@ -1527,6 +1923,25 @@ export default function AboutPage() {
                 </li>
               ))}
             </ul>
+          </section>
+
+          <section aria-labelledby="kind-words">
+            <h2 id="kind-words" className={H2}>
+              Kind words
+            </h2>
+            <div className="mt-4 grid gap-6">
+              {content.testimonials.map((item) => (
+                <figure key={item.quote} className="card">
+                  <blockquote className="text-sm leading-relaxed text-secondary">
+                    &ldquo;{item.quote}&rdquo;
+                  </blockquote>
+                  <figcaption className="eyebrow mt-3">
+                    {item.author}, {item.role}
+                    {item.company ? `, ${item.company}` : ""}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
           </section>
         </div>
       </div>
@@ -1620,7 +2035,7 @@ Claude-Session: https://claude.ai/code/session_01QUqXuwUfbwrbF1cqsXMU7k"
 
 ---
 
-### Task 7: Resume and Contact pages
+### Task 8: Resume and Contact pages
 
 **Files:**
 - Modify: `components/ResumeViewer.tsx` (remove the mobile `<iframe>` branch)
@@ -1825,7 +2240,7 @@ Claude-Session: https://claude.ai/code/session_01QUqXuwUfbwrbF1cqsXMU7k"
 
 ---
 
-### Task 8: Content facts, 404 page and social images
+### Task 9: Content facts, 404 page and social images
 
 **Files:**
 - Modify: `lib/content.ts` (summary, education, "5th" claims)
@@ -2019,7 +2434,7 @@ Claude-Session: https://claude.ai/code/session_01QUqXuwUfbwrbF1cqsXMU7k"
 
 ---
 
-### Task 9: Delete the old design and unused packages
+### Task 10: Delete the old design and unused packages
 
 **Files:**
 - Delete: `components/story/` (whole directory) and the unused components listed in Step 1
@@ -2090,13 +2505,13 @@ Claude-Session: https://claude.ai/code/session_01QUqXuwUfbwrbF1cqsXMU7k"
 
 ---
 
-### Task 10: Final verification and hand-off
+### Task 11: Final verification and hand-off
 
 **Files:**
 - None created. Verification only.
 
 **Interfaces:**
-- Consumes: the production build from Task 9.
+- Consumes: the production build from Task 10.
 
 - [ ] **Step 1: Check every route**
 
