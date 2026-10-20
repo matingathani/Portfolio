@@ -25,6 +25,7 @@
 - Commit messages end with the line `Claude-Session: https://claude.ai/code/session_01QUqXuwUfbwrbF1cqsXMU7k`.
 - CSP in `next.config.js` sets `frame-ancestors 'none'` on every response, so the PDF can never be shown in an `<iframe>`; `/resume` uses the react-pdf viewer only.
 - JSX text must escape apostrophes (`&apos;`) or the lint step fails.
+- Until Task 10 deletes the old files, `.eslintrc.json` makes plain `npm run build` fail on lint errors in files that are about to be removed. Run builds as `npm run build -- --no-lint` in Tasks 0-9, lint new files with `npx next lint --file <path>`, and use plain `npm run build` and whole-project `npx next lint` from Task 10 on. `next/font/google` can fail transiently with `Cannot read properties of null (reading '1')`; re-run the build once before treating it as a real failure. Baseline before redesign: `/` First Load JS = 174 kB.
 
 ## Review Focus
 
