@@ -10,7 +10,7 @@ export default function OGImage() {
     (
       <div
         style={{
-          background: "#050810",
+          background: "#fafaf7",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -19,27 +19,16 @@ export default function OGImage() {
           justifyContent: "center",
           padding: "80px",
           fontFamily: "sans-serif",
+          borderLeft: "16px solid #1f4fd8",
         }}
       >
-        <div style={{ color: "#a78bfa", fontSize: 28, marginBottom: 16 }}>
-          matingathani.me
-        </div>
-        <div
-          style={{
-            color: "#ffffff",
-            fontSize: 64,
-            fontWeight: 700,
-            lineHeight: 1.1,
-            marginBottom: 24,
-          }}
-        >
+        <div style={{ color: "#1f4fd8", fontSize: 28, marginBottom: 16 }}>matingathani.me</div>
+        <div style={{ color: "#1a1a1a", fontSize: 72, fontWeight: 700, lineHeight: 1.1, marginBottom: 24 }}>
           Matin Gathani
         </div>
-        <div style={{ color: "#94a3b8", fontSize: 32 }}>
-          Data, AI &amp; Software Engineer
-        </div>
-        <div style={{ color: "#64748b", fontSize: 22, marginTop: 40 }}>
-          CS @ ASU · MSc Business Analytics &amp; AI @ Imperial
+        <div style={{ color: "#4a4a45", fontSize: 32 }}>Data, AI &amp; Software Engineer</div>
+        <div style={{ color: "#6b6b64", fontSize: 22, marginTop: 40 }}>
+          CS @ ASU · MSc Artificial Intelligence @ Imperial
         </div>
       </div>
     ),

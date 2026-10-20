@@ -4,9 +4,40 @@ export const content: SiteContent = {
   name: "Matin Gathani",
   role: "Data, AI & Software Engineer",
   summary:
-    "Software engineer working across data, analytics, and AI. I've shipped 28 merged fixes to Cloudflare's developer toolkit, built full-stack platforms that survived production incidents, and engineered NLP pipelines that move data reliably end-to-end. Starting an MSc in Business Analytics and AI at Imperial College London in 2026.",
+    "Software and data engineer. I've had 28 pull requests merged into Cloudflare's developer toolkit, built a student-matching platform for ASU's capstone program, and engineered NLP pipelines that move data reliably end to end. Studying MSc Artificial Intelligence (Financial Analytics) at Imperial Business School.",
   recruiterIntro:
-    "Hi - I'm Matin Gathani. I build across the stack and the data pipeline: 28 merged bug fixes to Cloudflare's open-source toolkit (Wrangler, Miniflare, Vite plugin), full-stack platform delivery, and production ML/NLP work. I'm heading to Imperial College London for an MSc in Business Analytics and AI, and I'm looking for software, data, and analytics roles where I can ship clean, tested, well-documented code.",
+    "Hi, I'm Matin Gathani. I build across the stack and the data pipeline: 28 merged pull requests to Cloudflare's open-source toolkit (Wrangler, Miniflare, Vite plugin), full-stack platform delivery, and production ML and NLP work. I'm studying MSc Artificial Intelligence (Financial Analytics) at Imperial Business School and looking for software, data and analytics roles.",
+  hero: {
+    currently: "MSc at Imperial Business School · Open to internships and graduate roles",
+    headline: "I build and fix the tools developers rely on.",
+    intro:
+      "I'm Matin Gathani, a software and data engineer. I've had 28 pull requests merged into Cloudflare's developer toolkit, built a student-matching platform for ASU's capstone program, and I'm now studying AI and financial analytics at Imperial in London.",
+  },
+  lookingFor:
+    "I'm looking for internships and graduate roles in software engineering, data and applied AI, where I can ship clean, tested code. Email is the quickest way to reach me.",
+  why:
+    "I like fixing the small things that quietly break someone's day: a command that prints the wrong thing, a crash on a large output, a test that only fails on Windows. Open source taught me how maintainers think. Tutoring taught me to explain hard ideas plainly. Now I'm adding machine learning and financial analytics to that toolkit at Imperial.",
+  highlights: [
+    {
+      title: "Cloudflare developer toolkit",
+      detail: "28 merged fixes to Wrangler, Miniflare and the Vite plugin",
+    },
+    {
+      title: "ASU Capstone platform",
+      detail: "Student and sponsor matching, 5th at the Capstone Showcase",
+    },
+    {
+      title: "Teaching",
+      detail: "Tutored 180+ students across 300+ sessions in Java, C++ and Assembly",
+    },
+  ],
+  aboutIntro: [
+    "I'm Matin. I finished my B.S. in Computer Science at Arizona State University in May 2026 with a 3.74 GPA, and I'm now studying MSc Artificial Intelligence (Financial Analytics) at Imperial Business School in London.",
+    "The work I'm proudest of is the unglamorous kind: 28 merged fixes to Cloudflare's developer toolkit, including a Workflows crash I traced to a SQLite size limit, and a capstone platform that kept running through a malware incident.",
+    "I also tutored 180+ students in Java, C++ and Assembly, and I still write code and documentation with that reader in mind.",
+  ],
+  outsideCode:
+    "Away from the keyboard I'm usually listening to music across every genre, and I DJ too. I read history and finance books, I'm part of the Finance Club and the Pickleball Club at Imperial, and I'm in the gym every day.",
   impactMetrics: [
     { label: "Merged OSS fixes", value: 28, suffix: "" },
     { label: "Students mentored", value: 180, suffix: "+" },
@@ -25,6 +56,56 @@ export const content: SiteContent = {
     { name: "C++", value: 55 },
     { name: "AWS", value: 45 },
   ],
+  expertise: [
+    {
+      title: "Data & Analytics",
+      description:
+        "Turning messy data into decisions: SQL modelling, Power BI dashboards, Python pipelines, and the analytics coursework behind an Imperial MSc.",
+      tags: ["Power BI", "SQL", "Python", "Pandas", "Excel"],
+    },
+    {
+      title: "Open-Source Engineering",
+      description:
+        "28 merged bug fixes to Cloudflare's developer toolkit (Wrangler CLI, Miniflare and the Vite plugin), plus ongoing work across the ecosystem.",
+      tags: ["TypeScript", "Node.js", "Cloudflare Workers", "Vitest", "Git"],
+    },
+    {
+      title: "AI & Full-Stack Delivery",
+      description:
+        "Production NLP pipelines and full-stack platforms, Next.js and TypeScript front to back, with CI/CD, monitoring and incident response.",
+      tags: ["Next.js", "NLP", "LLMs", "Docker", "CI/CD"],
+    },
+  ],
+  toolkit: [
+    "Python", "TypeScript", "JavaScript", "Java", "C++", "SQL", "React", "Next.js", "Node.js", "Docker",
+    "Power BI", "Excel", "Pandas", "NumPy", "NLP", "PostgreSQL", "AWS", "REST APIs", "Git", "CI/CD",
+  ],
+  skillLevels: [
+    {
+      level: "Advanced",
+      skills: ["C++", "Python", "SQL", "Power BI", "Excel", "Tableau"],
+    },
+    {
+      level: "Intermediate",
+      skills: [
+        "JavaScript / TypeScript",
+        "Java",
+        "Docker",
+        "GitHub Actions CI/CD",
+        "PostgreSQL",
+        "MySQL",
+      ],
+    },
+    {
+      level: "Basic",
+      skills: ["AWS (EC2, S3, Lambda)"],
+    },
+  ],
+  languages: [
+    { name: "Gujarati", level: "Native" },
+    { name: "Hindi", level: "Native" },
+    { name: "English", level: "Fluent" },
+  ],
   contact: {
     email: "mg3246@imperial.ac.uk",
     phone: "4805722372",
@@ -34,10 +115,15 @@ export const content: SiteContent = {
   },
   education: [
     {
-      school: "Imperial College Business School",
+      school: "Imperial Business School",
       location: "London, United Kingdom",
-      dates: "Sep 2026 - Aug 2027",
-      degree: "MSc Business Analytics and AI",
+      dates: "Sep 2026 - Jan 2028",
+      degree: "MSc Artificial Intelligence (Financial Analytics)",
+      modules: [
+        "Advanced Machine Learning",
+        "Generative AI and Large Language Models",
+        "Causal Modelling for Business Analytics",
+      ],
     },
     {
       school: "Arizona State University",
@@ -62,6 +148,17 @@ export const content: SiteContent = {
       tools: ["TypeScript", "Node.js", "Wrangler", "Miniflare", "Vitest", "Cloudflare Workers"],
     },
     {
+      role: "Export Market Research",
+      company: "Family Stainless Steel Manufacturing Business",
+      location: "Ahmedabad, India",
+      dates: "May 2026 - Aug 2026",
+      problem: "Exploring export markets for a family stainless steel manufacturing business.",
+      action:
+        "Conducted market research and export buyer analysis, identifying target buyers across Germany, UAE, Singapore, and the US using trade data and competitive benchmarking.",
+      impact: "Identified target buyers across four export markets: Germany, UAE, Singapore and the US.",
+      tools: ["Market research", "Trade data analysis", "Competitive benchmarking"],
+    },
+    {
       role: "Software Engineering Specialist",
       company: "ASU Industry Capstone · Arizona State University",
       location: "Tempe, AZ",
@@ -71,7 +168,7 @@ export const content: SiteContent = {
       action:
         "Built the full-stack platform (Next.js, TypeScript, MySQL) with 8+ backend API features and structured error handling. Detected and contained the malware attack: identified the injection vector, hardened the Dockerfile with targeted COPY exclusions and /tmp cleanup, wrote automated malware detection scripts, and authored a security incident response runbook. Built a 24/7 monitoring and auto-recovery daemon (systemd service, 60-second health checks, automatic container restart on failure). Designed and shipped a GitHub Actions CI/CD pipeline - build → push to GHCR → SSH webhook deploy - cutting deployment time from ~15 min manual to ~2 min automated. Automated Excel catalogue generation with Python data pipelines, cutting data-prep from hours to minutes. Integrated Microsoft Graph API for transactional email, and replaced the vulnerable xlsx library with ExcelJS across all API routes and admin scripts.",
       impact:
-        "Placed 5th of 30+ teams at ASU's Capstone Showcase. Server recovered from an active malware attack with zero data loss and no recurrence after hardening; deployment went from manual SSH sessions to fully automated; CI lint gate unblocked for clean merges.",
+        "Placed 5th at ASU's Capstone Showcase. Server recovered from an active malware attack with zero data loss and no recurrence after hardening; deployment went from manual SSH sessions to fully automated; CI lint gate unblocked for clean merges.",
       tools: ["Next.js", "TypeScript", "Docker", "GitHub Actions", "MySQL", "Python", "Microsoft Graph API"],
     },
     {
@@ -138,7 +235,7 @@ export const content: SiteContent = {
       dates: "Jan 2025 - Dec 2025",
       category: "Full-stack",
       overview:
-        "Industry-sponsored AI-matching platform (Next.js, TypeScript, MySQL) pairing students with sponsor capstone projects for hundreds of concurrent users. Placed 5th of 30+ teams at ASU's Capstone Showcase.",
+        "Industry-sponsored AI-matching platform (Next.js, TypeScript, MySQL) pairing students with sponsor capstone projects for hundreds of concurrent users. Placed 5th at ASU's Capstone Showcase.",
       responsibilities: [
         "Built 8+ backend API features with structured error handling.",
         "Contained a crypto-mining malware attack on the Docker build pipeline and hardened the image.",
@@ -150,7 +247,7 @@ export const content: SiteContent = {
         "Replacing a high-severity xlsx CVE across every API route and admin script.",
       ],
       results: [
-        "5th of 30+ teams at ASU's Capstone Showcase; deployment time cut from ~15 min to ~2 min.",
+        "5th at ASU's Capstone Showcase; deployment time cut from ~15 min to ~2 min.",
       ],
       architecture: [
         "Next.js app on a hardened Docker image, deployed build → GHCR → SSH webhook.",
@@ -329,7 +426,7 @@ export const content: SiteContent = {
     },
     {
       title: "Imperial College London",
-      description: "MSc Business Analytics and AI, 2026 intake",
+      description: "MSc Artificial Intelligence (Financial Analytics), 2026 intake",
       date: "2026",
       category: "other",
       icon: "🎓",
@@ -343,7 +440,7 @@ export const content: SiteContent = {
     },
     {
       title: "ASU Capstone Showcase",
-      description: "5th of 30+ teams",
+      description: "5th place",
       date: "2025",
       category: "award",
       icon: "🏆",
@@ -354,6 +451,13 @@ export const content: SiteContent = {
       date: "2026",
       category: "certification",
       icon: "📜",
+    },
+    {
+      title: "Mathematics for Machine Learning",
+      description: "Specialisation, Imperial College London via Coursera",
+      date: "2026",
+      category: "certification",
+      icon: "📐",
     },
     {
       title: "Dean's List",

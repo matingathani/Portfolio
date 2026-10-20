@@ -36,6 +36,7 @@ export type Education = {
   dates: string;
   degree: string;
   gpa?: string;
+  modules?: string[];
 };
 
 export type Testimonial = {
@@ -67,6 +68,19 @@ export type SiteContent = {
   role: string;
   summary: string;
   recruiterIntro: string;
+  hero: {
+    currently: string;
+    headline: string;
+    intro: string;
+  };
+  lookingFor: string;
+  why: string;
+  highlights: {
+    title: string;
+    detail: string;
+  }[];
+  aboutIntro: string[];
+  outsideCode?: string;
   impactMetrics: {
     label: string;
     value: number;
@@ -75,6 +89,20 @@ export type SiteContent = {
   skillProficiencies: {
     name: string;
     value: number;
+  }[];
+  expertise: {
+    title: string;
+    description: string;
+    tags: string[];
+  }[];
+  toolkit: string[];
+  skillLevels: {
+    level: "Advanced" | "Intermediate" | "Basic";
+    skills: string[];
+  }[];
+  languages: {
+    name: string;
+    level: string;
   }[];
   contact: {
     email: string;
