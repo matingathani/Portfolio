@@ -13,7 +13,7 @@ export default function WorkPage() {
       <WorkGrid />
       <p className="mt-10 text-sm text-secondary">
         Looking for pull-request details?{" "}
-        <Link href="/oss" className="link">
+        <Link href="/oss" className="link underline">
           See the open-source page
         </Link>
         .

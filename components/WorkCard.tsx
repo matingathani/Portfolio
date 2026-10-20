@@ -1,10 +1,11 @@
 import type { WorkItem } from "../lib/work";
 
-export default function WorkCard({ item }: { item: WorkItem }) {
+export default function WorkCard({ item, headingLevel = "h3" }: { item: WorkItem; headingLevel?: "h2" | "h3" }) {
+  const Heading = headingLevel;
   return (
     <article className="card flex h-full flex-col">
       <div className="flex items-baseline justify-between gap-3">
-        <h3 className="font-heading text-lg font-semibold text-primary">{item.name}</h3>
+        <Heading className="font-heading text-lg font-semibold text-primary">{item.name}</Heading>
         {item.years && <span className="eyebrow whitespace-nowrap">{item.years}</span>}
       </div>
       <p className="mt-2 flex-1 text-sm leading-relaxed text-secondary">{item.summary}</p>

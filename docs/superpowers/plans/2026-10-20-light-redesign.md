@@ -2521,13 +2521,13 @@ npm run build 2>&1 | tail -5
 npx next start -p 3100 > /dev/null 2>&1 &
 SERVER=$!
 sleep 4
-for path in / /work /writing /writing/reliable-nlp-pipelines /about /resume /contact /oss /sitemap.xml /robots.txt /resume.pdf; do
+for route in / /work /writing /writing/reliable-nlp-pipelines /about /resume /contact /oss /sitemap.xml /robots.txt /resume.pdf; do
   printf "%-40s " "$path"; curl -s -o /dev/null -w "%{http_code}\n" http://localhost:3100$path
 done
 printf "%-40s " "/blog (expect 308)"; curl -s -o /dev/null -w "%{http_code} -> %{redirect_url}\n" http://localhost:3100/blog
 printf "%-40s " "/missing (expect 404)"; curl -s -o /dev/null -w "%{http_code}\n" http://localhost:3100/missing
 echo "--- dark colours left in served pages?"
-for path in / /work /about /contact; do curl -s http://localhost:3100$path | grep -c "050810"; done
+for route in / /work /about /contact; do curl -s http://localhost:3100$path | grep -c "050810"; done
 kill $SERVER
 ```
 Expected: every listed route `200`, `/blog` `308 -> .../writing`, `/missing` `404`, and `0` dark-colour matches for each page.
@@ -2539,7 +2539,7 @@ Run:
 npx next start -p 3100 > /dev/null 2>&1 &
 SERVER=$!
 sleep 4
-for path in / /work; do
+for route in / /work; do
   npx --yes lighthouse@12.2.1 "http://localhost:3100$path" --only-categories=performance,accessibility \
     --quiet --chrome-flags="--headless" --output=json --output-path=stdout 2>/dev/null \
     | python3 -I -c "import json,sys; d=json.load(sys.stdin); print('$path', {k: round(v['score']*100) for k,v in d['categories'].items()})"

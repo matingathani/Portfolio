@@ -36,7 +36,7 @@ export default function WorkGrid() {
       </div>
       <div className="grid gap-6 md:grid-cols-2">
         {visible.map((item) => (
-          <WorkCard key={item.slug} item={item} />
+          <WorkCard key={item.slug} item={item} headingLevel="h2" />
         ))}
       </div>
       <p aria-live="polite" className="sr-only">
