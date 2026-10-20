@@ -16,6 +16,10 @@ describe("portrait", () => {
     expect(read("app/about/page.tsx")).toContain('src="/portrait.jpg"');
   });
 
+  it("captions the portrait like a terminal path at Imperial", () => {
+    expect(read("components/Hero.tsx")).toContain("matin@imperial:~/portrait.jpg");
+  });
+
   it("no longer references the old portrait", () => {
     for (const file of [...sourceFiles("app"), ...sourceFiles("components")]) {
       expect(read(file), file).not.toContain("matin-gathani.webp");

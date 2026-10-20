@@ -17,6 +17,11 @@ const config: Config = {
         accent: "var(--color-accent)",
         "accent-soft": "var(--color-accent-soft)",
         band: "var(--color-band)",
+        "on-accent": "var(--color-on-accent)",
+        "ok-bg": "var(--color-ok-bg)",
+        "ok-text": "var(--color-ok-text)",
+        "neutral-bg": "var(--color-neutral-bg)",
+        "neutral-text": "var(--color-neutral-text)",
         border: "var(--color-border)",
       },
       fontFamily: {

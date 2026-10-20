@@ -7,6 +7,7 @@ import SiteFooter from "../components/SiteFooter";
 import AccessibilitySkipLink from "../components/AccessibilitySkipLink";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { content } from "../lib/content";
+import { themeInitScript } from "../lib/theme";
 
 const headingFont = Source_Serif_4({
   subsets: ["latin"],
@@ -52,7 +53,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${headingFont.variable} ${bodyFont.variable} ${monoFont.variable}`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${headingFont.variable} ${bodyFont.variable} ${monoFont.variable}`}
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body>
         <Script id="json-ld" type="application/ld+json" strategy="beforeInteractive">
           {JSON.stringify({

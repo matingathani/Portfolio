@@ -6,13 +6,38 @@
   color-scheme: light;
   --color-bg: #fafaf7;
   --color-surface: #ffffff;
+  --color-band: #f3f2ec;
   --color-primary: #1a1a1a;
   --color-secondary: #4a4a45;
   --color-muted: #6b6b64;
   --color-accent: #1f4fd8;
+  --color-accent-strong: #1a43b8;
   --color-accent-soft: #eef2fd;
-  --color-band: #f3f2ec;
+  --color-on-accent: #ffffff;
   --color-border: #e4e2da;
+  --color-ok-bg: #e6f4ec;
+  --color-ok-text: #1a6b3c;
+  --color-neutral-bg: #eeeeea;
+  --color-neutral-text: #5a5a54;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #131417;
+  --color-surface: #1b1c21;
+  --color-band: #181a1e;
+  --color-primary: #ececf0;
+  --color-secondary: #b3b3bd;
+  --color-muted: #9a9aa5;
+  --color-accent: #8da6f2;
+  --color-accent-strong: #aabdf7;
+  --color-accent-soft: #1d2335;
+  --color-on-accent: #0f1220;
+  --color-border: #2c2d34;
+  --color-ok-bg: #17261d;
+  --color-ok-text: #7fd6a0;
+  --color-neutral-bg: #26272d;
+  --color-neutral-text: #b3b3bd;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -64,18 +89,25 @@ a { color: inherit; text-decoration: none; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 14px;
+  gap: 0.6ch;
+  border-radius: 4px;
+  padding: 11px 18px;
+  font-size: 12px;
   font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   transition: background-color 0.15s, border-color 0.15s;
 }
+.btn-primary::before,
+.btn-secondary::before { content: "[" / ""; }
+.btn-primary::after,
+.btn-secondary::after { content: "]" / ""; }
 .btn-primary {
   background: var(--color-accent);
-  color: #ffffff;
+  color: var(--color-on-accent);
   border: 1px solid var(--color-accent);
 }
-.btn-primary:hover { background: #1a43b8; border-color: #1a43b8; }
+.btn-primary:hover { background: var(--color-accent-strong); border-color: var(--color-accent-strong); }
 .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
 .btn-secondary {
   background: var(--color-surface);
