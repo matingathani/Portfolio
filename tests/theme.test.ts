@@ -1,6 +1,13 @@
 import { readFileSync } from "node:fs";
 import { describe, it, expect } from "vitest";
-import { THEME_KEY, resolveTheme, themeInitScript } from "../lib/theme";
+import {
+  THEME_KEY,
+  THEME_ANIMATION_MS,
+  THEME_SWITCH_MS,
+  nextTheme,
+  resolveTheme,
+  themeInitScript,
+} from "../lib/theme";
 
 const css = readFileSync("styles/globals.css", "utf8");
 
@@ -63,5 +70,36 @@ describe("theme selection", () => {
     expect(themeInitScript).toContain("data-theme");
     expect(themeInitScript).toMatch(/try\s*\{/);
     expect(themeInitScript).toMatch(/catch/);
+  });
+});
+
+describe("theme change animation", () => {
+  it("flips between light and dark", () => {
+    expect(nextTheme("light")).toBe("dark");
+    expect(nextTheme("dark")).toBe("light");
+  });
+
+  it("swaps the theme while the veil is fully opaque", () => {
+    // The veil is opaque from 35% to 55% of the animation (see styles/globals.css).
+    const at = THEME_SWITCH_MS / THEME_ANIMATION_MS;
+    expect(at).toBeGreaterThan(0.36);
+    expect(at).toBeLessThan(0.54);
+  });
+
+  it("keeps the CSS duration in step with the timing constant", () => {
+    expect(css).toContain(`animation: theme-veil ${THEME_ANIMATION_MS}ms`);
+    expect(css).toContain(`${THEME_ANIMATION_MS}ms cubic-bezier`);
+  });
+
+  it("is skipped for people who prefer reduced motion", () => {
+    const reduced = css.slice(css.indexOf("@media (prefers-reduced-motion: reduce)"));
+    expect(reduced).toContain(".theme-veil");
+    expect(reduced).toMatch(/display:\s*none/);
+  });
+
+  it("defines sun, moon and star scenes", () => {
+    for (const cls of [".theme-veil--light", ".theme-veil--dark", ".theme-orb--sun", ".theme-orb--moon", ".theme-star"]) {
+      expect(css, cls).toContain(cls);
+    }
   });
 });

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Source_Serif_4, Inter, JetBrains_Mono } from "next/font/google";
+import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import "../styles/globals.css";
 import SiteHeader from "../components/SiteHeader";
@@ -9,7 +9,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { content } from "../lib/content";
 import { themeInitScript } from "../lib/theme";
 
-const headingFont = Source_Serif_4({
+const headingFont = Fraunces({
   subsets: ["latin"],
   variable: "--font-heading",
   weight: ["400", "600"],
