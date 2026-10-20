@@ -36,6 +36,8 @@ export const content: SiteContent = {
     "The work I'm proudest of is the unglamorous kind: 28 merged fixes to Cloudflare's developer toolkit, including a Workflows crash I traced to a SQLite size limit, and a capstone platform that kept running through a malware incident.",
     "I also tutored 180+ students in Java, C++ and Assembly, and I still write code and documentation with that reader in mind.",
   ],
+  outsideCode:
+    "Away from the keyboard I'm usually listening to music across every genre, and I DJ too. I read history and finance books, I'm part of the Finance Club and the Pickleball Club at Imperial, and I'm in the gym every day.",
   impactMetrics: [
     { label: "Merged OSS fixes", value: 28, suffix: "" },
     { label: "Students mentored", value: 180, suffix: "+" },

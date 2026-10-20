@@ -37,8 +37,16 @@ describe("who-am-I copy", () => {
     expect(text).not.toMatch(/91%|AUC|500\+|of 150|30\+ teams/);
   });
 
-  it("leaves outside-of-code empty until the user supplies it", () => {
-    expect(content.outsideCode).toBeUndefined();
+  it("describes the hobbies the user supplied, and nothing else", () => {
+    const outside = content.outsideCode ?? "";
+    expect(outside).toMatch(/music/i);
+    expect(outside).toMatch(/DJ/);
+    expect(outside).toMatch(/history/i);
+    expect(outside).toMatch(/finance books|finance and/i);
+    expect(outside).toContain("Finance Club");
+    expect(outside).toContain("Pickleball Club");
+    expect(outside).toMatch(/gym every day/i);
+    expect(outside.length).toBeLessThan(420);
   });
 
   it("uses short mono-friendly stat labels with the verified values", () => {
