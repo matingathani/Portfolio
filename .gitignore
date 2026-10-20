@@ -87,3 +87,6 @@ jspm_packages/
 .cursor
 .env*.local
 .worktrees/
+
+# Local agent workspace
+.superpowers/
