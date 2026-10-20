@@ -39,17 +39,17 @@ export default function Hero() {
 
       <figure className="mx-auto w-full max-w-sm overflow-hidden rounded-xl border border-border bg-surface md:max-w-none">
         <figcaption className="flex items-center justify-between border-b border-border px-3 py-2 font-mono text-xs text-muted">
-          <span>~/portrait.webp</span>
+          <span>~/portrait.jpg</span>
           <span>768&times;1024</span>
         </figcaption>
         <div className="relative aspect-[4/5] w-full overflow-hidden">
           <Image
-            src="/matin-gathani.webp"
+            src="/portrait.jpg"
             alt="Portrait of Matin Gathani"
             fill
             priority
             sizes="(min-width: 768px) 400px, 90vw"
-            className="origin-[62%_100%] scale-[1.55] object-cover object-bottom"
+            className="object-cover object-[50%_40%]"
           />
         </div>
       </figure>

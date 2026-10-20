@@ -42,10 +42,10 @@ export default function AboutPage() {
       <div className="grid gap-12 md:grid-cols-[260px_1fr]">
         <aside className="space-y-4">
           <Image
-            src="/matin-gathani.webp"
+            src="/portrait.jpg"
             alt="Portrait of Matin Gathani"
-            width={640}
-            height={800}
+            width={768}
+            height={1024}
             className="h-auto w-full rounded-xl border border-border object-cover"
             priority
           />
